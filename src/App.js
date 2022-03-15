@@ -1,6 +1,7 @@
+import Currency from "./components/Currency";
+
 function App() {
-  console.log(test);
-  return;
+  return <Currency hotellCurr="USD" localCurr="SEK"></Currency>;
 }
 
 export default App;
