@@ -66,19 +66,3 @@ const Currency = (props) => {
 };
 
 export default Currency;
-
-// useEffect(() => {
-//   fetch(
-//     `https://v6.exchangerate-api.com/v6/284d94a411d3ab129c840a38/latest/${props.localCurr}`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => setCurrency(data));
-// });
-
-// useEffect(() => {
-//   fetch(
-//     `https://v6.exchangerate-api.com/v6/284d94a411d3ab129c840a38/pair/${props.localCurr}/${props.hotellCurr}`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => setHotellCurrency(data));
-// });
