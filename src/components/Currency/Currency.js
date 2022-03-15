@@ -4,17 +4,15 @@ import CurrencyList from "./CurrencyList";
 const Currency = (props) => {
   const [currency, setCurrency] = useState([]);
   const [hotellCurrency, setHotellCurrency] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  console.log("Start");
-  console.log(currency);
-  console.log(hotellCurrency);
 
   const fetchCurrency = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
+
       const response = await fetch(
         `https://v6.exchangerate-api.com/v6/284d94a411d3ab129c840a38/latest/${props.localCurr}`
       );

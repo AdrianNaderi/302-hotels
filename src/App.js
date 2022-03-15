@@ -1,7 +1,6 @@
-import Currency from "./components/Currency/Currency";
-
+import CurrencyStart from "./components/Currency/CurrencyStart";
 function App() {
-  return <Currency hotellCurr="BBD" localCurr="SEK"></Currency>;
+  return <CurrencyStart></CurrencyStart>;
 }
 
 export default App;

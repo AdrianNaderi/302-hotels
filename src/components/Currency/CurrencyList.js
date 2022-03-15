@@ -39,7 +39,7 @@ const CurrencyList = (props) => {
       </h2>
       {!isDuplicate && (
         <h2>
-          1 {props.hotellCurr} is
+          1 {props.hotellCurr} is_
           {(1 / props.currencyHotell.conversion_rate).toFixed(3)}
           {props.currency.base_code}
         </h2>
