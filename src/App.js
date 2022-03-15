@@ -1,6 +1,6 @@
-
 function App() {
-  return
+  console.log(test);
+  return;
 }
 
 export default App;
