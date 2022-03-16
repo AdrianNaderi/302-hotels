@@ -62,7 +62,9 @@ const HotelSearch = (props) => {
       </label>
       <DateTimePicker />
       <DropDown handleCountry={handleCountry} />
-      <button onClick={handleSearch}>Search</button>
+      <button className="btn btn-primary" onClick={handleSearch}>
+        Search
+      </button>
     </div>
   );
 };
