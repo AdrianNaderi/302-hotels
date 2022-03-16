@@ -1,9 +1,17 @@
 import { useEffect } from "react";
 
 const DropDown = (props) => {
-  const countries = ["Select", "UK", "Germany"];
+  const countries = [
+    "Country",
+    "UK",
+    "United States",
+    "Australia",
+    "Japan",
+    "Korea",
+    "Lithuania",
+  ];
   const countrySelection = countries.map((country) => (
-    <option key={country} value={country}>
+    <option className="ms-2" key={country} value={country}>
       {country}
     </option>
   ));
@@ -12,11 +20,13 @@ const DropDown = (props) => {
     props.handleCountry(event.target.value);
   };
   useEffect(() => {
-    props.handleCountry("Select");
+    props.handleCountry("Country");
   }, []);
   return (
     <>
-      <select onChange={handleCountry}>{countrySelection}</select>
+      <select className="form-select p-3" onChange={handleCountry}>
+        {countrySelection}
+      </select>
     </>
   );
 };

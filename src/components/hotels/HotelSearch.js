@@ -2,6 +2,7 @@ import { useState } from "react";
 import useHttpGet from "../../hooks/useHttpGet";
 import DateTimePicker from "../UI/DateTimePicker";
 import DropDown from "../UI/DropDown";
+import classes from "./HotelSearch.module.css";
 
 const HotelSearch = (props) => {
   const [search, setSearch] = useState("");
@@ -37,11 +38,11 @@ const HotelSearch = (props) => {
         nationalcurrency: data[key].nationalcurrency,
       });
     }
-    if (search.trim().length === 0 && country === "Select") {
+    if (search.trim().length === 0 && country === "Country") {
       return loadedData;
-    } else if (search.trim().length === 0 && country !== "Select") {
+    } else if (search.trim().length === 0 && country !== "Country") {
       return loadedData.filter((data) => filterCountry(data.location));
-    } else if (search.trim().length !== 0 && country === "Select") {
+    } else if (search.trim().length !== 0 && country === "Country") {
       return loadedData.filter((data) => filterSearch(data.name));
     } else {
       return loadedData.filter(
@@ -55,16 +56,32 @@ const HotelSearch = (props) => {
   };
 
   return (
-    <div>
-      <label>
-        Search
-        <input onChange={(e) => setSearch(e.target.value)}></input>
-      </label>
-      <DateTimePicker />
-      <DropDown handleCountry={handleCountry} />
-      <button className="btn btn-primary" onClick={handleSearch}>
-        Search
-      </button>
+    <div className={`container p-5 ${classes.background}`}>
+      <div className="row align-items-center">
+        <div className="col-3">
+          <div className="form-floating">
+            <input
+              id="floating-id"
+              className="form-control"
+              placeholder="Search"
+              onChange={(e) => setSearch(e.target.value)}
+            ></input>
+            <label htmlFor="floating-id">Search</label>
+          </div>
+        </div>
+        <div className="col-2">
+          <DropDown handleCountry={handleCountry} />
+        </div>
+        <DateTimePicker />
+        <div className="col-3">
+          <button
+            className={`btn p-3 w-100 ${classes.button}`}
+            onClick={handleSearch}
+          >
+            Search
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

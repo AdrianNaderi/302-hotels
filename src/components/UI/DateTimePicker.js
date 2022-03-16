@@ -13,24 +13,28 @@ const DateTimePicker = (props) => {
   };
   return (
     <>
-      <label>
-        From:
+      <div className="col-2 form-floating">
         <input
+          id="floating-from"
+          className="form-control"
           type="date"
           value={fromDate}
           onChange={handleFromDate}
           min={today}
         ></input>
-      </label>
-      <label>
-        To:
+        <label htmlFor="floating-from fw-bold">Check-In</label>
+      </div>
+      <div className="col-2 form-floating">
         <input
+          id="floating-to"
+          className="form-control"
           type="date"
           value={toDate}
           onChange={handleToDate}
           min={minimumToDate}
         ></input>
-      </label>
+        <label htmlFor="floating-to fw-bold">Check-Out</label>
+      </div>
     </>
   );
 };
