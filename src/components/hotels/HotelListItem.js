@@ -2,7 +2,7 @@ const HotelListItem = (props) => {
   const hotel = props.hotel;
 
   const handleDetails = () => {
-      
+    props.onDetails(hotel);
   };
   return (
     <div>
