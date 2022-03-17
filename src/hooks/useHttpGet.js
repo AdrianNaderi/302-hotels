@@ -5,7 +5,7 @@ const useHttpGet = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchDataHandler = async () => {
+  const fetchDataHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
     let data = "";
@@ -20,7 +20,7 @@ const useHttpGet = (props) => {
     }
     setIsLoading(false);
     return data;
-  };
+  }, [url]);
 
   return {
     fetchDataHandler,

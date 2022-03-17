@@ -6,7 +6,7 @@ const HotelProfileImg = (props) => {
       <img
         src={props.url}
         className={classes.profile}
-        alt="This is the profile picture over the current hotel"
+        alt="This is the current hotel"
       />
     </>
   );

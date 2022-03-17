@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 const DropDown = (props) => {
   const countries = [
     "Country",
@@ -21,9 +19,7 @@ const DropDown = (props) => {
   const handleCountry = (event) => {
     props.handleCountry(event.target.value);
   };
-  useEffect(() => {
-    props.handleCountry("Country");
-  }, []);
+
   return (
     <>
       <select className="form-select p-3" onChange={handleCountry}>

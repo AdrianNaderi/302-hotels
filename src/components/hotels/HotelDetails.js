@@ -1,16 +1,20 @@
 import RoomList from "../rooms/RoomList";
-import DateTimePicker from "../UI/DateTimePicker";
 import HotelProfileImg from "../UI/HotelProfileImg";
 import DisplayHotelDescription from "./DisplayHotelDescription";
 import ServiceSection from "../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
+import { useState } from "react";
 const HotelDetails = (props) => {
+  const [activeRoom, setActiveRoom] = useState();
   const hotel = props.details;
   const handleCancelDetails = () => {
     props.cancelDetails();
   };
 
+  const handleRoomSelection = (room) => {
+    setActiveRoom(room);
+  };
   return (
     <div className={classes.details}>
       <HotelProfileImg url={hotel.url} />
@@ -23,8 +27,8 @@ const HotelDetails = (props) => {
           <p>Place Currency component here</p>
         </ServiceSection>
       </div>
-      <RoomList />
-      <CheckOut cancelDetails={handleCancelDetails} />
+      <RoomList selectRoom={handleRoomSelection} />
+      <CheckOut cancelDetails={handleCancelDetails} room={activeRoom} />
     </div>
   );
 };
