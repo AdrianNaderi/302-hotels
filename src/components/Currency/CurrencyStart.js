@@ -1,36 +1,30 @@
-import Currency from "./Currency";
-import React, { useEffect, useState, useCallback } from "react";
-const CurrencyStart = () => {
+import React, { useState, useEffect, useCallback } from "react";
+import "./CurrencyList.css";
+import useHttpGet from "../../hooks/useHttpGet";
+import Currency from "./CurrencyLocal";
+const CurrencyStart = (props) => {
   const [location, setLocation] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const fetchLocation = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const responseLocation = await fetch(
-        "https://ipgeolocation.abstractapi.com/v1/?api_key=86f573b77a984484b10c6fa8c82378ae"
-      );
-      if (!responseLocation.ok) {
-        throw new Error("Something went wrong");
-      }
-      const locationData = await responseLocation.json();
-      setLocation(locationData);
-    } catch (error) {
-      setError(error.message);
-    }
-    setIsLoading(false);
+  const { isLoading, error, fetchDataHandler } = useHttpGet({
+    url: "https://ipgeolocation.abstractapi.com/v1/?api_key=86f573b77a984484b10c6fa8c82378ae",
+  });
+
+  const currencyHandler = useCallback(async () => {
+    let data = await fetchDataHandler();
+
+    setLocation(data);
   }, []);
 
   useEffect(() => {
-    fetchLocation();
-  }, [fetchLocation]);
+    currencyHandler();
+  }, [currencyHandler]);
+
+  console.log(location);
 
   return (
     <React.Fragment>
       {!isLoading && location.length !== 0 && (
         <Currency
-          hotellCurr="USD"
+          hotellCurr={props.hotellCurr}
           localCurr={location.currency.currency_code}
         ></Currency>
       )}

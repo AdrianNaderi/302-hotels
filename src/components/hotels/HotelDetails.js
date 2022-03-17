@@ -1,4 +1,5 @@
 import RoomList from "../rooms/RoomList";
+import CurrencyStart from "../Currency/CurrencyStart";
 
 const HotelDetails = (props) => {
   const hotel = props.details;
@@ -8,6 +9,7 @@ const HotelDetails = (props) => {
 
   return (
     <div>
+      <CurrencyStart hotellCurr="DKK"></CurrencyStart>
       <h3>*******Details******</h3>
       <p>{hotel.name}</p>
       <p>{hotel.description}</p>

@@ -4,7 +4,9 @@
   transition: 0.3s;
   width: fit-content;
   height: fit-content;
-  background-color: rgba(182, 156, 7, 0.322);
+  background-color: rgb(223, 19, 121);
+  border-radius: 90;
+  border-color: black;
 }
 div {
   align-items: center;

@@ -5,7 +5,7 @@ const HotelListItem = (props) => {
     props.onDetails(hotel);
   };
   return (
-    <div>
+    <div >
       <p>{hotel.name}</p>
       <p>{hotel.description}</p>
       <p>{hotel.location}</p>
