@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "./CurrencyList.css";
 import useHttpGet from "../../hooks/useHttpGet";
 import Currency from "./CurrencyLocal";
 const CurrencyStart = (props) => {

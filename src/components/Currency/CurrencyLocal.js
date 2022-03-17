@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "./Currency.css";
 import CurrencyHotell from "./CurrencyHotell";
 import useHttpGet from "../../hooks/useHttpGet";
 const Currency = (props) => {
