@@ -2,14 +2,6 @@
   background-color: azure;
 }
 
-.profile {
-  float: left;
-  height: 220px;
-  width: 550px;
-  object-fit: cover;
-  margin-right: 50px;
-  margin-left: 50px;
-}
 
 .components {
   display: flex;
@@ -17,12 +9,7 @@
   margin-left: 50px;
 }
 
-.component {
-  border: solid 1px;
-  height: 300px;
-  flex-grow: 1;
-  align-self: center;
-}
+
 
 .componentcontent {
   position: absolute;
@@ -31,7 +18,3 @@
   transform: translateY(-50%);
 }
 
-.checkout {
-  margin-left: 50px;
-  margin-right: 50px;
-}

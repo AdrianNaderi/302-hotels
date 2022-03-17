@@ -3,12 +3,14 @@ import { useEffect } from "react";
 const DropDown = (props) => {
   const countries = [
     "Country",
+    "Germany",
     "UK",
     "United States",
     "Australia",
     "Japan",
     "Korea",
-    "Lithuania",
+    "Belgium",
+    "Sweden",
   ];
   const countrySelection = countries.map((country) => (
     <option className="ms-2" key={country} value={country}>
