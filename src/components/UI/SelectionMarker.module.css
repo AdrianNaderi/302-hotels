@@ -1,0 +1,15 @@
+.circle {
+  background: green;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-left: 10px;
+  position: relative;
+  top: -200px;
+}
+
+.checkmark {
+  font-size: 38px;
+  color: white;
+  margin-left: 10px;
+}

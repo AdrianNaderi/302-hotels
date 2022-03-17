@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import useHttpGet from "../../hooks/useHttpGet";
 import RoomItem from "./RoomItem";
+import classes from "./RoomList.module.css";
 
 const RoomList = (props) => {
   const [rooms, setRooms] = useState([]);
   const { fetchDataHandler } = useHttpGet({
     url: "https://usebookingmanagement-default-rtdb.firebaseio.com/rooms.json",
   });
-
+  const [activeSelection, setActiveSelection] = useState("");
+  const handleActiveSelection = (room) => {
+    setActiveSelection(room);
+    console.log(room);
+  };
   const handleSearch = async () => {
     const allRooms = await fetchDataHandler();
     const transformedData = transformData(allRooms);
@@ -27,13 +32,21 @@ const RoomList = (props) => {
         class: data[key].class,
         cost: data[key].cost,
         name: data[key].name,
+        url: data[key].url,
       });
     }
     return loadedData;
   };
-  const roomList = rooms.map((room) => <RoomItem key={room.id} room={room} />);
+  const roomList = rooms.map((room) => (
+    <RoomItem
+      key={room.id}
+      room={room}
+      activeSelection={activeSelection}
+      handleActiveSelection={handleActiveSelection}
+    />
+  ));
 
-  return <div>{roomList}</div>;
+  return <div className={classes.rooms}>{roomList}</div>;
 };
 
 export default RoomList;
