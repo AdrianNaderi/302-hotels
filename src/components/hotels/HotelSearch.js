@@ -36,6 +36,7 @@ const HotelSearch = (props) => {
         location: data[key].location,
         rating: data[key].rating,
         nationalcurrency: data[key].nationalcurrency,
+        url: data[key].url,
       });
     }
     if (search.trim().length === 0 && country === "Country") {
