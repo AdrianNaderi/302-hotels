@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useContext, useEffect } from "react";
 import useDateTime from "../../hooks/useDateTime";
+import TimespanContext from "../../store/timespan-context";
 
 const DateTimePicker = (props) => {
   const { fromDate, setFromDate, toDate, setToDate, today, minimumToDate } =
     useDateTime();
+  const ctx = useContext(TimespanContext);
+  useEffect(() => {
+    ctx.handleTimespan(fromDate, toDate);
+  }, [fromDate, toDate, ctx]);
 
   const handleFromDate = (e) => {
     setFromDate(e.target.value);
   };
+
   const handleToDate = (e) => {
     setToDate(e.target.value);
   };
+
   return (
     <>
       <div className="col-2 form-floating">
