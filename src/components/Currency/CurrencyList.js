@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./CurrencyList.css";
+import React, { useState, useEffect, useCallback } from "react";
+import classes from "./CurrencyList.module.css";
 
 const CurrencyList = (props) => {
   const [isDuplicate, setIsDuplicate] = useState(false);
   console.log(props.hotellCurr);
 
-  const IsDuplicateHandler = () => {
+  const IsDuplicateHandler = useCallback(async () => {
     if (
       props.hotellCurr.target_code === "EUR" ||
       props.hotellCurr.target_code === "USD" ||
@@ -15,7 +15,7 @@ const CurrencyList = (props) => {
     } else {
       setIsDuplicate(false);
     }
-  };
+  }, [props.hotellCurr.target_code]);
 
   useEffect(() => {
     IsDuplicateHandler();
@@ -23,9 +23,9 @@ const CurrencyList = (props) => {
 
   return (
     <React.Fragment>
-      <div className="card">
+      <div className={classes.card}>
         {
-          <div className="container">
+          <div className={classes.container}>
             <h1>Currencies</h1>
 
             <h2>

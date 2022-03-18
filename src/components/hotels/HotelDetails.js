@@ -5,6 +5,7 @@ import ServiceSection from "../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
+import Currency from "../Currency/CurrencyStart";
 const HotelDetails = (props) => {
   const [activeRoom, setActiveRoom] = useState();
   const hotel = props.details;
@@ -24,7 +25,7 @@ const HotelDetails = (props) => {
           <p>Place Weather component here</p>
         </ServiceSection>
         <ServiceSection>
-          <p>Place Currency component here</p>
+          <Currency hotellCurr="DKK"></Currency>
         </ServiceSection>
       </div>
       <RoomList selectRoom={handleRoomSelection} />

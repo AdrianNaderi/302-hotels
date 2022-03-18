@@ -11,7 +11,7 @@ const Currency = (props) => {
   const currencyHandler = useCallback(async () => {
     let dataHotell = await fetchDataHandler();
     setCurrency(dataHotell);
-  }, []);
+  }, [fetchDataHandler]);
 
   useEffect(() => {
     currencyHandler();

@@ -11,7 +11,7 @@ const CurrencyStart = (props) => {
     let data = await fetchDataHandler();
 
     setLocation(data);
-  }, []);
+  }, [fetchDataHandler]);
 
   useEffect(() => {
     currencyHandler();
