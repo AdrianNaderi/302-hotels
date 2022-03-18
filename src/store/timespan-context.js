@@ -11,7 +11,6 @@ export const TimespanContextProvider = (props) => {
     const diff = new Date(to) - new Date(from);
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     setTimespan(days);
-    console.log(days);
   };
 
   const handleTimespan = (fromdate, todate) => {

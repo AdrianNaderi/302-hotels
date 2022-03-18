@@ -18,7 +18,6 @@ const RoomList = (props) => {
     const allRooms = await fetchDataHandler();
     const transformedData = transformData(allRooms);
     setRooms(transformedData);
-    console.log(transformedData);
   }, [fetchDataHandler]);
 
   useEffect(() => {

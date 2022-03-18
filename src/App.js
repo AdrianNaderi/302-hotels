@@ -1,6 +1,6 @@
-import HotelSearch from "./components/hotels/HotelSearch";
-import HotelList from "./components/hotels/HotelList";
-import HotelDetails from "./components/hotels/HotelDetails";
+import HotelSearch from "./components/Hotels/HotelSearch";
+import HotelList from "./components/Hotels/HotelList";
+import HotelDetails from "./components/Hotels/HotelDetails";
 import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 
@@ -15,7 +15,6 @@ function App() {
 
   const [details, setDetails] = useState(null);
   const onDetails = (details) => {
-    console.log(details);
     setDetails(details);
     setDetailsMode(true);
   };
@@ -26,7 +25,6 @@ function App() {
     } else {
       setSearchMode(false);
     }
-    console.log(searchMode);
   }, [details]);
 
   const cancelDetailsMode = () => {
