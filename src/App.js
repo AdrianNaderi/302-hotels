@@ -4,6 +4,7 @@ import HotelDetails from "./components/hotels/HotelDetails";
 import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import BookingConfirmation from "./components/Bookings/BookingConfirmation";
+import SearchWeather from "./components/Weather/SearchWeather";
 
 function App() {
   const [searchMode, setSearchMode] = useState(true);
