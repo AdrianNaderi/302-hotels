@@ -3,12 +3,14 @@ import HotelList from "./components/Hotels/Search/HotelList";
 import HotelDetails from "./components/Hotels/HotelDetails";
 import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
+import BookingConfirmation from "./components/Bookings/BookingConfirmation";
 
 function App() {
   const [searchMode, setSearchMode] = useState(true);
   const [detailsMode, setDetailsMode] = useState(false);
-
+  const [confirmationMode, setConfirmationMode] = useState(false);
   const [hotels, setHotels] = useState([]);
+  const [booking, setBooking] = useState(null);
   const onSearch = (searchResult) => {
     setHotels(searchResult);
   };
@@ -31,13 +33,35 @@ function App() {
     setDetailsMode(false);
     setDetails(null);
   };
+
+  const backToSearch = () => {
+    cancelDetailsMode();
+    setConfirmationMode(false);
+    setSearchMode(true);
+  };
+
+  const handleBooking = (booking) => {
+    setBooking(booking);
+    setConfirmationMode(true);
+    setSearchMode(false);
+    setDetailsMode(false);
+    console.log(booking);
+  };
+
   return (
     <div>
       <Navbar />
       {searchMode && <HotelSearch onSearch={onSearch} />}
       {searchMode && <HotelList hotels={hotels} onDetails={onDetails} />}
       {detailsMode && (
-        <HotelDetails details={details} cancelDetails={cancelDetailsMode} />
+        <HotelDetails
+          details={details}
+          cancelDetails={cancelDetailsMode}
+          onBooking={handleBooking}
+        />
+      )}
+      {confirmationMode && (
+        <BookingConfirmation booking={booking} onBack={backToSearch} />
       )}
     </div>
   );

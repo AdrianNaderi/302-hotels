@@ -34,6 +34,7 @@ const HotelDetails = (props) => {
           cancelDetails={handleCancelDetails}
           room={activeRoom}
           hotel={hotel}
+          onBooking={(booking) => props.onBooking(booking)}
         />
       </TimespanContextProvider>
     </div>

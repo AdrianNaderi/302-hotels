@@ -25,8 +25,7 @@ const CheckOut = (props) => {
         ? `0${activeDate.getDate()}`
         : activeDate.getDate().toString();
     return `${yearNow}-${monthNow}-${dateNow}`;
-
-  }
+  };
 
   const handleBooking = () => {
     let user = "test";
@@ -38,9 +37,9 @@ const CheckOut = (props) => {
       todate: ctx.toDate,
       timespan: ctx.timespan,
       totalcost: ctx.timespan * room.cost,
-      bookingdate: handleTime(Date.now())
+      bookingdate: handleTime(Date.now()),
     };
-    console.log(booking);
+    props.onBooking(booking);
   };
 
   return (
@@ -57,12 +56,23 @@ const CheckOut = (props) => {
           </div>
           <DateTimePicker />
           <div className="col-2">
-            <button
-              className="btn-lg btn-success w-100 p-3"
-              onClick={handleBooking}
-            >
-              Book
-            </button>
+            {room && (
+              <button
+                className="btn-lg btn-success w-100 p-3"
+                onClick={handleBooking}
+              >
+                Book
+              </button>
+            )}
+            {!room && (
+              <button
+                className="btn-lg btn-secondary w-100 p-3"
+                onClick={handleBooking}
+                disabled
+              >
+                Book
+              </button>
+            )}
           </div>
           <div className="col-4">
             <h1 className="text-light text-end">
