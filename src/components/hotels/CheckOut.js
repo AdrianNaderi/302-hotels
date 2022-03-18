@@ -33,11 +33,11 @@ const CheckOut = (props) => {
       user,
       hotel,
       room,
-      fromdate: ctx.fromDate,
+      details: { fromdate: ctx.fromDate,
       todate: ctx.toDate,
       timespan: ctx.timespan,
       totalcost: ctx.timespan * room.cost,
-      bookingdate: handleTime(Date.now()),
+      bookingdate: handleTime(Date.now())},
     };
     props.onBooking(booking);
   };
