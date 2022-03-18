@@ -1,5 +1,5 @@
-import HotelSearch from "./components/Hotels/HotelSearch";
-import HotelList from "./components/Hotels/HotelList";
+import HotelSearch from "./components/Hotels/Search/HotelSearch";
+import HotelList from "./components/Hotels/Search/HotelList";
 import HotelDetails from "./components/Hotels/HotelDetails";
 import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";

@@ -30,7 +30,11 @@ const HotelDetails = (props) => {
       </div>
       <RoomList selectRoom={handleRoomSelection} />
       <TimespanContextProvider>
-        <CheckOut cancelDetails={handleCancelDetails} room={activeRoom} />
+        <CheckOut
+          cancelDetails={handleCancelDetails}
+          room={activeRoom}
+          hotel={hotel}
+        />
       </TimespanContextProvider>
     </div>
   );

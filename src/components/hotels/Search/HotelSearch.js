@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useHttpGet from "../../hooks/useHttpGet";
-import DateTimePicker from "../UI/DateTimePicker";
-import DropDown from "../UI/DropDown";
+import useHttpGet from "../../../hooks/useHttpGet";
+import DateTimePicker from "../../UI/DateTimePicker";
+import DropDown from "../../UI/DropDown";
 import classes from "./HotelSearch.module.css";
 
 const HotelSearch = (props) => {
@@ -57,7 +57,7 @@ const HotelSearch = (props) => {
   };
 
   return (
-    <div className={`container p-5 ${classes.background}`}>
+    <div className={`container p-5 mb-5 ${classes.background}`}>
       <div className="row align-items-center">
         <div className="col-3">
           <div className="form-floating">
