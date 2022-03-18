@@ -1,6 +1,6 @@
-import HotelSearch from "./components/hotels/Search/HotelSearch";
-import HotelList from "./components/hotels/Search/HotelList";
-import HotelDetails from "./components/hotels/HotelDetails";
+import HotelSearch from "./components/Hotels/Search/HotelSearch";
+import HotelList from "./components/Hotels/Search/HotelList";
+import HotelDetails from "./components/Hotels/HotelDetails";
 import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import BookingConfirmation from "./components/Bookings/BookingConfirmation";
