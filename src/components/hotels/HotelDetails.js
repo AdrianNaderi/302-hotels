@@ -1,4 +1,4 @@
-import RoomList from "../Rooms/RoomList";
+import RoomList from "../rooms/RoomList";
 import HotelProfileImg from "../UI/HotelProfileImg";
 import DisplayHotelDescription from "./DisplayHotelDescription";
 import ServiceSection from "../layout/ServiceSection";
