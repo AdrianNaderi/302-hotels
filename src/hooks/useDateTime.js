@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 
 const useDateTime = () => {
   const getTodaysDtpDate = () => {
@@ -20,27 +20,45 @@ const useDateTime = () => {
       activeDate.getMonth() + 1 < 10
         ? `0${activeDate.getMonth() + 1}`
         : (activeDate.getMonth() + 1).toString();
-    const dateNow = activeDate.getDate().toString();
+    const dateNow =
+      activeDate.getDate() < 10
+        ? `0${activeDate.getDate()}`
+        : activeDate.getDate().toString();
     return `${yearNow}-${monthNow}-${dateNow}`;
   };
 
   const today = getTodaysDtpDate();
   const tomorrow = getNextDay(today);
-  const [fromDate, setFromDate] = useState(today);
-  const [toDate, setToDate] = useState(tomorrow);
+
+  const [fromDate, setFromDate] = useState(
+    localStorage.getItem("fromdate") === null
+      ? today
+      : localStorage.getItem("fromdate")
+  );
+  const [toDate, setToDate] = useState(
+    localStorage.getItem("todate") === null
+      ? today
+      : localStorage.getItem("todate")
+  );
   const [minimumToDate, setMinimumToDate] = useState(tomorrow);
 
   useEffect(() => {
-    if (Date.parse(fromDate) >= Date.parse(toDate)) {
-      let dateCorrection = getNextDay(fromDate);
-      setToDate(dateCorrection);
-      setMinimumToDate(dateCorrection);
+    const from = Date.parse(fromDate);
+    const to = Date.parse(toDate);
+
+    let referenceDate = getNextDay(fromDate);
+    if (from >= to) {
+      setToDate(referenceDate);
+      setMinimumToDate(referenceDate);
+    } else {
+      setMinimumToDate(referenceDate);
     }
-  }, [fromDate]);
+    localStorage.setItem("fromdate", fromDate);
+    localStorage.setItem("todate", toDate);
+  }, [fromDate, toDate]);
 
   return {
     fromDate,
-    setFromDate,
     setFromDate,
     toDate,
     setToDate,

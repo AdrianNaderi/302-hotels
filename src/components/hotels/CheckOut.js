@@ -1,10 +1,14 @@
 import classes from "./CheckOut.module.css";
 import DateTimePicker from "../UI/DateTimePicker";
+import { useContext } from "react";
+import TimespanContext from "../../store/timespan-context";
 
 const CheckOut = (props) => {
   const handleCancelDetails = () => {
     props.cancelDetails();
   };
+
+  const ctx = useContext(TimespanContext);
   return (
     <>
       <div className={classes.checkout}>
@@ -27,7 +31,9 @@ const CheckOut = (props) => {
             </button>
           </div>
           <div className="col-4">
-            <h1 className="text-light text-end">Total Price: 5040 SEK</h1>
+            <h1 className="text-light text-end">
+            {props.room && `Total Price:  ${ctx.timespan * props.room.cost} SEK`}
+            </h1>
           </div>
         </div>
       </div>

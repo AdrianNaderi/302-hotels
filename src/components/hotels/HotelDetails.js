@@ -5,13 +5,14 @@ import ServiceSection from "../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
+import { TimespanContextProvider } from "../../store/timespan-context";
+
 const HotelDetails = (props) => {
   const [activeRoom, setActiveRoom] = useState();
   const hotel = props.details;
   const handleCancelDetails = () => {
     props.cancelDetails();
   };
-
   const handleRoomSelection = (room) => {
     setActiveRoom(room);
   };
@@ -28,7 +29,9 @@ const HotelDetails = (props) => {
         </ServiceSection>
       </div>
       <RoomList selectRoom={handleRoomSelection} />
-      <CheckOut cancelDetails={handleCancelDetails} room={activeRoom} />
+      <TimespanContextProvider>
+        <CheckOut cancelDetails={handleCancelDetails} room={activeRoom} />
+      </TimespanContextProvider>
     </div>
   );
 };
