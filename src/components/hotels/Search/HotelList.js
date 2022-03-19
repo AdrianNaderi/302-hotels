@@ -1,8 +1,11 @@
+import { searchActions } from "../../../store/search-slice";
 import HotelListItem from "./HotelListItem";
+import { useSelector } from "react-redux";
 
 const HotelList = (props) => {
-  const hotelList = props.hotels.map((hotel) => (
-    <HotelListItem key={hotel.id} hotel={hotel} onDetails={props.onDetails} />
+  const hotels = useSelector((state) => state.search.filtered);
+  const hotelList = hotels.map((hotel) => (
+    <HotelListItem key={hotel.id} hotel={hotel} />
   ));
   return <div>{hotelList}</div>;
 };

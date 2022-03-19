@@ -6,13 +6,11 @@ import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
 import { TimespanContextProvider } from "../../store/timespan-context";
+import { useSelector } from "react-redux";
 
 const HotelDetails = (props) => {
   const [activeRoom, setActiveRoom] = useState();
-  const hotel = props.details;
-  const handleCancelDetails = () => {
-    props.cancelDetails();
-  };
+  const hotel = useSelector((state) => state.hotels.selection);
   const handleRoomSelection = (room) => {
     setActiveRoom(room);
   };
@@ -30,12 +28,7 @@ const HotelDetails = (props) => {
       </div>
       <RoomList selectRoom={handleRoomSelection} />
       <TimespanContextProvider>
-        <CheckOut
-          cancelDetails={handleCancelDetails}
-          room={activeRoom}
-          hotel={hotel}
-          onBooking={(booking) => props.onBooking(booking)}
-        />
+        <CheckOut room={activeRoom} hotel={hotel} />
       </TimespanContextProvider>
     </div>
   );

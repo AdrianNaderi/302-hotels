@@ -1,4 +1,9 @@
+import { useDispatch } from "react-redux";
+import { searchActions } from "../../store/search-slice";
+
 const DropDown = (props) => {
+  const dispatch = useDispatch();
+
   const countries = [
     "Country",
     "Germany",
@@ -16,8 +21,8 @@ const DropDown = (props) => {
     </option>
   ));
 
-  const handleCountry = (event) => {
-    props.handleCountry(event.target.value);
+  const handleCountry = (e) => {
+    dispatch(searchActions.storeCountry({ country: e.target.value }));
   };
 
   return (

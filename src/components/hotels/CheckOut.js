@@ -2,15 +2,20 @@ import classes from "./CheckOut.module.css";
 import DateTimePicker from "../UI/DateTimePicker";
 import { useContext } from "react";
 import TimespanContext from "../../store/timespan-context";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store/ui-slice";
+import { hotelsActions } from "../../store/hotels-slice";
 
 const CheckOut = (props) => {
-  const handleCancelDetails = () => {
-    props.cancelDetails();
-  };
+  const ctx = useContext(TimespanContext);
   const hotel = props.hotel;
   const room = props.room;
+  const dispatch = useDispatch();
 
-  const ctx = useContext(TimespanContext);
+  const handleCancelDetails = () => {
+    dispatch(uiActions.searchMode());
+    dispatch(hotelsActions.clearSelectedHotel());
+  };
 
   const handleTime = (time) => {
     let activeDate = new Date(time);
@@ -33,13 +38,16 @@ const CheckOut = (props) => {
       user,
       hotel,
       room,
-      details: { fromdate: ctx.fromDate,
-      todate: ctx.toDate,
-      timespan: ctx.timespan,
-      totalcost: ctx.timespan * room.cost,
-      bookingdate: handleTime(Date.now())},
+      details: {
+        fromdate: ctx.fromDate,
+        todate: ctx.toDate,
+        timespan: ctx.timespan,
+        totalcost: ctx.timespan * room.cost,
+        bookingdate: handleTime(Date.now()),
+      },
     };
-    props.onBooking(booking);
+    dispatch(hotelsActions.clearSelectedHotel());
+    dispatch(uiActions.confirmationMode());
   };
 
   return (
@@ -76,8 +84,7 @@ const CheckOut = (props) => {
           </div>
           <div className="col-4">
             <h1 className="text-light text-end">
-              {props.room &&
-                `Total Price:  ${ctx.timespan * props.room.cost} SEK`}
+              {room && `Total Price:  ${ctx.timespan * room.cost} SEK`}
             </h1>
           </div>
         </div>

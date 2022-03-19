@@ -1,12 +1,22 @@
 import HotelProfileImg from "../../UI/HotelProfileImg";
 import DisplayHotelDescription from "../DisplayHotelDescription";
+import { uiActions } from "../../../store/ui-slice";
+import { hotelsActions } from "../../../store/hotels-slice";
+import { useDispatch } from "react-redux";
 
 const HotelListItem = (props) => {
   const hotel = props.hotel;
+  const dispatch = useDispatch();
+  const enterDetailsMode = () => {
+    dispatch(hotelsActions.selectHotel({ selection: hotel }));
+    dispatch(uiActions.detailsMode());
+  };
 
   const handleDetails = () => {
-    props.onDetails(hotel);
+    dispatch(hotelsActions.selectHotel({ selection: hotel }));
+    enterDetailsMode();
   };
+
   return (
     <div className="mb-5">
       <HotelProfileImg url={hotel.url} />
