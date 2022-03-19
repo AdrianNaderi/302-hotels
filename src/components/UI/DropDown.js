@@ -1,9 +1,4 @@
-import { useDispatch } from "react-redux";
-import { searchActions } from "../../store/search-slice";
-
 const DropDown = (props) => {
-  const dispatch = useDispatch();
-
   const countries = [
     "Country",
     "Germany",
@@ -21,13 +16,12 @@ const DropDown = (props) => {
     </option>
   ));
 
-  const handleCountry = (e) => {
-    dispatch(searchActions.storeCountry({ country: e.target.value }));
-  };
-
   return (
     <>
-      <select className="form-select p-3" onChange={handleCountry}>
+      <select
+        className="form-select p-3"
+        onChange={(e) => props.handleCountry(e.target.value)}
+      >
         {countrySelection}
       </select>
     </>

@@ -1,19 +1,19 @@
 import classes from "./CheckOut.module.css";
-import DateTimePicker from "../UI/DateTimePicker";
+import DateTimePicker from "../../UI/DateTimePicker";
 import { useContext } from "react";
-import TimespanContext from "../../store/timespan-context";
+import TimespanContext from "../../../store/timespan-context";
 import { useDispatch } from "react-redux";
-import { uiActions } from "../../store/ui-slice";
-import { hotelsActions } from "../../store/hotels-slice";
+import { hotelsActions } from "../../../store/hotels-slice";
+import { useNavigate } from "react-router-dom";
 
 const CheckOut = (props) => {
   const ctx = useContext(TimespanContext);
   const hotel = props.hotel;
   const room = props.room;
   const dispatch = useDispatch();
-
-  const handleCancelDetails = () => {
-    dispatch(uiActions.searchMode());
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/");
     dispatch(hotelsActions.clearSelectedHotel());
   };
 
@@ -46,8 +46,8 @@ const CheckOut = (props) => {
         bookingdate: handleTime(Date.now()),
       },
     };
+    navigate("/bookingconfirmation");
     dispatch(hotelsActions.clearSelectedHotel());
-    dispatch(uiActions.confirmationMode());
   };
 
   return (
@@ -55,10 +55,7 @@ const CheckOut = (props) => {
       <div className={classes.checkout}>
         <div className="bg-dark p-5 row">
           <div className="col-2">
-            <button
-              className="btn-lg btn-danger w-100 p-3"
-              onClick={handleCancelDetails}
-            >
+            <button className="btn-lg btn-danger w-100 p-3" onClick={goBack}>
               Back
             </button>
           </div>

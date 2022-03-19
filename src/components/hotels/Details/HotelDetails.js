@@ -1,11 +1,11 @@
-import RoomList from "../Rooms/RoomList";
-import HotelProfileImg from "../UI/HotelProfileImg";
+import RoomList from "../../Rooms/RoomList";
+import HotelProfileImg from "../../UI/HotelProfileImg";
 import DisplayHotelDescription from "./DisplayHotelDescription";
-import ServiceSection from "../layout/ServiceSection";
+import ServiceSection from "../../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
-import { TimespanContextProvider } from "../../store/timespan-context";
+import { TimespanContextProvider } from "../../../store/timespan-context";
 import { useSelector } from "react-redux";
 
 const HotelDetails = (props) => {

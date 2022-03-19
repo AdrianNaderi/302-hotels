@@ -1,15 +1,14 @@
-import { useDispatch } from "react-redux";
-import { uiActions } from "../../store/ui-slice";
-const BookingConfirmation = (props) => {
-  const dispatch = useDispatch(uiActions);
+import { useNavigate } from "react-router-dom";
 
+const BookingConfirmation = (props) => {
+  const navigate = useNavigate();
   return (
     <div>
       <h1 className="text-center">This is a booking confirmation.</h1>
       <div className="text-center">
         <button
           onClick={() => {
-            dispatch(uiActions.searchMode());
+            navigate("/");
           }}
           className="btn-lg btn-primary"
         >

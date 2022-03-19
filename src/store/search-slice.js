@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { filterHotels } from "../lib/hotelfilters";
 
 const initialSearch = {
   search: "",
@@ -18,42 +19,8 @@ const searchSlice = createSlice({
     storeCountry(state, action) {
       state.country = action.payload.country;
     },
-    filterSearch(state, action) {
-      const filterSearch = (name) => {
-        return name.toLowerCase().includes(state.search.toLowerCase());
-      };
-
-      const filterCountry = (countrySelection) => {
-        return countrySelection
-          .toLowerCase()
-          .includes(state.country.toLowerCase());
-      };
-
-      const filter = (loadedData) => {
-        if (state.search.trim().length === 0 && state.country === "Country") {
-          loadedData = loadedData;
-        } else if (
-          state.search.trim().length === 0 &&
-          state.country !== "Country"
-        ) {
-          loadedData = loadedData.filter((data) =>
-            filterCountry(data.location)
-          );
-        } else if (
-          state.search.trim().length !== 0 &&
-          state.country === "Country"
-        ) {
-          loadedData = loadedData.filter((data) => filterSearch(data.name));
-        } else {
-          loadedData = loadedData.filter(
-            (data) => filterCountry(data.location) && filterSearch(data.name)
-          );
-        }
-        return loadedData;
-      };
-
-      state.filtered = filter(action.payload.data);
-      console.log(state.filtered);
+    storeFiltered(state, action) {
+      state.filtered = filterHotels(state.all, state.search, state.country);
     },
     storeAll(state, action) {
       state.all = action.payload.all;

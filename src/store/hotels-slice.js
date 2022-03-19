@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { searchActions } from "./search-slice";
+import { getHotels } from "../lib/hotelsapi";
+
 const initialHotels = {
-  results: [],
-  filteredresults: [],
-  fetched: false,
   selection: null,
 };
 
@@ -11,13 +10,6 @@ const hotelsSlice = createSlice({
   name: "hotels",
   initialState: initialHotels,
   reducers: {
-    storeHotels(state, action) {
-      state.results = action.payload.hotels;
-      state.fetched = true;
-    },
-    storeFilteredHotels(state, action) {
-      state.filteredresults = action.payload.filteredresults;
-    },
     selectHotel(state, action) {
       state.selection = action.payload.selection;
     },
@@ -29,34 +21,9 @@ const hotelsSlice = createSlice({
 
 export const searchHotels = () => {
   return async (dispatch) => {
-    const sendRequest = async () => {
-      const response = await fetch(
-        "https://usebookingmanagement-default-rtdb.firebaseio.com/hotels.json"
-      );
-
-      return await response.json();
-    };
-
-    const transformData = (data) => {
-      const loadedData = [];
-      for (const key in data) {
-        loadedData.push({
-          id: key,
-          name: data[key].name,
-          description: data[key].description,
-          location: data[key].location,
-          rating: data[key].rating,
-          nationalcurrency: data[key].nationalcurrency,
-          url: data[key].url,
-        });
-      }
-      return loadedData;
-    };
-
-    const response = await sendRequest();
-    const data = transformData(response);
+    const data = await getHotels();
     dispatch(searchActions.storeAll({ all: data }));
-    dispatch(searchActions.filterSearch({ data }));
+    dispatch(searchActions.storeFiltered({ data }));
   };
 };
 

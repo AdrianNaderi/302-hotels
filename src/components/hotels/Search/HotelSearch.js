@@ -9,19 +9,18 @@ import { searchActions } from "../../../store/search-slice";
 
 const HotelSearch = (props) => {
   const [search, setSearch] = useState("");
-  const [country, setCountry] = useState("");
-  const hotels = useSelector((state) => state.search.all);
+  const [country, setCountry] = useState("Country");
   const fetched = useSelector((state) => state.search.fetched);
   const dispatch = useDispatch();
-
   const handleSearch = async () => {
+    dispatch(searchActions.storeSearch({ search }));
+    dispatch(searchActions.storeCountry({ country }));
     if (!fetched) {
       dispatch(searchHotels());
       return;
     }
-    dispatch(searchActions.filterSearch({ data: hotels }));
+    dispatch(searchActions.storeFiltered());
   };
-
 
   return (
     <div className={`container p-5 mb-5 ${classes.background}`}>
@@ -32,15 +31,13 @@ const HotelSearch = (props) => {
               id="floating-id"
               className="form-control"
               placeholder="Search"
-              onChange={(e) =>
-                dispatch(searchActions.storeSearch({ search: e.target.value }))
-              }
+              onChange={(e) => setSearch(e.target.value)}
             ></input>
             <label htmlFor="floating-id">Search</label>
           </div>
         </div>
         <div className="col-2">
-          <DropDown />
+          <DropDown handleCountry={(country) => setCountry(country)} />
         </div>
         <DateTimePicker />
         <div className="col-3">
