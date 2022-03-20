@@ -1,13 +1,16 @@
+import { useSelector } from "react-redux";
 import Navbar from "./components/layout/Navbar";
-import SearchWeather from "./components/Weather/SearchWeather";
 import { Route, Routes } from "react-router-dom";
+import SearchWeather from "./components/Weather/SearchWeather";
 import SearchPage from "./pages/SearchPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import DetailsPage from "./pages/DetailsPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import NotFound from "./pages/404";
+import CustomerPage from "./pages/CustomerPage";
 
 function App() {
+  const loggedin = useSelector((state) => state.auth.loggedIn);
   return (
     <>
       <Navbar />

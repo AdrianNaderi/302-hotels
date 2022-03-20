@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialAuth = {
   loggedIn: true,
 };
+
 const authSlice = createSlice({
-  name: "auth",
+  name: "search",
   initialState: initialAuth,
   reducers: {
     logIn(state) {
@@ -17,4 +18,4 @@ const authSlice = createSlice({
 });
 
 export const authActions = authSlice.actions;
-export default authActions;
+export default authSlice;
