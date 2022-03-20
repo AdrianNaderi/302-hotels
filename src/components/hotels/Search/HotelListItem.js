@@ -1,9 +1,8 @@
 import HotelProfileImg from "../../UI/HotelProfileImg";
 import DisplayHotelDescription from "../Details/DisplayHotelDescription";
-import { uiActions } from "../../../store/ui-slice";
-import { hotelsActions } from "../../../store/hotels-slice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { searchActions } from "../../../store/search-slice";
 
 const HotelListItem = (props) => {
   const hotel = props.hotel;
@@ -11,7 +10,8 @@ const HotelListItem = (props) => {
   const navigate = useNavigate();
 
   const handleDetails = () => {
-    dispatch(hotelsActions.selectHotel({ selection: hotel }));
+    dispatch(searchActions.storeId({ id: hotel.id }));
+    dispatch(searchActions.storeOne());
     navigate(`/details/${hotel.id}`);
   };
 

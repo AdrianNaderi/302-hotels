@@ -1,13 +1,11 @@
 import HotelSearch from "../components/Hotels/Search/HotelSearch";
-import HotelList from "../components/Hotels/Search/HotelList";
 
-const SearchPage = () => {
+const SearchResultsPage = () => {
   return (
     <>
       <HotelSearch />
-      <HotelList />
     </>
   );
 };
 
-export default SearchPage;
+export default SearchResultsPage;

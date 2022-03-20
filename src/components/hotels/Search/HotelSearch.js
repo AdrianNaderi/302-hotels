@@ -1,25 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useHttpGet from "../../../hooks/useHttpGet";
 import DateTimePicker from "../../UI/DateTimePicker";
 import DropDown from "../../UI/DropDown";
 import classes from "./HotelSearch.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { searchHotels } from "../../../store/hotels-slice";
-import { searchActions } from "../../../store/search-slice";
+import { searchActions,searchHotels } from "../../../store/search-slice";
+import { countries } from "../../../lib/sd";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const HotelSearch = (props) => {
-  const [search, setSearch] = useState("");
-  const [country, setCountry] = useState("Country");
+  const [searchParams] = useSearchParams();
+  const countrySearchParam = searchParams.get("country");
+  const searchParam = searchParams.get("search");
+
+  const [search, setSearch] = useState(searchParam === null ? "" : searchParam);
+  const [country, setCountry] = useState(
+    countrySearchParam === null ? "Country" : countrySearchParam
+  );
   const fetched = useSelector((state) => state.search.fetched);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSearch = async () => {
     dispatch(searchActions.storeSearch({ search }));
     dispatch(searchActions.storeCountry({ country }));
     if (!fetched) {
       dispatch(searchHotels());
+      handleNavigation();
       return;
     }
     dispatch(searchActions.storeFiltered());
+    handleNavigation();
+  };
+
+  useEffect(() => {
+    if (searchParam !== null) {
+      dispatch(searchActions.storeSearch({ search }));
+      dispatch(searchActions.storeCountry({ country }));
+      if (!fetched) {
+        dispatch(searchHotels());
+        return;
+      }
+      dispatch(searchActions.storeFiltered());
+    }
+  }, [fetched]);
+
+  const handleNavigation = () => {
+    navigate({
+      pathname: "/searchresults",
+      search: `?country=${country}&search=${search}`,
+    });
   };
 
   return (
@@ -31,13 +61,18 @@ const HotelSearch = (props) => {
               id="floating-id"
               className="form-control"
               placeholder="Search"
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
             ></input>
             <label htmlFor="floating-id">Search</label>
           </div>
         </div>
         <div className="col-2">
-          <DropDown handleCountry={(country) => setCountry(country)} />
+          <DropDown
+            data={countries}
+            current={country}
+            handleCountry={(country) => setCountry(country)}
+          />
         </div>
         <DateTimePicker />
         <div className="col-3">

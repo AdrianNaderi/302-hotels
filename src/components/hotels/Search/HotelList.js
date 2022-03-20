@@ -1,4 +1,3 @@
-import { searchActions } from "../../../store/search-slice";
 import HotelListItem from "./HotelListItem";
 import { useSelector } from "react-redux";
 

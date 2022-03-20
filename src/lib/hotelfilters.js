@@ -6,6 +6,14 @@ const filterCountry = (countrySelection, country) => {
   return countrySelection.toLowerCase().includes(country.toLowerCase());
 };
 
+export const filterHotel = (loadedData, id) => {
+  for (const key in loadedData) {
+    if (loadedData[key].id === id) {
+      return loadedData[key];
+    }
+  }
+};
+
 export const filterHotels = (loadedData, search, country) => {
   if (search.trim().length === 0 && country === "Country") {
     loadedData = loadedData;

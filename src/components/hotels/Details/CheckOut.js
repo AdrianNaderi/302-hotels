@@ -3,8 +3,8 @@ import DateTimePicker from "../../UI/DateTimePicker";
 import { useContext } from "react";
 import TimespanContext from "../../../store/timespan-context";
 import { useDispatch } from "react-redux";
-import { hotelsActions } from "../../../store/hotels-slice";
 import { useNavigate } from "react-router-dom";
+import { searchActions } from "../../../store/search-slice";
 
 const CheckOut = (props) => {
   const ctx = useContext(TimespanContext);
@@ -14,7 +14,7 @@ const CheckOut = (props) => {
   const navigate = useNavigate();
   const goBack = () => {
     navigate("/");
-    dispatch(hotelsActions.clearSelectedHotel());
+    dispatch(searchActions.clearOne());
   };
 
   const handleTime = (time) => {
@@ -47,7 +47,7 @@ const CheckOut = (props) => {
       },
     };
     navigate("/bookingconfirmation");
-    dispatch(hotelsActions.clearSelectedHotel());
+    dispatch(searchActions.clearOne());
   };
 
   return (
