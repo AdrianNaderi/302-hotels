@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import CurrencyHotell from "./CurrencyHotell";
+import CurrencyHotell from "./CurrencyFetchHotell";
 import useHttpGet from "../../hooks/useHttpGet";
 const Currency = (props) => {
   const [currency, setCurrency] = useState([]);

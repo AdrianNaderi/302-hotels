@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useHttpGet from "../../hooks/useHttpGet";
-import Currency from "./CurrencyLocal";
+import Currency from "./CurrencyFetchLocal";
 const CurrencyStart = (props) => {
   const [location, setLocation] = useState([]);
   const { isLoading, error, fetchDataHandler } = useHttpGet({

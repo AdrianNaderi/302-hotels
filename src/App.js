@@ -1,9 +1,10 @@
-import HotelSearch from "./components/Hotels/Search/HotelSearch";
-import HotelList from "./components/Hotels/Search/HotelList";
-import HotelDetails from "./components/Hotels/HotelDetails";
+import HotelSearch from "./components/hotels/search/HotelSearch";
+import HotelList from "./components/hotels/search/HotelList";
+import HotelDetails from "./components/hotels/HotelDetails";
 import { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import BookingConfirmation from "./components/Bookings/BookingConfirmation";
+import Review from "./components/reviews/ReviewStart";
 
 function App() {
   const [searchMode, setSearchMode] = useState(true);
@@ -51,6 +52,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Review></Review>
       {searchMode && <HotelSearch onSearch={onSearch} />}
       {searchMode && <HotelList hotels={hotels} onDetails={onDetails} />}
       {detailsMode && (
