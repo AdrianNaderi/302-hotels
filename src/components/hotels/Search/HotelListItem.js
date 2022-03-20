@@ -1,12 +1,20 @@
 import HotelProfileImg from "../../UI/HotelProfileImg";
-import DisplayHotelDescription from "../DisplayHotelDescription";
+import DisplayHotelDescription from "../Details/DisplayHotelDescription";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { searchActions } from "../../../store/search-slice";
 
 const HotelListItem = (props) => {
   const hotel = props.hotel;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDetails = () => {
-    props.onDetails(hotel);
+    dispatch(searchActions.storeId({ id: hotel.id }));
+    dispatch(searchActions.storeOne());
+    navigate(`/details/${hotel.id}`);
   };
+
   return (
     <div className="mb-5">
       <HotelProfileImg url={hotel.url} />

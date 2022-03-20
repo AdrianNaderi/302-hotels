@@ -1,16 +1,21 @@
 import classes from "./CheckOut.module.css";
-import DateTimePicker from "../UI/DateTimePicker";
+import DateTimePicker from "../../UI/DateTimePicker";
 import { useContext } from "react";
-import TimespanContext from "../../store/timespan-context";
+import TimespanContext from "../../../store/timespan-context";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { searchActions } from "../../../store/search-slice";
 
 const CheckOut = (props) => {
-  const handleCancelDetails = () => {
-    props.cancelDetails();
-  };
+  const ctx = useContext(TimespanContext);
   const hotel = props.hotel;
   const room = props.room;
-
-  const ctx = useContext(TimespanContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/");
+    dispatch(searchActions.clearOne());
+  };
 
   const handleTime = (time) => {
     let activeDate = new Date(time);
@@ -33,13 +38,16 @@ const CheckOut = (props) => {
       user,
       hotel,
       room,
-      fromdate: ctx.fromDate,
-      todate: ctx.toDate,
-      timespan: ctx.timespan,
-      totalcost: ctx.timespan * room.cost,
-      bookingdate: handleTime(Date.now()),
+      details: {
+        fromdate: ctx.fromDate,
+        todate: ctx.toDate,
+        timespan: ctx.timespan,
+        totalcost: ctx.timespan * room.cost,
+        bookingdate: handleTime(Date.now()),
+      },
     };
-    props.onBooking(booking);
+    navigate("/bookingconfirmation");
+    dispatch(searchActions.clearOne());
   };
 
   return (
@@ -47,10 +55,7 @@ const CheckOut = (props) => {
       <div className={classes.checkout}>
         <div className="bg-dark p-5 row">
           <div className="col-2">
-            <button
-              className="btn-lg btn-danger w-100 p-3"
-              onClick={handleCancelDetails}
-            >
+            <button className="btn-lg btn-danger w-100 p-3" onClick={goBack}>
               Back
             </button>
           </div>
@@ -76,8 +81,7 @@ const CheckOut = (props) => {
           </div>
           <div className="col-4">
             <h1 className="text-light text-end">
-              {props.room &&
-                `Total Price:  ${ctx.timespan * props.room.cost} SEK`}
+              {room && `Total Price:  ${ctx.timespan * room.cost} SEK`}
             </h1>
           </div>
         </div>

@@ -1,59 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useHttpGet from "../../../hooks/useHttpGet";
 import DateTimePicker from "../../UI/DateTimePicker";
 import DropDown from "../../UI/DropDown";
 import classes from "./HotelSearch.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { searchActions,searchHotels } from "../../../store/search-slice";
+import { countries } from "../../../lib/sd";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const HotelSearch = (props) => {
-  const [search, setSearch] = useState("");
-  const [country, setCountry] = useState("");
+  const [searchParams] = useSearchParams();
+  const countrySearchParam = searchParams.get("country");
+  const searchParam = searchParams.get("search");
 
-  const { fetchDataHandler } = useHttpGet({
-    url: "https://usebookingmanagement-default-rtdb.firebaseio.com/hotels.json",
-  });
+  const [search, setSearch] = useState(searchParam === null ? "" : searchParam);
+  const [country, setCountry] = useState(
+    countrySearchParam === null ? "Country" : countrySearchParam
+  );
+  const fetched = useSelector((state) => state.search.fetched);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
-    const allHotels = await fetchDataHandler();
-    const transformedData = transformData(allHotels);
-    console.log(transformedData);
-    props.onSearch(transformedData);
-  };
-
-  const filterSearch = (name) => {
-    return name.toLowerCase().includes(search.toLowerCase());
-  };
-
-  const filterCountry = (countrySelection) => {
-    return countrySelection.toLowerCase().includes(country.toLowerCase());
-  };
-  const transformData = (data) => {
-    const loadedData = [];
-    for (const key in data) {
-      loadedData.push({
-        id: key,
-        name: data[key].name,
-        description: data[key].description,
-        location: data[key].location,
-        rating: data[key].rating,
-        nationalcurrency: data[key].nationalcurrency,
-        url: data[key].url,
-      });
+    dispatch(searchActions.storeSearch({ search }));
+    dispatch(searchActions.storeCountry({ country }));
+    if (!fetched) {
+      dispatch(searchHotels());
+      handleNavigation();
+      return;
     }
-    if (search.trim().length === 0 && country === "Country") {
-      return loadedData;
-    } else if (search.trim().length === 0 && country !== "Country") {
-      return loadedData.filter((data) => filterCountry(data.location));
-    } else if (search.trim().length !== 0 && country === "Country") {
-      return loadedData.filter((data) => filterSearch(data.name));
-    } else {
-      return loadedData.filter(
-        (data) => filterCountry(data.location) && filterSearch(data.name)
-      );
-    }
+    dispatch(searchActions.storeFiltered());
+    handleNavigation();
   };
 
-  const handleCountry = (country) => {
-    setCountry(country);
+  useEffect(() => {
+    if (searchParam !== null) {
+      dispatch(searchActions.storeSearch({ search }));
+      dispatch(searchActions.storeCountry({ country }));
+      if (!fetched) {
+        dispatch(searchHotels());
+        return;
+      }
+      dispatch(searchActions.storeFiltered());
+    }
+  }, [fetched]);
+
+  const handleNavigation = () => {
+    navigate({
+      pathname: "/searchresults",
+      search: `?country=${country}&search=${search}`,
+    });
   };
 
   return (
@@ -65,13 +61,18 @@ const HotelSearch = (props) => {
               id="floating-id"
               className="form-control"
               placeholder="Search"
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
             ></input>
             <label htmlFor="floating-id">Search</label>
           </div>
         </div>
         <div className="col-2">
-          <DropDown handleCountry={handleCountry} />
+          <DropDown
+            data={countries}
+            current={country}
+            handleCountry={(country) => setCountry(country)}
+          />
         </div>
         <DateTimePicker />
         <div className="col-3">
