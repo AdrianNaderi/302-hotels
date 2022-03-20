@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialAuth = {
-  loggedIn: true,
+  loggedIn: false,
+  policy: "admin",
 };
 
 const authSlice = createSlice({
@@ -13,6 +14,9 @@ const authSlice = createSlice({
     },
     logOut(state) {
       state.loggedIn = false;
+    },
+    setAthorization(state, action) {
+      state.policy = action.payload.type;
     },
   },
 });

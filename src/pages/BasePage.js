@@ -1,10 +1,12 @@
+import { Outlet } from "react-router-dom";
+
 const BasePage = () => {
-    return (
-      <>
-        <h1>This is the Base Page </h1>
-      </>
-    );
-  };
-  
-  export default BasePage;
-  
+  return (
+    <>
+      <h1>LoggedOut Page </h1>
+      <Outlet />
+    </>
+  );
+};
+
+export default BasePage;
