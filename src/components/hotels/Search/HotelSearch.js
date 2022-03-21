@@ -4,7 +4,7 @@ import DateTimePicker from "../../UI/DateTimePicker";
 import DropDown from "../../UI/DropDown";
 import classes from "./HotelSearch.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { searchActions,searchHotels } from "../../../store/search-slice";
+import { searchActions, searchHotels } from "../../../store/search-slice";
 import { countries } from "../../../lib/sd";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -70,6 +70,7 @@ const HotelSearch = (props) => {
         <div className="col-2">
           <DropDown
             data={countries}
+            style="form-select p-3"
             current={country}
             handleCountry={(country) => setCountry(country)}
           />

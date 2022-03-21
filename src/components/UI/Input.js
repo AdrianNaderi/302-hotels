@@ -17,10 +17,18 @@ const Input = (props) => {
 
   return (
     <div>
-      <label>
-        <span>{props.children}</span>
-        <input type={props.type} onChange={handleChange} value={input}></input>
-      </label>
+      <div className="form-floating">
+        <input
+          id={props.label}
+          className="form-control"
+          type={props.type}
+          onChange={handleChange}
+          value={input}
+        />
+        <label htmlFor={props.label} className="">
+          {props.label}
+        </label>
+      </div>
       <div>{input.length > 0 && inputError && <span>{errorMessage}</span>}</div>
     </div>
   );

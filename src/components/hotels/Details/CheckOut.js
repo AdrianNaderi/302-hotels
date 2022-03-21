@@ -13,7 +13,7 @@ const CheckOut = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const goBack = () => {
-    navigate("/");
+    navigate(-1);
     dispatch(searchActions.clearOne());
   };
 

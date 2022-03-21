@@ -22,3 +22,37 @@ export const getHotels = async () => {
   const data = await response.json();
   return transformData(data);
 };
+
+export const upsertHotel = async (hotel) => {
+  const response = await fetch(
+    `https://usebookingmanagement-default-rtdb.firebaseio.com/hotels/${hotel.id}.json`,
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        id: hotel.id,
+        name: hotel.name,
+        description: hotel.description,
+        location: hotel.location,
+        rating: hotel.rating,
+        nationalcurrency: hotel.nationalcurrency,
+        url: hotel.url,
+      }),
+      headers: {
+        "Content-Type": "applicatoin/json",
+      },
+    }
+  );
+  let data = await response.json();
+  return transformData(data);
+};
+
+export const deleteHotel = async (hotel) => {
+  const response = await fetch(
+    `https://usebookingmanagement-default-rtdb.firebaseio.com/hotels/${hotel.id}.json`,
+    {
+      method: "DELETE",
+    }
+  );
+  let data = await response.json();
+  console.log(data);
+};
