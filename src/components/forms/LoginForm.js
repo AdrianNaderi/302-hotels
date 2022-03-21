@@ -45,6 +45,7 @@ const LoginForm = (props) => {
     }
     let data = await fetchDataHandler();
     data = transformData(data);
+    props.onLogin(data);
 
     console.log(data);
     if (data.length === 0) {
@@ -67,6 +68,7 @@ const LoginForm = (props) => {
         loadedData.push({
           id: key,
           password: data[key].password,
+          fullname: data[key].fullname,
         });
       }
     }
@@ -77,6 +79,7 @@ const LoginForm = (props) => {
     <Modal onClose={props.onClose}>
       <form onSubmit={handleSubmit}>
         <Input
+          label="Username"
           type="text"
           liftupInput={(username) => {
             setUsername(username);
@@ -88,6 +91,7 @@ const LoginForm = (props) => {
         </Input>
 
         <Input
+          label="Password"
           type="password"
           liftupInput={(password) => {
             setPassword(password);

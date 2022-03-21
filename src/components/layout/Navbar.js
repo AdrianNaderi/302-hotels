@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
 import LoginForm from "../Forms/LoginForm";
@@ -13,6 +13,7 @@ const Navbar = (props) => {
 
   const [logInShown, setLogInShown] = useState(false);
   const [registerShown, setRegisterShown] = useState(false);
+  const [userName, setUserName] = useState();
 
   const showLoginHandler = () => {
     setLogInShown(true);
@@ -30,9 +31,18 @@ const Navbar = (props) => {
     setRegisterShown(false);
   };
 
+  const loginHandler = (props) => {
+    const userLoggedIn = [...props];
+    setUserName(userLoggedIn[0].fullname.split(" ")[0]);
+  };
+
+  useEffect(() => {}, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      {logInShown && <LoginForm onClose={hideLoginHandler} />}
+      {logInShown && (
+        <LoginForm onClose={hideLoginHandler} onLogin={loginHandler} />
+      )}
       {registerShown && <RegisterForm onClose={hideRegisterHandler} />}
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
@@ -53,36 +63,42 @@ const Navbar = (props) => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
-          {!loggedIn && (
-            <div className="navbar-nav">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="#"
-                onClick={showLoginHandler}
-              >
-                Login
-              </a>
-              <a className="nav-link" onClick={showRegisterHandler}>
-                Register
-              </a>
-            </div>
-          )}
-          {loggedIn && (
-            <div className="navbar-nav">
-              <a
-                className="nav-link active"
-                onClick={() => {
-                  dispatch(authActions.logOut());
-                }}
-              >
-                Logout
-              </a>
-              <a className="nav-link" onClick={showRegisterHandler}>
-                My page
-              </a>
-            </div>
-          )}
+          <div className="navbar-nav">
+            {!loggedIn && (
+              <>
+                <a
+                  className="nav-link active"
+                  href="#"
+                  onClick={showLoginHandler}
+                >
+                  Login
+                </a>
+                <a
+                  className="nav-link active"
+                  href="#"
+                  onClick={showRegisterHandler}
+                >
+                  Register
+                </a>
+              </>
+            )}
+            {loggedIn && (
+              <>
+                <a className="nav-link active" href="#">
+                  <i class="bi bi-person-circle"></i>&nbsp; {userName}
+                </a>
+                <a
+                  className="nav-link active"
+                  href="#"
+                  onClick={() => {
+                    dispatch(authActions.logOut());
+                  }}
+                >
+                  Logout
+                </a>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </nav>
