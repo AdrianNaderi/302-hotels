@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import RoomList from "../../Rooms/RoomList";
 import HotelProfileImg from "../../UI/HotelProfileImg";
 import DisplayHotelDescription from "./DisplayHotelDescription";
-import ServiceSection from "../../Layout/ServiceSection";
+import ServiceSection from "../../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
