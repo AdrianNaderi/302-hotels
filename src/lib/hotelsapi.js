@@ -4,15 +4,17 @@ const url =
 const transformData = (data) => {
   const loadedData = [];
   for (const key in data) {
-    loadedData.push({
-      id: key,
-      name: data[key].name,
-      description: data[key].description,
-      location: data[key].location,
-      rating: data[key].rating,
-      nationalcurrency: data[key].nationalcurrency,
-      url: data[key].url,
-    });
+    if (data[key]) {
+      loadedData.push({
+        id: key,
+        name: data[key].name,
+        description: data[key].description,
+        location: data[key].location,
+        rating: data[key].rating,
+        nationalcurrency: data[key].nationalcurrency,
+        url: data[key].url,
+      });
+    }
   }
   return loadedData;
 };

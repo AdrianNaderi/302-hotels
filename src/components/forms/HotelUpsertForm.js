@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { countries, countryCurrencies } from "../../lib/sd";
+import { searchActions, searchHotels } from "../../store/search-slice";
 import DropDown from "../UI/DropDown";
 import HotelProfileImg from "../UI/HotelProfileImg";
 import Input from "../UI/Input";
@@ -8,6 +9,7 @@ import Range from "../UI/Range";
 
 const HotelUpsertForm = () => {
   const hotel = useSelector((state) => state.search.single);
+  const hotels = useSelector((state) => state.search.all);
 
   const [name, setName] = useState({ value: "", hasError: true });
   const nameErrorMessage = "Needs to be atleast 5 chars long";
@@ -151,7 +153,9 @@ const HotelUpsertForm = () => {
         <br />
         <br />
 
-        <button type="submit">Submit</button>
+        <button className="btn btn-primary" type="submit">
+          Submit
+        </button>
       </form>
     </>
   );
