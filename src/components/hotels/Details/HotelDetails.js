@@ -44,16 +44,12 @@ const HotelDetails = (props) => {
         <DisplayHotelDescription hotel={hotel} />
       )}
       <div className={classes.components}>
-        <ServiceSection>
         {hotel !== null && hotel !== undefined && (
-            <SearchWeather location={hotel.location}></SearchWeather>
-          )}
-        </ServiceSection>
-        <ServiceSection>
-          {hotel !== null && hotel !== undefined && (
-            <Currency hotellCurr={hotel.nationalcurrency}></Currency>
-          )}
-        </ServiceSection>
+          <SearchWeather location={hotel.location}></SearchWeather>
+        )}
+        {hotel !== null && hotel !== undefined && (
+          <Currency hotellCurr={hotel.nationalcurrency}></Currency>
+        )}
       </div>
       <RoomList selectRoom={handleRoomSelection} />
       <TimespanContextProvider>
