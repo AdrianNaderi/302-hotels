@@ -1,9 +1,11 @@
+import { Outlet } from "react-router-dom";
 import HotelUpsertForm from "../components/Forms/HotelUpsertForm";
 
-const UpsertHotel = () => {
+const UpsertHotel = (props) => {
   return (
     <>
-      <HotelUpsertForm />
+      <Outlet />
+      <HotelUpsertForm hotel={props.hotel}/>
     </>
   );
 };
