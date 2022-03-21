@@ -1,7 +1,9 @@
 const Button = (props) => {
   return (
     <div>
-      <button type={props.type}>{props.children}</button>
+      <button type={props.type} onClick={props.onClick}>
+        {props.children}
+      </button>
     </div>
   );
 };
