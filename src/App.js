@@ -49,6 +49,7 @@ function App() {
             <Route path="upserthotel" element={<UpsertHotel />} />
           </Route>
         )}
+        <Route path="/404" element={<NotFound />} />
       </Routes>
     </>
   );
