@@ -32,6 +32,7 @@ const HotelDetails = (props) => {
     setActiveRoom(room);
   };
 
+  console.log(hotel);
   return (
     <div className={classes.details}>
       {hotel !== null && hotel !== undefined && (
@@ -45,7 +46,9 @@ const HotelDetails = (props) => {
           <p>Place Weather component here</p>
         </ServiceSection>
         <ServiceSection>
-          <Currency hotellCurr="AUD"></Currency>
+          {hotel !== null && hotel !== undefined && (
+            <Currency hotellCurr={hotel.nationalcurrency}></Currency>
+          )}
         </ServiceSection>
       </div>
       <RoomList selectRoom={handleRoomSelection} />
