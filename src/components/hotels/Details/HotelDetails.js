@@ -4,9 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import RoomList from "../../Rooms/RoomList";
 import HotelProfileImg from "../../UI/HotelProfileImg";
 import DisplayHotelDescription from "./DisplayHotelDescription";
-import ServiceSection from "../../layout/ServiceSection";
+import ServiceSection from "../../Layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
+import Currency from "../../Currency/CurrencyStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotel } from "../../../store/search-slice";
 
@@ -44,7 +45,7 @@ const HotelDetails = (props) => {
           <p>Place Weather component here</p>
         </ServiceSection>
         <ServiceSection>
-          <p>Place Currency component here</p>
+          <Currency hotellCurr="AUD"></Currency>
         </ServiceSection>
       </div>
       <RoomList selectRoom={handleRoomSelection} />

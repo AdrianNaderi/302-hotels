@@ -10,6 +10,8 @@ const ReviewInput = (props) => {
         <form onSubmit={submitReview}>
           <textarea type="text"></textarea>
         </form>
+
+        <button type="submit"></button>
       </div>
     </React.Fragment>
   );

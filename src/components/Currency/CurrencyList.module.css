@@ -1,19 +1,22 @@
 h1 {
   font-size: x-small;
+  text-align: center;
 }
 
 h2 {
-  font-size: xx-small;
+  font-size: medium;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: fit-content;
-  height: fit-content;
-  background-color: rgb(223, 19, 121);
+  height: 11rem;
+  width: 12rem;
+  background-color: rgb(201, 177, 70);
   border-radius: 90;
+  border-style: double;
   border-color: black;
 }
 div {

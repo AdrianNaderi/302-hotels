@@ -29,20 +29,25 @@ const CurrencyList = (props) => {
             <h1>Currencies</h1>
 
             <h2>
-              1 EURO: {(1 / props.currency.conversion_rates.EUR).toFixed(3)}
+              EURO: = {(1 / props.currency.conversion_rates.EUR).toFixed(3)}
               {props.currency.base_code}
             </h2>
             <h2>
-              1 USD: {(1 / props.currency.conversion_rates.USD).toFixed(3)}
+              USD: = {(1 / props.currency.conversion_rates.USD).toFixed(3)}
               {props.currency.base_code}
             </h2>
             <h2>
-              1 GBP is {(1 / props.currency.conversion_rates.GBP).toFixed(3)}
+              GBP: = {(1 / props.currency.conversion_rates.GBP).toFixed(3)}
+              {props.currency.base_code}
+            </h2>
+
+            <h2>
+              CNY: = {(1 / props.currency.conversion_rates.CNY).toFixed(3)}
               {props.currency.base_code}
             </h2>
             {!isDuplicate && (
               <h2>
-                1 {props.hotellCurr.target_code} is_
+                {props.hotellCurr.target_code} <span> = </span>
                 {(1 / props.hotellCurr.conversion_rate).toFixed(3)}
                 {props.currency.base_code}
               </h2>

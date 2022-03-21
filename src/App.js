@@ -1,4 +1,4 @@
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/Layout/Navbar";
 import SearchWeather from "./components/Weather/SearchWeather";
 import { Route, Routes } from "react-router-dom";
 import SearchPage from "./pages/SearchPage";

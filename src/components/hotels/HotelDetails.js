@@ -1,7 +1,7 @@
-import RoomList from "../rooms/RoomList";
+import RoomList from "../Rooms/RoomList";
 import HotelProfileImg from "../UI/HotelProfileImg";
 import DisplayHotelDescription from "./DisplayHotelDescription";
-import ServiceSection from "../layout/ServiceSection";
+import ServiceSection from "../Layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import { useState } from "react";
