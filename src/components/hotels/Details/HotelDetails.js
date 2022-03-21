@@ -26,7 +26,7 @@ const HotelDetails = (props) => {
       dispatch(searchHotel());
     }
     if (hotel === undefined) {
-      navigate("/404");
+      navigate("/404", { replace: true });
     }
   }, [hotel]);
 

@@ -23,7 +23,7 @@ const Input = (props) => {
           className="form-control"
           type={props.type}
           onChange={handleChange}
-          value={input}
+          value={props.value}
         />
         <label htmlFor={props.label} className="">
           {props.label}

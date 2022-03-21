@@ -5,7 +5,7 @@ export const countries = [
   "United States",
   "Australia",
   "Japan",
-  "Korea",
+  "South Korea",
   "Belgium",
   "Sweden",
 ];
@@ -17,7 +17,7 @@ export const countryCurrencies = [
   { country: "United States", currency: "USD" },
   { country: "Australia", currency: "AUD" },
   { country: "Japan", currency: "JPY" },
-  { country: "Korea", currency: "KRW" },
+  { country: "South Korea", currency: "KRW" },
   { country: "Belgium", currency: "EUR" },
   { country: "Sweden", currency: "SEK" },
 ];

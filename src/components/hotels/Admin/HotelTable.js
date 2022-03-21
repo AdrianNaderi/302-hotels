@@ -2,7 +2,13 @@ import HotelTableItem from "./HotelTableItem";
 
 const HotelTable = (props) => {
   const tableContent = props.hotels.map((hotel) => (
-    <HotelTableItem key={hotel.id} hotel={hotel} />
+    <HotelTableItem
+      key={hotel.id}
+      hotel={hotel}
+      onSelect={(data) => {
+        props.onSelect(data);
+      }}
+    />
   ));
 
   console.log(props.hotels);
@@ -18,9 +24,7 @@ const HotelTable = (props) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {tableContent}
-        </tbody>
+        <tbody>{tableContent}</tbody>
       </table>
     </>
   );
