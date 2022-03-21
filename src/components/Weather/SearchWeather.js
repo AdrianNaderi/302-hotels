@@ -77,7 +77,7 @@ const SearchWeather = (props) => {
                             <div className="card-img-overlay">
                               
                                 <div className="bg-dark bg-opacity-50 py-3">
-                                <h2 className="card-title">{data.name}</h2>
+                                <h2 className="card-title">{props.location}</h2>
                                 <p className="card-text lead">
                                     {day}, {month} {date}, {year} 
                                 </p>
