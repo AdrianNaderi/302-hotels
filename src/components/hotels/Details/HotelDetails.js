@@ -34,23 +34,22 @@ const HotelDetails = (props) => {
     setActiveRoom(room);
   };
 
-  let content;
-  if (hotel !== null && hotel !== undefined) {
-    content = (
-      <div className={classes.details}>
-        <HotelProfileImg url={hotel.url} />
-        <DisplayHotelDescription hotel={hotel} />
-        <SearchWeather location={hotel.location}></SearchWeather>
-        <Currency hotellCurr={hotel.nationalcurrency}></Currency>
-        <RoomList selectRoom={handleRoomSelection} />
-        <TimespanContextProvider>
-          <CheckOut room={activeRoom} hotel={hotel} />
-        </TimespanContextProvider>
-      </div>
-    );
-  }
-  console.log(hotel);
-  return <div className={classes.details}>{content}</div>;
+  return (
+    <div className={classes.details}>
+      {hotel !== null && hotel !== undefined && (
+        <div className={classes.details}>
+          <HotelProfileImg url={hotel.url} />
+          <DisplayHotelDescription hotel={hotel} />
+          <SearchWeather location={hotel.location}></SearchWeather>
+          <Currency hotellCurr={hotel.nationalcurrency}></Currency>
+          <RoomList selectRoom={handleRoomSelection} />
+          <TimespanContextProvider>
+            <CheckOut room={activeRoom} hotel={hotel} />
+          </TimespanContextProvider>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default HotelDetails;
