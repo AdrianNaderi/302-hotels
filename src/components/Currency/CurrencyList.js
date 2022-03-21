@@ -26,27 +26,27 @@ const CurrencyList = (props) => {
       <div className={classes.card}>
         {
           <div className={classes.container}>
-            <h1>Currencies</h1>
+            <h1 className={classes.hOne}>Currencies</h1>
 
-            <h2>
+            <h2 className={classes.hTwo}>
               EURO: = {(1 / props.currency.conversion_rates.EUR).toFixed(3)}
               {props.currency.base_code}
             </h2>
-            <h2>
+            <h2 className={classes.hTwo}>
               USD: = {(1 / props.currency.conversion_rates.USD).toFixed(3)}
               {props.currency.base_code}
             </h2>
-            <h2>
+            <h2 className={classes.hTwo}>
               GBP: = {(1 / props.currency.conversion_rates.GBP).toFixed(3)}
               {props.currency.base_code}
             </h2>
 
-            <h2>
+            <h2 className={classes.hTwo}>
               CNY: = {(1 / props.currency.conversion_rates.CNY).toFixed(3)}
               {props.currency.base_code}
             </h2>
             {!isDuplicate && (
-              <h2>
+              <h2 className={classes.hTwo}>
                 {props.hotellCurr.target_code} <span> = </span>
                 {(1 / props.hotellCurr.conversion_rate).toFixed(3)}
                 {props.currency.base_code}

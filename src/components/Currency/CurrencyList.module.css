@@ -1,9 +1,9 @@
-h1 {
+.hOne {
   font-size: x-small;
   text-align: center;
 }
 
-h2 {
+.hTwo {
   font-size: medium;
   font-family: "Times New Roman", Times, serif;
 }
@@ -18,10 +18,9 @@ h2 {
   border-radius: 90;
   border-style: double;
   border-color: black;
-}
-div {
   align-items: center;
 }
+
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

@@ -10,6 +10,8 @@ import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotel } from "../../../store/search-slice";
+import Weather from "../../Weather/SearchWeather";
+import SearchWeather from "../../Weather/SearchWeather";
 
 const HotelDetails = (props) => {
   const locationId = useLocation().pathname.replace("/details/", "");
@@ -32,31 +34,20 @@ const HotelDetails = (props) => {
     setActiveRoom(room);
   };
 
-  console.log(hotel);
   return (
     <div className={classes.details}>
       {hotel !== null && hotel !== undefined && (
-        <HotelProfileImg url={hotel.url} />
+        <div className={classes.details}>
+          <HotelProfileImg url={hotel.url} />
+          <DisplayHotelDescription hotel={hotel} />
+          <SearchWeather location={hotel.location}></SearchWeather>
+          <Currency hotellCurr={hotel.nationalcurrency}></Currency>
+          <RoomList selectRoom={handleRoomSelection} />
+          <TimespanContextProvider>
+            <CheckOut room={activeRoom} hotel={hotel} />
+          </TimespanContextProvider>
+        </div>
       )}
-      {hotel !== null && hotel !== undefined && (
-        <DisplayHotelDescription hotel={hotel} />
-      )}
-      <div className={classes.components}>
-        <ServiceSection>
-          <p>Place Weather component here</p>
-        </ServiceSection>
-        <ServiceSection>
-          {hotel !== null && hotel !== undefined && (
-            <Currency hotellCurr={hotel.nationalcurrency}></Currency>
-          )}
-        </ServiceSection>
-      </div>
-      <RoomList selectRoom={handleRoomSelection} />
-      <TimespanContextProvider>
-        {hotel !== null && hotel !== undefined && (
-          <CheckOut room={activeRoom} hotel={hotel} />
-        )}
-      </TimespanContextProvider>
     </div>
   );
 };
