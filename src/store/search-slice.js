@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { filterHotel, filterHotels } from "../lib/hotelfilters";
 import { getHotels } from "../lib/hotelsapi";
 
-
 const initialSearch = {
   search: "",
   country: "Country",
   id: "",
+  lastId: 0,
   fetched: false,
   all: [],
   filtered: [],
@@ -32,30 +32,38 @@ const searchSlice = createSlice({
     storeAll(state, action) {
       state.all = action.payload.all;
       state.fetched = true;
+      state.lastId = action.payload.id;
+      console.log(action.payload.id);
     },
     storeOne(state, action) {
       state.single = filterHotel(state.all, state.id);
     },
     clearOne(state) {
-        state.single = null;
-    }
+      state.single = null;
+    },
   },
 });
 
 export const searchHotels = () => {
-    return async (dispatch) => {
-      const data = await getHotels();
-      dispatch(searchActions.storeAll({ all: data }));
-      dispatch(searchActions.storeFiltered({ data }));
-    };
+  return async (dispatch) => {
+    const data = await getHotels();
+    const mapedIds = data.map((data) => parseInt(data.id));
+    const lastId = mapedIds[mapedIds.length - 1];
+
+    dispatch(searchActions.storeAll({ all: data, id: lastId }));
+    dispatch(searchActions.storeFiltered({ data }));
   };
-  export const searchHotel = () => {
-    return async (dispatch) => {
-      const data = await getHotels();
-      dispatch(searchActions.storeAll({ all: data }));
-      dispatch(searchActions.storeOne());
-    };
+};
+export const searchHotel = () => {
+  return async (dispatch) => {
+    const data = await getHotels();
+    const mapedIds = data.map((data) => parseInt(data.id));
+    const lastId = mapedIds[mapedIds.length - 1];
+
+    dispatch(searchActions.storeAll({ all: data, id: lastId }));
+    dispatch(searchActions.storeOne());
   };
+};
 
 export const searchActions = searchSlice.actions;
 export default searchSlice;
