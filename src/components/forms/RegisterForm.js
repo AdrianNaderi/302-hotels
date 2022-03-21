@@ -71,6 +71,7 @@ const RegisterForm = (props) => {
     <Modal onClose={props.onClose}>
       <form onSubmit={handleSubmit}>
         <Input
+          label="Username"
           type="text"
           liftupInput={(username) => {
             setUsername(username);
@@ -94,6 +95,7 @@ const RegisterForm = (props) => {
         </Input>
 
         <Input
+          label="Password"
           type="password"
           liftupInput={(password) => {
             setPassword(password);
