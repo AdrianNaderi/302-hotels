@@ -10,6 +10,8 @@ import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotel } from "../../../store/search-slice";
+import Weather from "../../Weather/SearchWeather";
+import SearchWeather from "../../Weather/SearchWeather";
 
 const HotelDetails = (props) => {
   const locationId = useLocation().pathname.replace("/details/", "");
@@ -43,7 +45,9 @@ const HotelDetails = (props) => {
       )}
       <div className={classes.components}>
         <ServiceSection>
-          <p>Place Weather component here</p>
+        {hotel !== null && hotel !== undefined && (
+            <SearchWeather location={hotel.location}></SearchWeather>
+          )}
         </ServiceSection>
         <ServiceSection>
           {hotel !== null && hotel !== undefined && (
