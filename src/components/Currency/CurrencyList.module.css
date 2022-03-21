@@ -1,9 +1,9 @@
-h1 {
+.hOne {
   font-size: x-small;
   text-align: center;
 }
 
-h2 {
+.hTwo {
   font-size: medium;
   font-family: "Times New Roman", Times, serif;
 }
