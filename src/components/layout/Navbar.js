@@ -4,11 +4,11 @@ import { authActions } from "../../store/auth-slice";
 import LoginForm from "../Forms/LoginForm";
 import RegisterForm from "../Forms/RegisterForm";
 import classes from "./Navbar.module.css";
+import NavLinks from "./NavLinks";
 
 const Navbar = (props) => {
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const policy = useSelector((state) => state.auth.policy);
-
   const dispatch = useDispatch();
 
   const [logInShown, setLogInShown] = useState(false);
@@ -34,6 +34,10 @@ const Navbar = (props) => {
   const loginHandler = (props) => {
     const userLoggedIn = [...props];
     setUserName(userLoggedIn[0].fullname.split(" ")[0]);
+  };
+
+  const logOut = () => {
+    dispatch(authActions.logOut());
   };
 
   useEffect(() => {}, []);
@@ -64,40 +68,13 @@ const Navbar = (props) => {
           id="navbarNavAltMarkup"
         >
           <div className="navbar-nav">
-            {!loggedIn && (
-              <>
-                <a
-                  className="nav-link active"
-                  href="#"
-                  onClick={showLoginHandler}
-                >
-                  Login
-                </a>
-                <a
-                  className="nav-link active"
-                  href="#"
-                  onClick={showRegisterHandler}
-                >
-                  Register
-                </a>
-              </>
-            )}
-            {loggedIn && (
-              <>
-                <a className="nav-link active" href="#">
-                  <i class="bi bi-person-circle"></i>&nbsp; {userName}
-                </a>
-                <a
-                  className="nav-link active"
-                  href="#"
-                  onClick={() => {
-                    dispatch(authActions.logOut());
-                  }}
-                >
-                  Logout
-                </a>
-              </>
-            )}
+            <NavLinks
+              loggedIn={loggedIn}
+              logOut={logOut}
+              userName={userName}
+              showLoginHandler={showLoginHandler}
+              showRegisterHandler={showRegisterHandler}
+            />
           </div>
         </div>
       </div>
