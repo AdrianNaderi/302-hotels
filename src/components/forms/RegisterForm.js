@@ -81,6 +81,7 @@ const RegisterForm = (props) => {
 
       <Input
         type="text"
+        label="Full Name"
         liftupInput={(fullname) => {
           setFullname(fullname);
         }}

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialAuth = {
-  loggedIn: false,
-  policy: "admin",
+  loggedIn: true,
+  policy: "admindq",
 };
 
 const authSlice = createSlice({

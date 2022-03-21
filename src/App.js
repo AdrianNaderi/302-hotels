@@ -10,6 +10,8 @@ import NotFound from "./pages/404";
 import CustomerPage from "./pages/CustomerPage";
 import BasePage from "./pages/BasePage";
 import AdminPage from "./pages/AdminPage";
+import HotelManagement from "./components/Hotels/Admin/HotelManagement";
+import UpsertHotel from "./pages/UpsertHotel";
 
 function App() {
   const loggedin = useSelector((state) => state.auth.loggedIn);
@@ -40,8 +42,12 @@ function App() {
         {loggedin && policy === "admin" && (
           <Route path="/" element={<Navigate replace to="admin/" />} />
         )}
+
         {loggedin && policy === "admin" && (
-          <Route path="/admin/*" element={<AdminPage />}></Route>
+          <Route path="/admin/*" element={<AdminPage />}>
+            <Route path="hotels" element={<HotelManagement />} />
+            <Route path="upserthotel" element={<UpsertHotel />} />
+          </Route>
         )}
       </Routes>
     </>

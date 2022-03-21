@@ -8,7 +8,6 @@ const useInputState = (errormessage, minInput = 1) => {
 
   const handleInput = (data) => {
     setInput(data);
-    console.log(`Input: ${input} ${errorMessage}`);
     if (data.trim().length < minimumChars) {
       setInputError(true);
     } else {

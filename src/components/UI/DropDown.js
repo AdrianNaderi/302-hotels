@@ -4,11 +4,10 @@ const DropDown = (props) => {
       {data}
     </option>
   ));
-
   return (
     <>
       <select
-        className="form-select p-3"
+        className={props.style}
         onChange={(e) => props.handleCountry(e.target.value)}
         value={props.current}
       >

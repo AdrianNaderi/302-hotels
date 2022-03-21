@@ -70,6 +70,7 @@ const HotelSearch = (props) => {
         <div className="col-2">
           <DropDown
             data={countries}
+            style="form-select p-3"
             current={country}
             handleCountry={(country) => setCountry(country)}
           />
