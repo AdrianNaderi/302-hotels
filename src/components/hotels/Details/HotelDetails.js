@@ -40,8 +40,14 @@ const HotelDetails = (props) => {
         <div className={classes.details}>
           <HotelProfileImg url={hotel.url} />
           <DisplayHotelDescription hotel={hotel} />
-          <SearchWeather location={hotel.location}></SearchWeather>
-          <Currency hotellCurr={hotel.nationalcurrency}></Currency>
+          {/* <SearchWeather
+            country={hotel.location}
+            city={hotel.city}
+          ></SearchWeather> */}
+          <Currency
+            hotellCurr={hotel.nationalcurrency}
+            country={hotel.location}
+          ></Currency>
           <RoomList selectRoom={handleRoomSelection} />
           <TimespanContextProvider>
             <CheckOut room={activeRoom} hotel={hotel} />
