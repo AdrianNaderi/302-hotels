@@ -14,6 +14,10 @@ export const filterHotel = (loadedData, id) => {
   }
 };
 
+export const updateHotelInCollection = (collection, hotel) => {
+  return collection.map((obj) => (obj.id === hotel.id ? hotel : obj));
+};
+
 export const filterHotels = (loadedData, search, country) => {
   if (search.trim().length === 0 && country === "Country") {
     loadedData = loadedData;

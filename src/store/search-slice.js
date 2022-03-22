@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { filterHotel, filterHotels } from "../lib/hotelfilters";
+import {
+  filterHotel,
+  filterHotels,
+  updateHotelInCollection,
+} from "../lib/hotelfilters";
 import { getHotels } from "../lib/hotelsapi";
 
 const initialSearch = {
@@ -40,6 +44,14 @@ const searchSlice = createSlice({
     },
     clearOne(state) {
       state.single = null;
+    },
+    addHotel(state, action) {
+      let addArr = [...state.all, action.payload.hotel];
+      console.log(addArr);
+      console.log(action.payload.hotel.id);
+    },
+    updateHotel(state, action) {
+      state.all = action.payload.updatedhotels;
     },
   },
 });
