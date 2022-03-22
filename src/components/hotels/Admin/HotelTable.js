@@ -5,8 +5,8 @@ const HotelTable = (props) => {
     <HotelTableItem
       key={hotel.id}
       hotel={hotel}
-      onSelect={(data) => {
-        props.onSelect(data);
+      onUpdate={(data) => {
+        props.onUpdate(data);
       }}
     />
   ));
@@ -18,6 +18,7 @@ const HotelTable = (props) => {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Description</th>
             <th>Location</th>
             <th>Currency</th>
             <th>Rating</th>

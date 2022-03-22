@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateHotelInCollection } from "../../lib/hotelfilters";
 import { countries, countryCurrencies } from "../../lib/sd";
 import { searchActions, searchHotels } from "../../store/search-slice";
 import DropDown from "../UI/DropDown";
@@ -8,19 +10,28 @@ import Input from "../UI/Input";
 import Range from "../UI/Range";
 
 const HotelUpsertForm = (props) => {
-  //   const hotel = useSelector((state) => state.search.single);
-  const hotel = props.hotel;
+  const hotelCopy = useSelector((state) => state.search.single);
+  const [hotel, setHotel] = useState(hotelCopy);
+  console.log(hotel);
+  const index = useSelector((state) => state.search.lastId);
   const hotels = useSelector((state) => state.search.all);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [name, setName] = useState(
     hotel === null
       ? { value: "", hasError: true }
       : { value: hotel.name, hasError: false }
   );
 
-  const [location, setLocation] = useState("Country");
+  const [location, setLocation] = useState(
+    hotel === null
+      ? "Country"
+      : hotel.location);
 
-  const [nationalcurrency, setNationalcurrency] = useState("");
+
+  const [nationalcurrency, setNationalcurrency] = useState(
+    hotel === null ? "" : hotel.nationalcurrency
+  );
 
   const [description, setDescription] = useState(
     hotel === null
@@ -33,16 +44,21 @@ const HotelUpsertForm = (props) => {
       ? { value: "", hasError: true }
       : { value: hotel.url, hasError: false }
   );
-  const [validImg, setValidImg] = useState(false);
-  const [validForm, setValidForm] = useState(false);
+  const [validImg, setValidImg] = useState(hotel === null ? false : true);
+  const [validForm, setValidForm] = useState(hotel === null ? false : true);
   const nameErrorMessage = "Needs to be atleast 5 chars long";
   const locationErrorMessage = "Please Select a Location.";
+
   const identifyCurrency = (selectedCountry) => {
     const filtered = countryCurrencies.filter(
       (data) => data.country === selectedCountry
     );
     setNationalcurrency(filtered[0].currency);
   };
+
+  useEffect(() => {
+    identifyCurrency(location);
+  }, [location]);
 
   useEffect(() => {
     if (
@@ -62,42 +78,32 @@ const HotelUpsertForm = (props) => {
     setValidImg(false);
   };
 
-  useEffect(() => {
-    identifyCurrency(location);
-  }, [location]);
-
-  useEffect(() => {
-    if (hotel === null) {
-      setLocation("Country");
-    } else {
-      setLocation(hotel.location.substring(0, hotel.location.indexOf(",")));
-    }
-  }, []);
-
+  const navigateToTable = () => {
+    props.returnBack();
+    navigate("/admin/hotels");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name);
-    console.log(location);
-    console.log(nationalcurrency);
-    console.log(description);
-    console.log(rating);
-    console.log(url);
-
     if (validForm) {
       const submitHotel = {
-        id: hotel === null ? 0 : hotel.id,
+        id: hotel === null ? index + 1 : hotel.id,
         name: name.value,
         location: location,
         description: description.value,
-        nationalcurrency: nationalcurrency,
+        nationalcurrency,
         rating: rating,
         url: url.value,
       };
+      console.log(submitHotel);
+      identifyCurrency(hotel.location);
       if (hotel === null) {
-        //send PutRequest - update
+        updateHotelInCollection(hotels, submitHotel);
+        // dispatch(upsertHotel(submitHotel, "add"));
       } else {
-        //send PostRequest - find last index.
+        const updatedhotels = updateHotelInCollection(hotels, submitHotel);
+        dispatch(searchActions.updateHotel({ updatedhotels }));
       }
+      navigate("/admin/hotels");
     }
   };
 
@@ -171,19 +177,16 @@ const HotelUpsertForm = (props) => {
         </div>
 
         <HotelProfileImg url={url.value} handleError={handleError} />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
 
+        <button
+          className="btn btn-danger"
+          type="button"
+          onClick={() => {
+            navigate("/admin/hotels");
+          }}
+        >
+          Back
+        </button>
         <button className="btn btn-primary" type="submit">
           Submit
         </button>
