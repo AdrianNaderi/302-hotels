@@ -53,6 +53,7 @@ const HotelDetails = (props) => {
           <TimespanContextProvider>
             <CheckOut room={activeRoom} hotel={hotel} />
           </TimespanContextProvider>
+          <Review hotel={hotel} ></Review>
         </div>
       )}
     </div>

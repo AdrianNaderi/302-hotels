@@ -1,0 +1,18 @@
+.divUser {
+  text-decoration: underline;
+  width: 15rem;
+  height: 7rem;
+  border-radius: 0.5rem;
+  border-color: black;
+  border-width: 1cm;
+  background-color: gray;
+  margin: 00.5cm;
+}
+
+.divText {
+  margin-left: 1cm;
+  margin-bottom: 0.5cm;
+  width: 12rem;
+  height: 5rem;
+  background-color: white;
+}

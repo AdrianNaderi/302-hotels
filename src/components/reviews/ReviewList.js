@@ -2,15 +2,15 @@ import React from "react";
 import ReviewItem from "./ReviewItem";
 const ReviewList = (props) => {
   let reviews = [];
-  Object.values(props.reviewList).forEach((value) => reviews.push(value));
+  Object.values(props.reviewList).forEach((value) =>
+    reviews.push(value).where(value.hotell === props.hotel)
+  );
 
   return (
     <React.Fragment>
-      <ul>
-        {reviews.forEach((element) => {
-          <ReviewItem review={element}>{console.log(element)}</ReviewItem>;
-        })}
-      </ul>
+      {reviews.map((reviewItem) => (
+        <ReviewItem review={reviewItem} />
+      ))}
     </React.Fragment>
   );
 };

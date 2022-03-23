@@ -8,6 +8,7 @@ const ReviewInput = (props) => {
       user: "user",
       hotell: "ID",
       text: textRef.current.value,
+      date: Date.now(),
     };
 
     props.addReview(review);
