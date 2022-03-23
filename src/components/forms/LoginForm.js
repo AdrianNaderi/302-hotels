@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import useHttpGet from "../../hooks/useHttpGet";
+import Modal from "../UI/Modal";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/auth-slice";
 
 const LoginForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -11,6 +14,8 @@ const LoginForm = (props) => {
   const [validForm, setValidForm] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if ((username.hasError, password.hasError)) {
@@ -40,6 +45,7 @@ const LoginForm = (props) => {
     }
     let data = await fetchDataHandler();
     data = transformData(data);
+    props.onLogin(data);
 
     console.log(data);
     if (data.length === 0) {
@@ -50,6 +56,8 @@ const LoginForm = (props) => {
     } else {
       setLoginErrorMessage("");
       setLoginSuccess(true);
+      dispatch(authActions.logIn());
+      props.onClose();
     }
   };
 
@@ -60,6 +68,7 @@ const LoginForm = (props) => {
         loadedData.push({
           id: key,
           password: data[key].password,
+          fullname: data[key].fullname,
         });
       }
     }
@@ -67,32 +76,37 @@ const LoginForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        liftupInput={(username) => {
-          setUsername(username);
-        }}
-        minimumChar={5}
-        errorMessage={usernameErrorMessage}
-      >
-        Username:
-      </Input>
+    <Modal onClose={props.onClose}>
+      <form onSubmit={handleSubmit}>
+        <Input
+          label="Username"
+          type="text"
+          liftupInput={(username) => {
+            setUsername(username);
+          }}
+          minimumChar={5}
+          errorMessage={usernameErrorMessage}
+        >
+          Username:
+        </Input>
 
-      <Input
-        type="password"
-        liftupInput={(password) => {
-          setPassword(password);
-        }}
-        minimumChar={6}
-        errorMessage={passwordErrorMessage}
-      >
-        Password:
-      </Input>
+        <Input
+          label="Password"
+          type="password"
+          liftupInput={(password) => {
+            setPassword(password);
+          }}
+          minimumChar={6}
+          errorMessage={passwordErrorMessage}
+        >
+          Password:
+        </Input>
 
-      <Button type="submit">Submit</Button>
-      <div>{validForm && <span>{loginErrorMessage}</span>}</div>
-    </form>
+        <Button type="submit">Submit</Button>
+        <Button onClick={props.onClose}>Close</Button>
+        <div>{validForm && <span>{loginErrorMessage}</span>}</div>
+      </form>
+    </Modal>
   );
 };
 

@@ -7,6 +7,7 @@ const HotelProfileImg = (props) => {
         src={props.url}
         className={classes.profile}
         alt="This is the current hotel"
+        onError={(e) => props.handleError(e)}
       />
     </>
   );

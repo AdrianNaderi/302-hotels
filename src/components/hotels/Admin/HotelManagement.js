@@ -1,42 +1,47 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HotelTable from "./HotelTable";
-import { searchHotels } from "../../../store/search-slice";
+import { searchActions, searchHotels } from "../../../store/search-slice";
 import { deleteHotel, upsertHotel } from "../../../lib/hotelsapi";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import UpsertHotel from "../../../pages/UpsertHotel";
 
 const HotelManagement = () => {
   const fetched = useSelector((state) => state.search.fetched);
   const hotels = useSelector((state) => state.search.all);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     if (!fetched) {
       dispatch(searchHotels());
     }
   }, []);
 
-  const dummyHotel = {
-    id: "testId",
-    name: "Baka",
-    description: "testDescription",
-    location: "testLocation",
-    rating: 5,
-    nationalcurrency: "testCurrency",
-    url: "testImg",
+  const goToAdd = () => {
+    dispatch(searchActions.clearOne());
+    navigate("/admin/upserthotel");
   };
 
-  const handleTest = () => {
-    const data = upsertHotel(dummyHotel);
-    console.log(data);
+  const goToUpdate = (data) => {
+    dispatch(searchActions.storeId({id: data.id}));
+    dispatch(searchActions.storeOne());
+    navigate("/admin/upserthotel");
   };
 
-  const removeTest = () => {
-    deleteHotel(dummyHotel);
-  };
   return (
     <>
-      {fetched && <HotelTable hotels={hotels} />}
-      <button onClick={handleTest}>Add Hotel</button>
-      <button onClick={removeTest}>Remove Hotel</button>
+      {fetched && (
+        <>
+          <HotelTable
+            hotels={hotels}
+            onDelete={() => {}}
+            onUpdate={(data) => goToUpdate(data)}
+          />
+
+          {/* <button onClick={removeTest}>Add Hotel</button> */}
+          <button onClick={goToAdd}>Go To Upsert</button>
+        </>
+      )}
     </>
   );
 };

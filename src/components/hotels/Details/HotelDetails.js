@@ -27,7 +27,7 @@ const HotelDetails = (props) => {
       dispatch(searchHotel());
     }
     if (hotel === undefined) {
-      navigate("/404");
+      navigate("/404", { replace: true });
     }
   }, [hotel]);
 
@@ -35,35 +35,26 @@ const HotelDetails = (props) => {
     setActiveRoom(room);
   };
 
-  console.log(hotel);
   return (
     <div className={classes.details}>
       {hotel !== null && hotel !== undefined && (
-        <HotelProfileImg url={hotel.url} />
+        <div className={classes.details}>
+          <HotelProfileImg url={hotel.url} />
+          <DisplayHotelDescription hotel={hotel} />
+          {/* <SearchWeather
+            country={hotel.location}
+            city={hotel.city}
+          ></SearchWeather> */}
+          <Currency
+            hotellCurr={hotel.nationalcurrency}
+            country={hotel.location}
+          ></Currency>
+          <RoomList selectRoom={handleRoomSelection} />
+          <TimespanContextProvider>
+            <CheckOut room={activeRoom} hotel={hotel} />
+          </TimespanContextProvider>
+        </div>
       )}
-      {hotel !== null && hotel !== undefined && (
-        <DisplayHotelDescription hotel={hotel} />
-      )}
-      <div className={classes.components}>
-        <ServiceSection>
-          {hotel !== null && hotel !== undefined && (
-            <SearchWeather location={hotel.location}></SearchWeather>
-          )}
-        </ServiceSection>
-        <ServiceSection>
-          {hotel !== null && hotel !== undefined && (
-            <Currency hotellCurr={hotel.nationalcurrency}></Currency>
-          )}
-        </ServiceSection>
-      </div>
-      <RoomList selectRoom={handleRoomSelection} />
-
-      <TimespanContextProvider>
-        {hotel !== null && hotel !== undefined && (
-          <CheckOut room={activeRoom} hotel={hotel} />
-        )}
-      </TimespanContextProvider>
-      {hotel !== null && hotel !== undefined && <Review />}
     </div>
   );
 };

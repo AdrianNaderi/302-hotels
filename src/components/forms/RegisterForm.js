@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import useHttpGet from "../../hooks/useHttpGet";
+import Modal from "../UI/Modal";
 
 const RegisterForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -67,44 +68,49 @@ const RegisterForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        liftupInput={(username) => {
-          setUsername(username);
-        }}
-        minimumChar={5}
-        errorMessage={usernameErrorMessage}
-      >
-        Username:
-      </Input>
+    <Modal onClose={props.onClose}>
+      <form onSubmit={handleSubmit}>
+        <Input
+          label="Username"
+          type="text"
+          liftupInput={(username) => {
+            setUsername(username);
+          }}
+          minimumChar={5}
+          errorMessage={usernameErrorMessage}
+        >
+          Username:
+        </Input>
 
-      <Input
-        type="text"
-        label="Full Name"
-        liftupInput={(fullname) => {
-          setFullname(fullname);
-        }}
-        minimumChar={1}
-        errorMessage={fullnameErrorMessage}
-      >
-        Full name:
-      </Input>
+        <Input
+          type="text"
+          label="Full Name"
+          liftupInput={(fullname) => {
+            setFullname(fullname);
+          }}
+          minimumChar={1}
+          errorMessage={fullnameErrorMessage}
+        >
+          Full name:
+        </Input>
 
-      <Input
-        type="password"
-        liftupInput={(password) => {
-          setPassword(password);
-        }}
-        minimumChar={6}
-        errorMessage={passwordErrorMessage}
-      >
-        Password:
-      </Input>
+        <Input
+          label="Password"
+          type="password"
+          liftupInput={(password) => {
+            setPassword(password);
+          }}
+          minimumChar={6}
+          errorMessage={passwordErrorMessage}
+        >
+          Password:
+        </Input>
 
-      <Button type="submit">Submit</Button>
-      <div>{validForm && <span>{formError}</span>}</div>
-    </form>
+        <Button type="submit">Submit</Button>
+        <Button onClick={props.onClose}>Close</Button>
+        <div>{validForm && <span>{formError}</span>}</div>
+      </form>
+    </Modal>
   );
 };
 

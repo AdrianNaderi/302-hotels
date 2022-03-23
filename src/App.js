@@ -45,7 +45,7 @@ function App() {
 
         {loggedin && policy === "admin" && (
           <Route path="/admin/*" element={<AdminPage />}>
-            <Route path="hotels" element={<HotelManagement />} />
+            <Route path="hotels/*" element={<HotelManagement />} />
             <Route path="upserthotel" element={<UpsertHotel />} />
           </Route>
         )}
