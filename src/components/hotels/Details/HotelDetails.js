@@ -8,6 +8,7 @@ import ServiceSection from "../../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
+import Review from "../../Reviews/ReviewStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotel } from "../../../store/search-slice";
 import Weather from "../../Weather/SearchWeather";
@@ -45,7 +46,7 @@ const HotelDetails = (props) => {
       )}
       <div className={classes.components}>
         <ServiceSection>
-        {hotel !== null && hotel !== undefined && (
+          {hotel !== null && hotel !== undefined && (
             <SearchWeather location={hotel.location}></SearchWeather>
           )}
         </ServiceSection>
@@ -56,11 +57,13 @@ const HotelDetails = (props) => {
         </ServiceSection>
       </div>
       <RoomList selectRoom={handleRoomSelection} />
+
       <TimespanContextProvider>
         {hotel !== null && hotel !== undefined && (
           <CheckOut room={activeRoom} hotel={hotel} />
         )}
       </TimespanContextProvider>
+      {hotel !== null && hotel !== undefined && <Review />}
     </div>
   );
 };

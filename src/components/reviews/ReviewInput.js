@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 const ReviewInput = (props) => {
-  const [text, setText] = useState();
+  const textRef = useRef("");
+  const submitReview = (event) => {
+    console.log(textRef);
+    event.preventDefault();
+    let review = {
+      user: "user",
+      hotell: "ID",
+      text: textRef.current.value,
+    };
 
-  const submitReview = () => {};
+    props.addReview(review);
+  };
 
   return (
     <React.Fragment>
       <div>
         <form onSubmit={submitReview}>
-          <textarea type="text"></textarea>
+          <textarea type="text" ref={textRef}></textarea>
+          <button type="submit">Submit Review</button>
         </form>
-
-        <button type="submit"></button>
       </div>
     </React.Fragment>
   );
