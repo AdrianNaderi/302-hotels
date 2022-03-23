@@ -23,7 +23,7 @@ const HotelManagement = () => {
   };
 
   const goToUpdate = (data) => {
-    dispatch(searchActions.storeId({id: data.id}));
+    dispatch(searchActions.storeId({ id: data.id }));
     dispatch(searchActions.storeOne());
     navigate("/admin/upserthotel");
   };
@@ -34,7 +34,9 @@ const HotelManagement = () => {
         <>
           <HotelTable
             hotels={hotels}
-            onDelete={() => {}}
+            onDelete={(hotelId) => {
+              dispatch(searchActions.deleteHotel({ removeid: hotelId }));
+            }}
             onUpdate={(data) => goToUpdate(data)}
           />
 

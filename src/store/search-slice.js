@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  filterHotel,
-  filterHotels,
-  updateHotelInCollection,
-} from "../lib/hotelfilters";
+import { deleteHotelInCollection, filterHotel, filterHotels, updateHotelInCollection } from "../lib/hotelfilters";
 import { getHotels } from "../lib/hotelsapi";
 
 const initialSearch = {
@@ -47,11 +43,15 @@ const searchSlice = createSlice({
     },
     addHotel(state, action) {
       let addArr = [...state.all, action.payload.hotel];
-      console.log(addArr);
-      console.log(action.payload.hotel.id);
+      state.all = addArr;
+      state.lastId = action.payload.hotel.id;
     },
     updateHotel(state, action) {
       state.all = action.payload.updatedhotels;
+    },
+    deleteHotel(state, action) {
+      console.log(action.payload.removeid);
+      state.all = deleteHotelInCollection(state.all, action.payload.removeid);
     },
   },
 });
