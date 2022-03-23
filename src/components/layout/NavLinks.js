@@ -1,7 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../../store/auth-slice";
+import { useNavigate } from "react-router-dom";
 
 const NavLinks = (props) => {
+  const navigate = useNavigate();
+
+  const userHandler = () => {
+    navigate();
+  };
+
   return (
     <>
       {!props.loggedIn && (
@@ -25,7 +30,7 @@ const NavLinks = (props) => {
       {props.loggedIn && (
         <>
           <a className="nav-link active" href="#">
-            <i class="bi bi-person-circle"></i>&nbsp; {props.userName}
+            <i className="bi bi-person-circle"></i>&nbsp; {props.userName}
           </a>
           <a className="nav-link active" href="#" onClick={props.logOut}>
             Logout
