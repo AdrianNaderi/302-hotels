@@ -12,6 +12,7 @@ import BasePage from "./pages/BasePage";
 import AdminPage from "./pages/AdminPage";
 import HotelManagement from "./components/Hotels/Admin/HotelManagement";
 import UpsertHotel from "./pages/UpsertHotel";
+import UserPage from "./pages/UserPage";
 
 function App() {
   const loggedin = useSelector((state) => state.auth.loggedIn);
@@ -36,6 +37,7 @@ function App() {
             <Route path="searchresults" element={<SearchResultsPage />} />
             <Route path="details/:hotel" element={<DetailsPage />} />
             <Route path="bookingconfirmation" element={<ConfirmationPage />} />
+            <Route path="mypage" element={<UserPage />} />
           </Route>
         )}
 
