@@ -5,6 +5,7 @@ const HotelTable = (props) => {
     <HotelTableItem
       key={hotel.id}
       hotel={hotel}
+      onDelete={(hotelId) => props.onDelete(hotelId)}
       onUpdate={(data) => {
         props.onUpdate(data);
       }}

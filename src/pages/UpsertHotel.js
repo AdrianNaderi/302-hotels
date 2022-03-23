@@ -1,10 +1,13 @@
-import HotelUpsertForm from "../components/Forms/HotelUpsertForm";
+import HotelUpsertForm from "../components/Hotels/Admin/HotelUpsertForm/HotelUpsertForm";
 
 const UpsertHotel = (props) => {
   console.log(props.hotel);
   return (
     <>
-      <HotelUpsertForm hotel={props.hotel} returnBack={() => props.returnBack()} />
+      <HotelUpsertForm
+        hotel={props.hotel}
+        returnBack={() => props.returnBack()}
+      />
     </>
   );
 };
