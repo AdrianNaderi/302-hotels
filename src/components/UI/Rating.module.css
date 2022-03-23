@@ -1,20 +1,20 @@
 .heart {
   position: relative;
-  top: -4px;
-  width: 21px;
-  height: 21px;
+  top: 0px;
+  width: 31px;
+  height: 31px;
 }
 
 .heartcanvas {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: red;
 }
 
 .heartcontainer {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   margin-right: 5px;
 }

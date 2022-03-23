@@ -5,6 +5,7 @@ import TimespanContext from "../../../store/timespan-context";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { searchActions } from "../../../store/search-slice";
+import { bookingActions } from "../../../store/booking-slice";
 
 const CheckOut = (props) => {
   const ctx = useContext(TimespanContext);
@@ -21,14 +22,8 @@ const CheckOut = (props) => {
     let activeDate = new Date(time);
     activeDate.setDate(activeDate.getDate() + 1);
     const yearNow = activeDate.getFullYear().toString();
-    const monthNow =
-      activeDate.getMonth() + 1 < 10
-        ? `0${activeDate.getMonth() + 1}`
-        : (activeDate.getMonth() + 1).toString();
-    const dateNow =
-      activeDate.getDate() < 10
-        ? `0${activeDate.getDate()}`
-        : activeDate.getDate().toString();
+    const monthNow = activeDate.getMonth() + 1 < 10 ? `0${activeDate.getMonth() + 1}` : (activeDate.getMonth() + 1).toString();
+    const dateNow = activeDate.getDate() < 10 ? `0${activeDate.getDate()}` : activeDate.getDate().toString();
     return `${yearNow}-${monthNow}-${dateNow}`;
   };
 
@@ -46,6 +41,7 @@ const CheckOut = (props) => {
         bookingdate: handleTime(Date.now()),
       },
     };
+    dispatch(bookingActions.storeBooking({ booking:booking }));
     navigate("/bookingconfirmation");
     dispatch(searchActions.clearOne());
   };
@@ -62,27 +58,18 @@ const CheckOut = (props) => {
           <DateTimePicker />
           <div className="col-2">
             {room && (
-              <button
-                className="btn-lg btn-success w-100 p-3"
-                onClick={handleBooking}
-              >
+              <button className="btn-lg btn-success w-100 p-3" onClick={handleBooking}>
                 Book
               </button>
             )}
             {!room && (
-              <button
-                className="btn-lg btn-secondary w-100 p-3"
-                onClick={handleBooking}
-                disabled
-              >
+              <button className="btn-lg btn-secondary w-100 p-3" onClick={handleBooking} disabled>
                 Book
               </button>
             )}
           </div>
           <div className="col-4">
-            <h1 className="text-light text-end">
-              {room && `Total Price:  ${ctx.timespan * room.cost} SEK`}
-            </h1>
+            <h1 className="text-light text-end">{room && `Total Price:  ${ctx.timespan * room.cost} SEK`}</h1>
           </div>
         </div>
       </div>

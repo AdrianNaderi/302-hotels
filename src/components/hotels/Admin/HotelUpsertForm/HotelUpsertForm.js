@@ -70,19 +70,6 @@ const HotelUpsertForm = (props) => {
   const nameErrorMessage = "Needs to be atleast 5 chars long";
   const locationErrorMessage = "Please Select a Location.";
 
-  // useEffect(() => {
-  //   identifyCurrency(location);
-  // }, [location]);
-
-  // useEffect(() => {
-  //   if (name.hasError || location === "Country" || description.hasError || !validImg) {
-  //     setValidForm(false);
-  //   } else {
-  //     console.log("valid");
-  //     setValidForm(true);
-  //   }
-  // }, [name, location, description, validImg]);
-
   const handleError = () => {
     setValidImg(false);
   };
@@ -140,12 +127,14 @@ const HotelUpsertForm = (props) => {
               <CityInput value={hotel.city} liftupInput={(city) => dispatchHotel({ type: "CITY_INPUT", city: city.value })} />
               <CountryInput current={hotel.location} data={countries} handleCountry={(country) => manageCountry(country)} error={locationErrorMessage} currency={hotel.nationalcurrency} />
             </div>
-            <Rating rating={hotel.rating}/>
           </div>
           <div className="col-5">
             <UrlInput value={hotel.url} liftupInput={(url) => dispatchHotel({ type: "URL_INPUT", url: url.value })} />
             <ImagePreview isvalid={validImg} url={hotel.url} handleError={handleError} />
             <RatingInput value={hotel.rating} handleRange={(rating) => dispatchHotel({ type: "RATING_INPUT", rating })} />
+            <div className="m-4">
+            <Rating rating={hotel.rating}/>
+            </div>
             <div className="text-end">
               <button
                 className="m-4 btn btn-danger w-25"

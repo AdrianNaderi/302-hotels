@@ -1,3 +1,5 @@
+import Rating from "../../UI/Rating";
+
 const DisplayHotelDescription = (props) => {
   return (
     <>
@@ -6,6 +8,7 @@ const DisplayHotelDescription = (props) => {
       <br />
       <p>Location: {props.hotel.location}</p>
       <p>Rating: {props.hotel.rating}</p>
+      <Rating rating={props.hotel.rating} />
       <br />
       <br />
     </>
