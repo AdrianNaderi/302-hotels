@@ -47,11 +47,8 @@ const HotelDetails = (props) => {
               <DisplayHotelDescription hotel={hotel} />
             </div>
             <div className="col-4 ">
+              {/* <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather> */}
               <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
-              {/* <SearchWeather
-            country={hotel.location}
-            city={hotel.city}
-          ></SearchWeather> */}
             </div>
           </div>
           <RoomList selectRoom={handleRoomSelection} />
