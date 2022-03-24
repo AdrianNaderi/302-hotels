@@ -6,7 +6,7 @@ const getRatingLayout = (rate) => {
   const empty = { width: 0 };
   const full = { width: 30 };
   const progress = { width: +prog * 3.1 };
-  
+
   if (rate === 5) {
     return [full, full, full, full, full];
   } else if (rate >= 4) {
@@ -41,7 +41,7 @@ const Rating = (props) => {
   }, [props.rating]);
 
   return (
-    <div>
+    <div className={classes.heartsection}>
       <div className={classes.heartcontainer}>
         <div className={classes.heartcanvas} style={rating.heartOne}>
           <img className={classes.heart} src="/img/ratingheart.png" alt="heartrating" />

@@ -13,6 +13,7 @@ import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotel } from "../../../store/search-slice";
 import Weather from "../../Weather/SearchWeather";
 import SearchWeather from "../../Weather/SearchWeather";
+import Rating from "../../UI/Rating";
 
 const HotelDetails = (props) => {
   const locationId = useLocation().pathname.replace("/details/", "");
@@ -39,16 +40,21 @@ const HotelDetails = (props) => {
     <div className={classes.details}>
       {hotel !== null && hotel !== undefined && (
         <div className={classes.details}>
-          <HotelProfileImg url={hotel.url} />
-          <DisplayHotelDescription hotel={hotel} />
-          {/* <SearchWeather
+          <div className="row pt-4">
+            <div className="col-4 me-4">
+              <HotelProfileImg url={hotel.url} />
+            </div>
+            <div className="col-3 ms-4">
+              <DisplayHotelDescription hotel={hotel} />
+            </div>
+            <div className="col-4 ">
+              <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
+              {/* <SearchWeather
             country={hotel.location}
             city={hotel.city}
           ></SearchWeather> */}
-          <Currency
-            hotellCurr={hotel.nationalcurrency}
-            country={hotel.location}
-          ></Currency>
+            </div>
+          </div>
           <RoomList selectRoom={handleRoomSelection} />
           <TimespanContextProvider>
             <CheckOut room={activeRoom} hotel={hotel} />

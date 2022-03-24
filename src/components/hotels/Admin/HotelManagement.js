@@ -5,6 +5,7 @@ import { searchActions, searchHotels } from "../../../store/search-slice";
 import { deleteHotel, upsertHotel } from "../../../lib/hotelsapi";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import UpsertHotel from "../../../pages/UpsertHotel";
+import LoadingSpinner from "../../UI/LoadingSpinner";
 
 const HotelManagement = () => {
   const fetched = useSelector((state) => state.search.fetched);
@@ -32,6 +33,7 @@ const HotelManagement = () => {
     <>
       {fetched && (
         <>
+          <LoadingSpinner />
           <HotelTable
             hotels={hotels}
             onDelete={(hotelId) => {

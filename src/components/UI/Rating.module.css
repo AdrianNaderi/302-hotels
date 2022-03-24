@@ -18,3 +18,7 @@
   height: 30px;
   margin-right: 5px;
 }
+.heartsection {
+  max-width: 175px;
+  background-color: white;
+}
