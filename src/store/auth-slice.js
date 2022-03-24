@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUsers, identifyUser } from "../lib/userapi";
+import { getUsers, identify } from "../lib/userapi";
 import { httpActions } from "./http-slice";
 
 const initialAuth = {
@@ -34,18 +34,21 @@ const authSlice = createSlice({
   },
 });
 
+
+
+// dispatch(loginUserAsync({ username: username.value, password: password.value }));
 export const loginUserAsync = (input) => {
   return async (dispatch) => {
     dispatch(httpActions.setLoading());
-    console.log(input);
     const data = await getUsers();
-    const user = identifyUser(data);
+    const user = identify(data, input);
     if (user === null) {
       dispatch(authActions.setAuthenticationError({ errormessage: "User does not exist." }));
     } else if (user.password !== input.password) {
       dispatch(authActions.setAuthenticationError({ errormessage: "Wrong password." }));
     } else {
       dispatch(authActions.logIn({ username: user.id, name: user.name, policy: user.policy }));
+      console.log("logged in successfully");
     }
     dispatch(httpActions.clearLoading());
   };

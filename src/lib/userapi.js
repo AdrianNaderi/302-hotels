@@ -1,9 +1,9 @@
 const url = "https://usebookingmanagement-default-rtdb.firebaseio.com/users.json";
 
-export const identifyUser = (data, input) => {
+export const identify = (data, input) => {
   const loadedData = [];
   for (const key in data) {
-    if (key === input.id) {
+    if (key === input.username) {
       loadedData.push({
         id: key,
         password: data[key].password,
@@ -11,6 +11,9 @@ export const identifyUser = (data, input) => {
         policy: data[key].policy,
       });
     }
+  }
+  if (loadedData.length === 0) {
+    return null;
   }
   return {
     id: loadedData[0].id,
