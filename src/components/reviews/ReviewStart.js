@@ -2,10 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 import ReviewList from "./ReviewList";
 import ReviewInput from "./ReviewInput";
 import useHttpGet from "../../hooks/useHttpGet";
+import { useSelector } from "react-redux";
 
 const ReviewStart = (props) => {
   const [isShowing, setIsShowing] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const user = useSelector((state) => state.auth.name);
 
   async function addReviewHandler(review) {
     const response = await fetch(
@@ -48,9 +50,14 @@ const ReviewStart = (props) => {
       {isShowing && (
         <React.Fragment>
           <button onClick={showReviews}>Hide Reviews</button>
-          <ReviewInput addReview={addReviewHandler}></ReviewInput>
+          <ReviewInput
+            addReview={addReviewHandler}
+            getReviews={getReviewHandler}
+            name={user}
+            hotel={props.hotel}
+          ></ReviewInput>
 
-          <ReviewList reviewList={reviews}></ReviewList>
+          <ReviewList reviewList={reviews} hotel={props.hotel}></ReviewList>
         </React.Fragment>
       )}
     </React.Fragment>

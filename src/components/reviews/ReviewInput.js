@@ -1,16 +1,18 @@
 import React, { useRef } from "react";
 const ReviewInput = (props) => {
   const textRef = useRef("");
+
   const submitReview = (event) => {
     console.log(textRef);
     event.preventDefault();
     let review = {
-      user: "user",
-      hotell: "ID",
+      user: props.name,
+      hotell: props.hotel.name,
       text: textRef.current.value,
       date: Date.now(),
     };
 
+    textRef.current.value = "";
     props.addReview(review);
   };
 

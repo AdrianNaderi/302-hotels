@@ -5,7 +5,7 @@ const ReviewItem = (props) => {
   console.log(props.review);
   return (
     <React.Fragment>
-      <div className="divUser">
+      <div className="divUser" key={props.key}>
         {props.review.user}
         <div className="divText">{props.review.text}</div>
       </div>
