@@ -4,7 +4,7 @@ const initialAuth = {
   loggedIn: true,
   username: "",
   name: "",
-  policy: "admindq",
+  policy: "admin",
 };
 
 const authSlice = createSlice({
