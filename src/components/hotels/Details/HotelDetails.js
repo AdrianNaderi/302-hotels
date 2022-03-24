@@ -36,9 +36,9 @@ const HotelDetails = (props) => {
   };
 
   return (
-    <div className={classes.details}>
+    <>
       {hotel !== null && hotel !== undefined && (
-        <div className={classes.details}>
+        <div className={`${classes.details}`}>
           <div className="row pt-4">
             <div className="col-4 me-4">
               <HotelProfileImg url={hotel.url} />
@@ -60,7 +60,7 @@ const HotelDetails = (props) => {
           </TimespanContextProvider>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

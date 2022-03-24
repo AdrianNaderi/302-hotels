@@ -8,20 +8,13 @@ const RoomItem = (props) => {
   };
 
   return (
-    <div
-      onClick={handleClick}
-      className={`col-3 m-5 ${classes.card} ${
-        props.activeSelection.id === props.room.id ? activecss : ""
-      }`}
-    >
+    <div onClick={handleClick} className={`col-3 m-5 ${classes.card} ${props.activeSelection.id === props.room.id ? activecss : ""}`}>
       <img className={classes.room} src={props.room.url} alt="Of this room" />
-      <h3>Room: {props.room.name}</h3>
-      <h3>Comfort: {props.room.class}</h3>
-      <h3>{props.room.cost} SEK/Night</h3>
+      <h3 className={`lead fw-bolder ${classes.titletext}`}>{props.room.name}</h3>
+      <p className={`lead ${classes.comforttext}`}>{props.room.class}</p>
+      <p className={`${classes.pricetext}`}>{props.room.cost} SEK/Night</p>
       {props.activeSelection.id === props.room.id && <SelectionMarker />}
-      {props.activeSelection.id !== props.room.id && (
-        <div className={classes.inactive}></div>
-      )}
+      {props.activeSelection.id !== props.room.id && <div className={classes.inactive}></div>}
     </div>
   );
 };
