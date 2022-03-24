@@ -8,6 +8,7 @@ import ServiceSection from "../../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
+import Review from "../../Reviews/ReviewStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotel } from "../../../store/search-slice";
 import Weather from "../../Weather/SearchWeather";
@@ -55,6 +56,7 @@ const HotelDetails = (props) => {
           <TimespanContextProvider>
             <CheckOut room={activeRoom} hotel={hotel} />
           </TimespanContextProvider>
+          <Review hotel={hotel} ></Review>
         </div>
       )}
     </>
