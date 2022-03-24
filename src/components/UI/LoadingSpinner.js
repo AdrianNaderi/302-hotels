@@ -1,7 +1,7 @@
 import "./LoadingSpinner.css";
-const LoadingSpinner = () => {
+const LoadingSpinner = ({size}) => {
   return (
-    <div className={"lds-ripple-small"}>
+    <div className={size}>
       <div></div>
       <div></div>
     </div>

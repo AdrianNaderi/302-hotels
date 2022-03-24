@@ -9,9 +9,9 @@ const HotelList = (props) => {
   const hotelList = hotels.map((hotel) => <HotelListItem key={hotel.id} hotel={hotel} />);
   return (
     <>
-          <LoadingSpinner />
-      {/* {loading && (
-      )} */}
+
+      {!loading && 
+      <LoadingSpinner size="small" />}
 
       <div>{hotelList}</div>
     </>
