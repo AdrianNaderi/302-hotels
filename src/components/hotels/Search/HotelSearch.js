@@ -5,6 +5,7 @@ import DropDown from "../../UI/DropDown";
 import classes from "./HotelSearch.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { searchActions, searchHotels } from "../../../store/search-slice";
+import { searchHotelsAsync } from "../../../store/http-slice";
 import { countries } from "../../../lib/sd";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -38,7 +39,7 @@ const HotelSearch = (props) => {
       dispatch(searchActions.storeSearch({ search }));
       dispatch(searchActions.storeCountry({ country }));
       if (!fetched) {
-        dispatch(searchHotels());
+        dispatch(searchHotelsAsync());
         return;
       }
       dispatch(searchActions.storeFiltered());

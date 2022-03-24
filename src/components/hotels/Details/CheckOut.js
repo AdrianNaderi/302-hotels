@@ -41,14 +41,14 @@ const CheckOut = (props) => {
         bookingdate: handleTime(Date.now()),
       },
     };
-    dispatch(bookingActions.storeBooking({ booking:booking }));
+    dispatch(bookingActions.storeBooking({ booking: booking }));
     navigate("/bookingconfirmation");
     dispatch(searchActions.clearOne());
   };
 
   return (
     <>
-      <div className={classes.checkout}>
+      <div className={`${classes.checkout}`}>
         <div className="bg-dark p-5 row">
           <div className="col-2">
             <button className="btn-lg btn-danger w-100 p-3" onClick={goBack}>

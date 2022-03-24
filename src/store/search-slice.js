@@ -66,6 +66,8 @@ export const searchHotels = () => {
     dispatch(searchActions.storeFiltered({ data }));
   };
 };
+
+
 export const searchHotel = () => {
   return async (dispatch) => {
     const data = await getHotels();
