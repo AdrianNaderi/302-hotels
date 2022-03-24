@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HotelTable from "./HotelTable";
-import { searchActions, searchHotels } from "../../../store/search-slice";
+import { searchActions } from "../../../store/search-slice";
 import { deleteHotel, upsertHotel } from "../../../lib/hotelsapi";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import UpsertHotel from "../../../pages/UpsertHotel";
 import LoadingSpinner from "../../UI/LoadingSpinner";
 import classes from "./HotelManagement.module.css";
+import { searchHotelsAsync } from "../../../store/http-slice";
 
 const HotelManagement = () => {
   const loading = useSelector((state) => state.http.loading);
@@ -17,7 +18,7 @@ const HotelManagement = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!fetched) {
-      dispatch(searchHotels());
+      dispatch(searchHotelsAsync());
     }
   }, []);
 

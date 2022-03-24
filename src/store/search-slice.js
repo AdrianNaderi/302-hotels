@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { deleteHotelInCollection, filterHotel, filterHotels, updateHotelInCollection } from "../lib/hotelfilters";
 import { getHotels } from "../lib/hotelsapi";
+import { httpActions } from "./http-slice";
 
 const initialSearch = {
   search: "",
@@ -56,17 +57,16 @@ const searchSlice = createSlice({
   },
 });
 
-export const searchHotels = () => {
-  return async (dispatch) => {
-    const data = await getHotels();
-    const mapedIds = data.map((data) => parseInt(data.id));
-    const lastId = mapedIds[mapedIds.length - 1];
+// export const searchHotels = () => {
+//   return async (dispatch) => {
+//     const data = await getHotels();
+//     const mapedIds = data.map((data) => parseInt(data.id));
+//     const lastId = mapedIds[mapedIds.length - 1];
 
-    dispatch(searchActions.storeAll({ all: data, id: lastId }));
-    dispatch(searchActions.storeFiltered({ data }));
-  };
-};
-
+//     dispatch(searchActions.storeAll({ all: data, id: lastId }));
+//     dispatch(searchActions.storeFiltered({ data }));
+//   };
+// };
 
 export const searchHotel = () => {
   return async (dispatch) => {
@@ -76,6 +76,19 @@ export const searchHotel = () => {
 
     dispatch(searchActions.storeAll({ all: data, id: lastId }));
     dispatch(searchActions.storeOne());
+  };
+};
+
+export const searchHotelAsync = () => {
+  return async (dispatch) => {
+    dispatch(httpActions.setLoading());
+    const data = await getHotels();
+    const mapedIds = data.map((data) => parseInt(data.id));
+    const lastId = mapedIds[mapedIds.length - 1];
+
+    dispatch(searchActions.storeAll({ all: data, id: lastId }));
+    dispatch(searchActions.storeOne());
+    dispatch(httpActions.clearLoading());
   };
 };
 

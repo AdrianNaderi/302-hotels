@@ -5,6 +5,11 @@
 }
 
 /* sections */
+.shared-section {
+  margin-left: 50px;
+  margin-bottom: 40px;
+  display: flex;
+}
 
 .hotel-section {
   display: inline-block;
@@ -17,15 +22,14 @@
 .room-section {
   position: relative;
   display: inline-block;
-  background-color: #c88b96;
+  background-color:#87e1dd;
   width: 650px;
   height: 650px;
-  top: -65px;
 }
 
 .roomname {
   font-size: 42px;
-  margin-left: 20px;
+  margin-left: 70px;
   text-decoration: underline;
 }
 

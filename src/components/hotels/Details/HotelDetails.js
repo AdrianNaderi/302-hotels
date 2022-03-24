@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import RoomList from "../../Rooms/RoomList";
 import HotelProfileImg from "../../UI/HotelProfileImg";
-import DisplayHotelDescription from "./DisplayHotelDescription";
-import ServiceSection from "../../layout/ServiceSection";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
 import Review from "../../Reviews/ReviewStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
-import { searchActions, searchHotel } from "../../../store/search-slice";
-import Weather from "../../Weather/SearchWeather";
+import { searchActions,searchHotelAsync } from "../../../store/search-slice";
 import SearchWeather from "../../Weather/SearchWeather";
 import Rating from "../../UI/Rating";
 import LoadingSpinner from "../../UI/LoadingSpinner";
@@ -28,7 +25,7 @@ const HotelDetails = (props) => {
   useEffect(() => {
     if (hotel === null) {
       dispatch(searchActions.storeId({ id: locationId }));
-      dispatch(searchHotel());
+      dispatch(searchHotelAsync());
     }
     if (hotel === undefined) {
       navigate("/404", { replace: true });
@@ -51,27 +48,29 @@ const HotelDetails = (props) => {
         <>
           <h1 className={`mt-5 lead fw-bolder ${classes.roomname}`}>{hotel.name}</h1>
           <div className={`${classes.details}`}>
-            <div className={classes["hotel-section"]}>
-              <div className={classes["relative-container"]}>
-                <div className={classes.profilepos}>
-                  <HotelProfileImg url={hotel.url} />
-                </div>
-                <div className={classes.ratingpos}>
-                  <Rating rating={hotel.rating} />
-                </div>
-                <div className={classes.ratingtagpos}>
-                  <RatingTag rating={hotel.rating} />
-                </div>
-                <div className={classes.weatherpos}>
-                  <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
-                </div>
-                <div className={classes.currencypos}>
-                  <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
+            <div className={classes["shared-section"]}>
+              <div className={classes["hotel-section"]}>
+                <div className={classes["relative-container"]}>
+                  <div className={classes.profilepos}>
+                    <HotelProfileImg url={hotel.url} />
+                  </div>
+                  <div className={classes.ratingpos}>
+                    <Rating rating={hotel.rating} />
+                  </div>
+                  <div className={classes.ratingtagpos}>
+                    <RatingTag rating={hotel.rating} />
+                  </div>
+                  <div className={classes.weatherpos}>
+                    <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
+                  </div>
+                  <div className={classes.currencypos}>
+                    <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={classes["room-section"]}>
-              <RoomList selectRoom={handleRoomSelection} />
+              <div className={classes["room-section"]}>
+                <RoomList selectRoom={handleRoomSelection} />
+              </div>
             </div>
 
             <TimespanContextProvider>
