@@ -6,10 +6,13 @@ import { deleteHotel, upsertHotel } from "../../../lib/hotelsapi";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import UpsertHotel from "../../../pages/UpsertHotel";
 import LoadingSpinner from "../../UI/LoadingSpinner";
+import classes from "./HotelManagement.module.css";
 
 const HotelManagement = () => {
+  const loading = useSelector((state) => state.http.loading);
   const fetched = useSelector((state) => state.search.fetched);
   const hotels = useSelector((state) => state.search.all);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -31,9 +34,13 @@ const HotelManagement = () => {
 
   return (
     <>
+      {loading && (
+        <div className={`${classes.spinnerpos} text-center`}>
+          <LoadingSpinner size="large" color="#973b50" />
+        </div>
+      )}
       {fetched && (
         <>
-          <LoadingSpinner />
           <HotelTable
             hotels={hotels}
             onDelete={(hotelId) => {
@@ -41,9 +48,7 @@ const HotelManagement = () => {
             }}
             onUpdate={(data) => goToUpdate(data)}
           />
-
-          {/* <button onClick={removeTest}>Add Hotel</button> */}
-          <button onClick={goToAdd}>Go To Upsert</button>
+          <button onClick={goToAdd}>Add Hotel</button>
         </>
       )}
     </>

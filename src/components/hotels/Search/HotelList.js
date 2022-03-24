@@ -9,11 +9,13 @@ const HotelList = (props) => {
   const hotelList = hotels.map((hotel) => <HotelListItem key={hotel.id} hotel={hotel} />);
   return (
     <>
+      {loading && (
+        <div className={`text-center ${classes.spinnerpos}`}>
+          <LoadingSpinner size="large" color="#973b50" />
+        </div>
+      )}
 
-      {!loading && 
-      <LoadingSpinner size="small" />}
-
-      <div>{hotelList}</div>
+      <div className={classes.listpos}>{hotelList}</div>
     </>
   );
 };

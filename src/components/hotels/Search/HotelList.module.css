@@ -1,4 +1,9 @@
-.largespinner {
-  width: 400px;
-  height: 400px;
+.spinnerpos {
+  position: relative;
+  top: 100px;
+}
+
+.listpos {
+  position: relative;
+  top: 100px;
 }

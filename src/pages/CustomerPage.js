@@ -7,7 +7,6 @@ import SearchResultsPage from "./SearchResultsPage";
 const CustomerPage = () => {
   return (
     <>
-      <h1>Logged In page</h1>
       <Outlet />
     </>
   );

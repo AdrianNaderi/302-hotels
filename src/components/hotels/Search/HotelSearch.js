@@ -8,16 +8,17 @@ import { searchActions, searchHotels } from "../../../store/search-slice";
 import { searchHotelsAsync } from "../../../store/http-slice";
 import { countries } from "../../../lib/sd";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import LoadingSpinner from "../../UI/LoadingSpinner";
 
 const HotelSearch = (props) => {
+  const loading = useSelector((state) => state.http.loading);
+
   const [searchParams] = useSearchParams();
   const countrySearchParam = searchParams.get("country");
   const searchParam = searchParams.get("search");
 
   const [search, setSearch] = useState(searchParam === null ? "" : searchParam);
-  const [country, setCountry] = useState(
-    countrySearchParam === null ? "Country" : countrySearchParam
-  );
+  const [country, setCountry] = useState(countrySearchParam === null ? "Country" : countrySearchParam);
   const fetched = useSelector((state) => state.search.fetched);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const HotelSearch = (props) => {
     dispatch(searchActions.storeSearch({ search }));
     dispatch(searchActions.storeCountry({ country }));
     if (!fetched) {
-      dispatch(searchHotels());
+      dispatch(searchHotelsAsync());
       handleNavigation();
       return;
     }
@@ -58,32 +59,26 @@ const HotelSearch = (props) => {
       <div className="row align-items-center">
         <div className="col-3">
           <div className="form-floating">
-            <input
-              id="floating-id"
-              className="form-control"
-              placeholder="Search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            ></input>
+            <input id="floating-id" className="form-control" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)}></input>
             <label htmlFor="floating-id">Search</label>
           </div>
         </div>
         <div className="col-2">
-          <DropDown
-            data={countries}
-            style="form-select p-3"
-            current={country}
-            handleCountry={(country) => setCountry(country)}
-          />
+          <DropDown data={countries} style="form-select p-3" current={country} handleCountry={(country) => setCountry(country)} />
         </div>
         <DateTimePicker />
         <div className="col-3">
-          <button
-            className={`btn p-3 w-100 ${classes.button}`}
-            onClick={handleSearch}
-          >
-            Search
-          </button>
+          {!loading && (
+            <button className={`btn p-3 w-100 ${classes.button}`} onClick={handleSearch}>
+              Search
+            </button>
+          )}
+
+          {loading && (
+            <button className={`btn w-100 ${classes.button}`} onClick={handleSearch} disabled={true}>
+              <LoadingSpinner size="small" color="white" />
+            </button>
+          )}
         </div>
       </div>
     </div>

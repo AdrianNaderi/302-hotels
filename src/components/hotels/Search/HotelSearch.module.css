@@ -1,6 +1,9 @@
 .background {
+  position: relative;
+  top: 100px;
   background-color: #f6e7d8;
   border-radius: 15px;
+
 }
 
 .button {
