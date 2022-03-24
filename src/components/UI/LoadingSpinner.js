@@ -1,6 +1,7 @@
+import "./LoadingSpinner.css";
 const LoadingSpinner = () => {
   return (
-    <div class="lds-ripple">
+    <div className={"lds-ripple-small"}>
       <div></div>
       <div></div>
     </div>
