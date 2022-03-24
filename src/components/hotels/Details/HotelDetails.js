@@ -49,10 +49,10 @@ const HotelDetails = (props) => {
             </div>
             <div className="col-4 ">
               <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
-              {/* <SearchWeather
+              <SearchWeather
             country={hotel.location}
             city={hotel.city}
-          ></SearchWeather> */}
+          ></SearchWeather>
             </div>
           </div>
           <RoomList selectRoom={handleRoomSelection} />

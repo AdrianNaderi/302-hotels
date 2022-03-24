@@ -99,6 +99,7 @@ const SearchWeather = (props) => {
                             <p className="text-end">{temp}&deg;C</p>
                             <p className="lead fw-bolder text-end mb-0">
                         {data.weather[0].main}
+                        
                       </p>
                             <p className="lead text-end">{temp_min}&deg;C | {temp_max}&deg;C</p>
                           </div>
@@ -106,18 +107,9 @@ const SearchWeather = (props) => {
 
                         <span className={classes.span1}></span>
                       </h4>
-
+                      
                       <p className="card-text lead">
                         {day}, {month} {date}, {year}
-                      </p>
-                      <hr />
-                      <i className={`fas ${emoji} fa-4x`}></i>
-                      <h1 className="fw-bolder">{temp}&deg;C</h1>
-                      <p className="lead fw-bolder mb-0">
-                        {data.weather[0].main}
-                      </p>
-                      <p className="lead">
-                        {temp_min}&deg;C | {temp_max}&deg;C
                       </p>
                     </div>
                   </div>
