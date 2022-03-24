@@ -58,12 +58,14 @@ const Navbar = (props) => {
       {registerShown && <RegisterForm onClose={hideRegisterHandler} />}
       <div className="container-fluid">
         <a
-          className={`navbar-brand  ${classes.link}`}
+          className={`navbar-brand text-black ${classes.link}`}
           onClick={() => {
             navigate("/");
           }}
         >
-          <i className="bi bi-building"></i>&nbsp; 302-Hotels
+          <i className="bi bi-building"></i>&nbsp; {!loggedIn && "302-Hotels"}
+          {loggedIn && policy !== "admin" && "302-Hotels"}
+          {loggedIn && policy === "admin" && "302-Hotels Admin"}
         </a>
         <button
           className="navbar-toggler"
