@@ -5,6 +5,7 @@ import useHttpGet from "../../hooks/useHttpGet";
 import Modal from "../UI/Modal";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/auth-slice";
+import classes from "./LoginForm.module.css";
 
 const LoginForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -83,35 +84,37 @@ const LoginForm = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <form onSubmit={handleSubmit}>
-        <Input
-          label="Username"
-          type="text"
-          liftupInput={(username) => {
-            setUsername(username);
-          }}
-          minimumChar={5}
-          errorMessage={usernameErrorMessage}
-        >
-          Username:
-        </Input>
+      <div className="m-4 p-4">
+        <form onSubmit={handleSubmit}>
+          <Input
+            label="Username"
+            type="text"
+            liftupInput={(username) => {
+              setUsername(username);
+            }}
+            minimumChar={5}
+            errorMessage={usernameErrorMessage}
+          >
+            Username:
+          </Input>
 
-        <Input
-          label="Password"
-          type="password"
-          liftupInput={(password) => {
-            setPassword(password);
-          }}
-          minimumChar={6}
-          errorMessage={passwordErrorMessage}
-        >
-          Password:
-        </Input>
+          <Input
+            label="Password"
+            type="password"
+            liftupInput={(password) => {
+              setPassword(password);
+            }}
+            minimumChar={6}
+            errorMessage={passwordErrorMessage}
+          >
+            Password:
+          </Input>
 
-        <Button type="submit">Submit</Button>
-        <Button onClick={props.onClose}>Close</Button>
-        <div>{validForm && <span>{loginErrorMessage}</span>}</div>
-      </form>
+          <Button type="submit">Submit</Button>
+          <Button onClick={props.onClose}>Close</Button>
+          <div>{validForm && <span>{loginErrorMessage}</span>}</div>
+        </form>
+      </div>
     </Modal>
   );
 };

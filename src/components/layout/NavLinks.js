@@ -10,7 +10,7 @@ const NavLinks = (props) => {
         <>
           <li className="nav-item">
             <a
-              className={`nav-link text-dark ${classes.link}`}
+              className={`nav-link text-black ${classes.link}`}
               onClick={props.showLoginHandler}
             >
               Login
@@ -18,7 +18,7 @@ const NavLinks = (props) => {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link text-dark ${classes.link}`}
+              className={`nav-link text-black ${classes.link}`}
               onClick={props.showRegisterHandler}
             >
               Register
@@ -30,7 +30,7 @@ const NavLinks = (props) => {
         <>
           <li className="nav-item">
             <a
-              className={`nav-link text-dark ${classes.link}`}
+              className={`nav-link text-black ${classes.link}`}
               onClick={() => {
                 navigate("/mypage");
               }}
@@ -40,7 +40,7 @@ const NavLinks = (props) => {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link text-dark ${classes.link}`}
+              className={`nav-link text-black ${classes.link}`}
               onClick={props.logOut}
             >
               Logout
@@ -52,7 +52,7 @@ const NavLinks = (props) => {
         <>
           <li className="nav-item">
             <a
-              className={`nav-link text-dark ${classes.link}`}
+              className={`nav-link text-black ${classes.link}`}
               onClick={() => {
                 navigate("/admin/hotels");
               }}
@@ -62,7 +62,7 @@ const NavLinks = (props) => {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link text-dark ${classes.link}`}
+              className={`nav-link text-black ${classes.link}`}
               onClick={props.logOut}
             >
               Logout

@@ -1,12 +1,8 @@
 .nav-color {
-  background-color: #f6e7d8;
+  background-color: #c88b96;
 }
 a.link {
-  background: linear-gradient(
-      to right,
-      rgba(100, 200, 200, 1),
-      rgba(100, 200, 200, 1)
-    ),
+  background: linear-gradient(to right, rgb(135, 225, 221), rgb(135, 225, 221)),
     linear-gradient(
       to right,
       rgba(255, 0, 0, 1),
