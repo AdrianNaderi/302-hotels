@@ -1,0 +1,24 @@
+.heart {
+  position: relative;
+  top: 0px;
+  width: 31px;
+  height: 31px;
+}
+
+.heartcanvas {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+
+.heartcontainer {
+  margin: 3px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.heartsection {
+  max-width: 190px;
+  background-color: white;
+}

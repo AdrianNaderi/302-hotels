@@ -1,7 +1,9 @@
 .details {
-  background-color: azure;
+  background-color: #c88b96;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
 }
-
 
 .components {
   display: flex;
@@ -9,12 +11,9 @@
   margin-left: 50px;
 }
 
-
-
 .componentcontent {
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-

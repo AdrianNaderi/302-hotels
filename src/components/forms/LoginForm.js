@@ -50,9 +50,9 @@ const LoginForm = (props) => {
     console.log(data);
     if (data.length === 0) {
       setLoginErrorMessage("No users with that usename exists!");
-    } else if (data[0].password !== password.value) {
+    } else if (data.password !== password.value) {
       setLoginErrorMessage("Wrong Password!");
-      console.log(`${data[0].password} !== ${password.value}`);
+      console.log(`${data.password} !== ${password.value}`);
     } else {
       setLoginErrorMessage("");
       setLoginSuccess(true);
@@ -69,10 +69,16 @@ const LoginForm = (props) => {
           id: key,
           password: data[key].password,
           fullname: data[key].fullname,
+          policy: data[key].policy,
         });
       }
     }
-    return loadedData;
+    return {
+      id: loadedData[0].id,
+      password: loadedData[0].password,
+      name: loadedData[0].fullname,
+      policy: loadedData[0].policy,
+    };
   };
 
   return (

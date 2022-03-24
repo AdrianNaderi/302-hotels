@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 const Range = (props) => {
+  
+  
   return (
     <>
       <label className="form-label">{props.label}</label>
@@ -9,12 +11,12 @@ const Range = (props) => {
         min={props.min}
         max={props.max}
         step={props.step}
-        value={props.rangevalue}
+        value={props.value}
         className="form-range"
-        onChange={(e) => props.handleRange(e.target.value)}
+        onChange={(e) => props.handleRange(e.target.value)}        
       />
       <p className="text-primary" id="range-output">
-        {props.rangevalue}
+        {props.value}
       </p>
     </>
   );
