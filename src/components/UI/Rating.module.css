@@ -21,5 +21,7 @@
 .heartsection {
   max-width: 200px;
   background-color: white;
-  border:double #87e1dd;
+}
+.placeholder {
+  width: 40px;
 }

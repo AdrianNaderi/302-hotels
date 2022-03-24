@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import useHttpGet from "../../hooks/useHttpGet";
 import RoomItem from "./RoomItem";
-import classes from "./RoomList.module.css";
 
 const RoomList = (props) => {
   const [rooms, setRooms] = useState([]);
@@ -13,7 +12,7 @@ const RoomList = (props) => {
     setActiveSelection(room);
     props.selectRoom(room);
   };
-  
+
   const handleSearch = useCallback(async () => {
     const allRooms = await fetchDataHandler();
     const transformedData = transformData(allRooms);
@@ -37,16 +36,9 @@ const RoomList = (props) => {
     }
     return loadedData;
   };
-  const roomList = rooms.map((room) => (
-    <RoomItem
-      key={room.id}
-      room={room}
-      activeSelection={activeSelection}
-      handleActiveSelection={handleActiveSelection}
-    />
-  ));
+  const roomList = rooms.map((room) => <RoomItem key={room.id} room={room} activeSelection={activeSelection} handleActiveSelection={handleActiveSelection} />);
 
-  return <div className={classes.rooms}>{roomList}</div>;
+  return <div>{roomList}</div>;
 };
 
 export default RoomList;

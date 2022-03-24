@@ -1,0 +1,11 @@
+.tag {
+  width: 40px;
+  height: 37px;
+  background-color: #973b50;
+}
+
+.tagtext {
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+}

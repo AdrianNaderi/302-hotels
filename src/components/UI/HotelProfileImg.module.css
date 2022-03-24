@@ -1,7 +1,6 @@
 .profile {
   float: left;
   height: 220px;
-  width: 550px;
+  width: 600px;
   object-fit: cover;
-  border-radius: 10px 0px 0px 0px;
 }

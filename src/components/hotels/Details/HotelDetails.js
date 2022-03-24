@@ -15,6 +15,7 @@ import Weather from "../../Weather/SearchWeather";
 import SearchWeather from "../../Weather/SearchWeather";
 import Rating from "../../UI/Rating";
 import LoadingSpinner from "../../UI/LoadingSpinner";
+import RatingTag from "../../UI/RatingTag";
 
 const HotelDetails = (props) => {
   const loading = useSelector((state) => state.http.loading);
@@ -47,28 +48,38 @@ const HotelDetails = (props) => {
       )}
 
       {!loading && hotel !== null && hotel !== undefined && (
-        <div className={`${classes.details}`}>
-          <div className="row">
-            <div className={`col-4 ${classes["first-col"]}`}>
-              <div className={classes.ratingpos}>
-                <Rating rating={hotel.rating} />
+        <>
+          <h1 className={`mt-5 lead fw-bolder ${classes.roomname}`}>{hotel.name}</h1>
+          <div className={`${classes.details}`}>
+            <div className={classes["hotel-section"]}>
+              <div className={classes["relative-container"]}>
+                <div className={classes.profilepos}>
+                  <HotelProfileImg url={hotel.url} />
+                </div>
+                <div className={classes.ratingpos}>
+                  <Rating rating={hotel.rating} />
+                </div>
+                <div className={classes.ratingtagpos}>
+                  <RatingTag rating={hotel.rating} />
+                </div>
+                <div className={classes.weatherpos}>
+                  <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
+                </div>
+                <div className={classes.currencypos}>
+                  <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
+                </div>
               </div>
-              <HotelProfileImg url={hotel.url} />
             </div>
-            <div className="col-3">
-              <DisplayHotelDescription hotel={hotel} />
+            <div className={classes["room-section"]}>
+              <RoomList selectRoom={handleRoomSelection} />
             </div>
-            <div className="col-5">
-              <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
-              <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
-            </div>
+
+            <TimespanContextProvider>
+              <CheckOut room={activeRoom} hotel={hotel} />
+            </TimespanContextProvider>
+            <Review hotel={hotel}></Review>
           </div>
-          <RoomList selectRoom={handleRoomSelection} />
-          <TimespanContextProvider>
-            <CheckOut room={activeRoom} hotel={hotel} />
-          </TimespanContextProvider>
-          <Review hotel={hotel}></Review>
-        </div>
+        </>
       )}
     </>
   );

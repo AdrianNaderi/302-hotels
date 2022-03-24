@@ -1,34 +1,64 @@
 .details {
-  background-color: #c88b96;
   margin: 20px;
   border-radius: 10px 10px 0px 0px;
   padding-bottom: 10px;
 }
 
-.components {
-  display: flex;
-  margin-right: 50px;
-  margin-left: 50px;
+/* sections */
+
+.hotel-section {
+  display: inline-block;
+  background-color: #c88b96;
+  width: 650px;
+  height: 650px;
+  margin-right: 100px;
 }
 
-.componentcontent {
+.room-section {
+  position: relative;
+  display: inline-block;
+  background-color: #c88b96;
+  width: 650px;
+  height: 650px;
+  top: -65px;
+}
+
+.roomname {
+  font-size: 42px;
+  margin-left: 20px;
+  text-decoration: underline;
+}
+
+/* Positioning */
+.relative-container {
+  position: relative;
+}
+
+.ratingtagpos {
   position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  left: 560px;
+  top: 199px;
+}
+.ratingpos {
+  position: absolute;
+  left: 370px;
+  top: 200px;
+}
+.profilepos {
+  position: absolute;
+  top: 200px;
+}
+.weatherpos {
+  position: absolute;
+  left: -12px;
+  top: -48px;
+}
+.currencypos {
+  position: absolute;
+  top: 450px;
 }
 
 .spinnerpos {
   position: relative;
   top: 100px;
-}
-
-.first-col {
-position: relative;
-
-}
-.ratingpos {
-  position: absolute;
-  right: -20px;
-  top: 180px;
 }
