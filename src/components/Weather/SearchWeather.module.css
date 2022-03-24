@@ -4,7 +4,7 @@
     width: auto;
 }
 
-.hej {
+.fit {
     height: 400px;
     width: 600px;
 }
@@ -18,11 +18,14 @@
 .test h2 {
     font-size: 35px;
     margin-bottom: 0%;
+    margin-left: 40px;
 }
 
 .test h4 {
     font-size: 20px;
     margin-bottom: 0%;
+    margin-top: 5px;
+    margin-left: 40px;
 }
 
 .test p {
@@ -42,5 +45,24 @@
 
 .span1 {
     font-size: 10px;
-    margin-left: 310px;
+    margin-left: 235px;
+}
+
+.date {
+    margin-top: 10px;
+}
+
+.minmaxtemp {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.temperature {
+    margin-top: 5px;
+    margin-right: 40px;
+}
+
+.weather {
+    margin-right: 50px;
+    margin-top: 5px;
 }

@@ -74,13 +74,9 @@ const SearchWeather = (props) => {
       <div>
         <div className="container mt-5">
           <div>
-            <div className={classes.hej}>
+            <div className={classes.fit}>
               <div className={`card bg-dark text-white text-left border-0`}>
-                <img
-                  src={`https://source.unsplash.com/1200x400/?${data.weather[0].main}`}
-                  className={classes.cardImg}
-                  alt="..."
-                />
+                <img src={`https://source.unsplash.com/1200x400/?${data.weather[0].main}`} className={classes.cardImg} alt="..." />
                 <div className="card-img-overlay">
                   <div className={`bg-dark bg-opacity-50 py-3 ${classes.test}`}>
                     <div className="wrapper">
@@ -94,31 +90,19 @@ const SearchWeather = (props) => {
                         <div className="row">
                           <div className="col-6">
                             <p>{props.country}</p>
+                            <p className={`card-text lead ${classes.date}`}>
+                        {day}, {month} {date}, {year} </p>
+                        <hr/>
                           </div>
                           <div className="col-5">
-                            <p className="text-end">{temp}&deg;C</p>
-                            <p className="lead fw-bolder text-end mb-0">
-                        {data.weather[0].main}
-                      </p>
-                            <p className="lead text-end">{temp_min}&deg;C | {temp_max}&deg;C</p>
+                            <p className={`text-end ${classes.temperature}`}>{temp}&deg;C</p>
+                            <p className={`lead fw-bolder text-end mb-0 ${classes.weather}`}>{data.weather[0].main}</p>
+                            <p className={`lead text-end ${classes.minmaxtemp}`}>
+                              {temp_min}&deg;C | {temp_max}&deg;C
+                            </p>
                           </div>
                         </div>
-
-                        <span className={classes.span1}></span>
                       </h4>
-
-                      <p className="card-text lead">
-                        {day}, {month} {date}, {year}
-                      </p>
-                      <hr />
-                      <i className={`fas ${emoji} fa-4x`}></i>
-                      <h1 className="fw-bolder">{temp}&deg;C</h1>
-                      <p className="lead fw-bolder mb-0">
-                        {data.weather[0].main}
-                      </p>
-                      <p className="lead">
-                        {temp_min}&deg;C | {temp_max}&deg;C
-                      </p>
                     </div>
                   </div>
                 </div>
