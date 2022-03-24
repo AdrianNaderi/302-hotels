@@ -84,34 +84,37 @@ const LoginForm = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <div className="m-4 p-4">
+      <div className="m-5 p-4">
         <form onSubmit={handleSubmit}>
-          <Input
-            label="Username"
-            type="text"
-            liftupInput={(username) => {
-              setUsername(username);
-            }}
-            minimumChar={5}
-            errorMessage={usernameErrorMessage}
-          >
-            Username:
-          </Input>
+          <div className="mb-3">
+            <Input
+              label="Username"
+              type="text"
+              liftupInput={(username) => {
+                setUsername(username);
+              }}
+              minimumChar={5}
+              errorMessage={usernameErrorMessage}
+            >
+              Username:
+            </Input>
+          </div>
 
-          <Input
-            label="Password"
-            type="password"
-            liftupInput={(password) => {
-              setPassword(password);
-            }}
-            minimumChar={6}
-            errorMessage={passwordErrorMessage}
-          >
-            Password:
-          </Input>
-
-          <Button type="submit">Submit</Button>
-          <Button onClick={props.onClose}>Close</Button>
+          <div className="mb-3">
+            <Input
+              label="Password"
+              type="password"
+              liftupInput={(password) => {
+                setPassword(password);
+              }}
+              minimumChar={6}
+              errorMessage={passwordErrorMessage}
+            >
+              Password:
+            </Input>
+          </div>
+          <button type="submit">Submit</button>
+          <button onClick={props.onClose}>Close</button>
           <div>{validForm && <span>{loginErrorMessage}</span>}</div>
         </form>
       </div>

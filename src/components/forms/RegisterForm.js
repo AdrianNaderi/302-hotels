@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Input from "../UI/Input";
-import Button from "../UI/Button";
 import useHttpGet from "../../hooks/useHttpGet";
 import Modal from "../UI/Modal";
+import classes from "./RegisterForm.module.css";
 
 const RegisterForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -69,47 +69,68 @@ const RegisterForm = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <form onSubmit={handleSubmit}>
-        <Input
-          label="Username"
-          type="text"
-          liftupInput={(username) => {
-            setUsername(username);
-          }}
-          minimumChar={5}
-          errorMessage={usernameErrorMessage}
+      <div className="text-end">
+        <button
+          type="button"
+          className="close"
+          aria-label="Close"
+          onClick={props.onClose}
         >
-          Username:
-        </Input>
-
-        <Input
-          type="text"
-          label="Full Name"
-          liftupInput={(fullname) => {
-            setFullname(fullname);
-          }}
-          minimumChar={1}
-          errorMessage={fullnameErrorMessage}
-        >
-          Full name:
-        </Input>
-
-        <Input
-          label="Password"
-          type="password"
-          liftupInput={(password) => {
-            setPassword(password);
-          }}
-          minimumChar={6}
-          errorMessage={passwordErrorMessage}
-        >
-          Password:
-        </Input>
-
-        <Button type="submit">Submit</Button>
-        <Button onClick={props.onClose}>Close</Button>
-        <div>{validForm && <span>{formError}</span>}</div>
-      </form>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div className="mx-4 p-4">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <Input
+              label="Username"
+              type="text"
+              liftupInput={(username) => {
+                setUsername(username);
+              }}
+              minimumChar={5}
+              errorMessage={usernameErrorMessage}
+            >
+              Username:
+            </Input>
+          </div>
+          <div className="mb-3">
+            <Input
+              type="text"
+              label="Full Name"
+              liftupInput={(fullname) => {
+                setFullname(fullname);
+              }}
+              minimumChar={1}
+              errorMessage={fullnameErrorMessage}
+            >
+              Full name:
+            </Input>
+          </div>
+          <div className="mb-3">
+            <Input
+              label="Password"
+              type="password"
+              liftupInput={(password) => {
+                setPassword(password);
+              }}
+              minimumChar={6}
+              errorMessage={passwordErrorMessage}
+            >
+              Password:
+            </Input>
+          </div>
+          <div className="text-center">
+            <button
+              type="submit"
+              className={`btn btn-primary ${classes.button}`}
+            >
+              Register
+            </button>
+          </div>
+          <div>{validForm && <span>{formError}</span>}</div>
+        </form>
+      </div>
     </Modal>
   );
 };
