@@ -1,7 +1,6 @@
 .details {
   background-color: #c88b96;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 20px;
   border-radius: 10px 10px 0px 0px;
   padding-bottom: 10px;
 }
@@ -17,4 +16,19 @@
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.spinnerpos {
+  position: relative;
+  top: 100px;
+}
+
+.first-col {
+position: relative;
+
+}
+.ratingpos {
+  position: absolute;
+  right: -20px;
+  top: 180px;
 }

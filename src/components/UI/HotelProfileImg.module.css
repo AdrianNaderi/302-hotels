@@ -3,5 +3,5 @@
   height: 220px;
   width: 550px;
   object-fit: cover;
-  margin-right: 50px;
+  border-radius: 10px 0px 0px 0px;
 }
