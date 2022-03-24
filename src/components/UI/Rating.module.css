@@ -6,19 +6,19 @@
 }
 
 .heartcanvas {
-  display: inline-block;
   width: 30px;
   height: 30px;
   background-color: red;
 }
 
 .heartcontainer {
+  margin: 3px;
   display: inline-block;
   width: 30px;
   height: 30px;
   margin-right: 5px;
 }
 .heartsection {
-  max-width: 175px;
+  max-width: 190px;
   background-color: white;
 }
