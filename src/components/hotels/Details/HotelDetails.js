@@ -40,10 +40,10 @@ const HotelDetails = (props) => {
         <div className={classes.details}>
           <HotelProfileImg url={hotel.url} />
           <DisplayHotelDescription hotel={hotel} />
-          {/* <SearchWeather
+          <SearchWeather
             country={hotel.location}
             city={hotel.city}
-          ></SearchWeather> */}
+          ></SearchWeather> 
           <Currency
             hotellCurr={hotel.nationalcurrency}
             country={hotel.location}
