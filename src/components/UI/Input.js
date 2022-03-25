@@ -1,7 +1,10 @@
 import useInputState from "../../hooks/useInputState";
 
 const Input = (props) => {
-  const { input, inputError, handleInput, errorMessage } = useInputState(props.errorMessage, props.minimumChar);
+  const { input, inputError, handleInput, errorMessage } = useInputState(
+    props.errorMessage,
+    props.minimumChar
+  );
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
@@ -15,8 +18,15 @@ const Input = (props) => {
   return (
     <>
       <div className="form-floating">
-        <input id={props.label} className="form-control" type={props.type} onChange={handleChange} value={props.value} />
-        <label htmlFor={props.label} className="">
+        <input
+          id={props.label}
+          className="form-control"
+          type={props.type}
+          onChange={handleChange}
+          value={props.value}
+          style={props.inputStyle}
+        />
+        <label htmlFor={props.label} className="" style={props.labelStyle}>
           {props.label}
         </label>
       </div>
