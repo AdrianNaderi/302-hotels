@@ -1,0 +1,15 @@
+.comment {
+  width: 20%;
+  height: 150px;
+  padding: 10px;
+  background-color: #973b50;
+  font: 1.4em;
+  color: #000000;
+  border: #009e93;
+  border-style: double;
+  border-width: 0.1cm;
+}
+
+.btn {
+  background-color: #009e93;
+}

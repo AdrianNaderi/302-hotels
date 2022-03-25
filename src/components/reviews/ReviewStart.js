@@ -3,11 +3,12 @@ import ReviewList from "./ReviewList";
 import ReviewInput from "./ReviewInput";
 import useHttpGet from "../../hooks/useHttpGet";
 import { useSelector } from "react-redux";
-
+import classes from "./ReviewInput.module.css";
 const ReviewStart = (props) => {
   const [isShowing, setIsShowing] = useState(false);
   const [reviews, setReviews] = useState([]);
   const user = useSelector((state) => state.auth.name);
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
 
   async function addReviewHandler(review) {
     const response = await fetch(
@@ -20,7 +21,7 @@ const ReviewStart = (props) => {
     );
 
     const data = await response.json();
-    console.log(data);
+    getReviewHandler();
   }
 
   const { isLoading, error, fetchDataHandler } = useHttpGet({
@@ -46,16 +47,24 @@ const ReviewStart = (props) => {
 
   return (
     <React.Fragment>
-      {!isShowing && <button onClick={showReviews}>Show Reviews</button>}
+      {!isShowing && (
+        <button onClick={showReviews} className={classes.btn}>
+          Show Reviews
+        </button>
+      )}
       {isShowing && (
         <React.Fragment>
-          <button onClick={showReviews}>Hide Reviews</button>
-          <ReviewInput
-            addReview={addReviewHandler}
-            getReviews={getReviewHandler}
-            name={user}
-            hotel={props.hotel}
-          ></ReviewInput>
+          <button onClick={showReviews} className={classes.btn}>
+            Hide Reviews
+          </button>
+          {loggedIn && (
+            <ReviewInput
+              addReview={addReviewHandler}
+              getReviews={getReviewHandler}
+              name={user}
+              hotel={props.hotel}
+            ></ReviewInput>
+          )}
 
           <ReviewList reviewList={reviews} hotel={props.hotel}></ReviewList>
         </React.Fragment>
