@@ -22,6 +22,7 @@ const Navbar = (props) => {
   };
 
   const hideLoginHandler = () => {
+    dispatch(authActions.setAuthenticationError({ errormessage: null }));
     setLogInShown(false);
   };
 
@@ -39,20 +40,7 @@ const Navbar = (props) => {
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${classes["nav-color"]}`}>
-      {logInShown && (
-        <LoginForm
-          onClose={hideLoginHandler}
-          onLogin={(user) => {
-            dispatch(
-              authActions.logIn({
-                username: user.id,
-                name: user.name,
-                policy: user.policy,
-              })
-            );
-          }}
-        />
-      )}
+      {logInShown && <LoginForm onClose={hideLoginHandler} />}
       {registerShown && <RegisterForm onClose={hideRegisterHandler} />}
       <div className="container-fluid mx-lg-5">
         <a
