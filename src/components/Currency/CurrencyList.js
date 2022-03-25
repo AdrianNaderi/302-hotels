@@ -24,27 +24,22 @@ const CurrencyList = (props) => {
   return (
     <React.Fragment>
       <div className={classes.card}>
+        <img src="../../assets/Currency.webp"></img>
         {
           <div className={classes.container}>
             <h1 className={classes.hOne}>Currencies</h1>
 
-            <h2 className={classes.hTwo}>
+            <h2 className={classes.animationText}>
               EURO: = {(1 / props.currency.conversion_rates.EUR).toFixed(3)}
               {props.currency.base_code}
-            </h2>
-            <h2 className={classes.hTwo}>
+              CNY: = {(1 / props.currency.conversion_rates.CNY).toFixed(3)}
+              {props.currency.base_code}
               USD: = {(1 / props.currency.conversion_rates.USD).toFixed(3)}
               {props.currency.base_code}
-            </h2>
-            <h2 className={classes.hTwo}>
               GBP: = {(1 / props.currency.conversion_rates.GBP).toFixed(3)}
               {props.currency.base_code}
             </h2>
-
-            <h2 className={classes.hTwo}>
-              CNY: = {(1 / props.currency.conversion_rates.CNY).toFixed(3)}
-              {props.currency.base_code}
-            </h2>
+            <h2 className={classes.hTwo}></h2>
             {!isDuplicate && (
               <h2 className={classes.hTwo}>
                 {props.hotellCurr.target_code} <span> = </span>
@@ -54,6 +49,7 @@ const CurrencyList = (props) => {
             )}
           </div>
         }
+        s
       </div>
     </React.Fragment>
   );

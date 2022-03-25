@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useHttpGet from "../../hooks/useHttpGet";
 import Currency from "./CurrencyFetchLocal";
+import LoadingSpinner from "../UI/LoadingSpinner";
 const CurrencyStart = (props) => {
   const [location, setLocation] = useState([]);
   const { isLoading, error, fetchDataHandler } = useHttpGet({
@@ -29,7 +30,7 @@ const CurrencyStart = (props) => {
       )}
       {!isLoading && location.length === 0 && !error && <p>No data</p>}
       {!isLoading && error && <p>{error}</p>}
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <LoadingSpinner />}
     </React.Fragment>
   );
 };

@@ -1,9 +1,8 @@
 .hOne {
   font-size: x-small;
-  text-align: center;
 }
 
-.hTwo {
+.animationText {
   font-size: medium;
   font-family: "Times New Roman", Times, serif;
 }
@@ -12,13 +11,19 @@
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  height: 11rem;
-  width: 12rem;
+  height: 3rem;
+  width: 100%;
   background-color: rgb(201, 177, 70);
   border-radius: 90;
   border-style: double;
   border-color: black;
   align-items: center;
+  overflow: hidden;
+}
+
+.animate {
+  animation-iteration-count: infinite;
+  animation-direction: normal;
 }
 
 /* On mouse-over, add a deeper shadow */

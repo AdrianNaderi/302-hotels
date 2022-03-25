@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import classes from "./ReviewInput.module.css";
 const ReviewInput = (props) => {
   const textRef = useRef("");
 
@@ -20,8 +21,16 @@ const ReviewInput = (props) => {
     <React.Fragment>
       <div>
         <form onSubmit={submitReview}>
-          <textarea type="text" ref={textRef}></textarea>
-          <button type="submit">Submit Review</button>
+          <textarea
+            type="text"
+            className={classes.comment}
+            ref={textRef}
+          ></textarea>
+          <div>
+            <button className={classes.btn} type="submit">
+              Submit Review
+            </button>
+          </div>
         </form>
       </div>
     </React.Fragment>
