@@ -5,7 +5,7 @@ import TimespanContext from "../../../store/timespan-context";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { searchActions } from "../../../store/search-slice";
-import { bookingActions } from "../../../store/booking-slice";
+import { bookingActions, postBookingAsync } from "../../../store/booking-slice";
 
 const CheckOut = (props) => {
   const loggedin = useSelector((state) => state.auth.loggedIn);
@@ -43,9 +43,9 @@ const CheckOut = (props) => {
         bookingdate: handleTime(Date.now()),
       },
     };
-    dispatch(bookingActions.storeBooking({ booking: booking }));
-    navigate("/bookingconfirmation");
+    dispatch(postBookingAsync(booking));
     dispatch(searchActions.clearOne());
+    navigate("/bookingconfirmation");
   };
 
   return (

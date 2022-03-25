@@ -1,4 +1,4 @@
-import BookingConfirmation from "../components/Bookings/BookingConfirmation";
+import BookingConfirmation from "../components/Bookings/Confirmation/BookingConfirmation";
 
 const ConfirmationPage = () => {
   return (

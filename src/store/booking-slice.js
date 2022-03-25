@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { postBooking } from "../lib/bookingsapi";
+import { httpActions } from "./http-slice";
 
 const initialBooking = {
   booking: null,
@@ -19,6 +21,16 @@ const bookingSlice = createSlice({
 });
 
 // postBookingAsync
+export const postBookingAsync = (data) => {
+  return async (dispatch) => {
+    dispatch(httpActions.setLoading());
+    const bookingResult = await postBooking(data);
+    console.log(bookingResult);
+    dispatch(bookingActions.storeBooking({ booking: data }));
+    dispatch(httpActions.clearLoading());
+  };
+};
+
 // getUserBookingsAsync
 
 export const bookingActions = bookingSlice.actions;
