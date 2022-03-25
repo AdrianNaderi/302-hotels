@@ -19,15 +19,14 @@ const HotelListItem = (props) => {
 
   return (
     <div className="mb-5">
-      <HotelProfileImg url={hotel.url} />
-      <div className="row">
+      <div className={`${classes.listitem} row`} onClick={handleDetails}>
         <div className="col-5">
+          <HotelProfileImg url={hotel.url} />
+        </div>
+        <div className="col-4 ps-5">
           <DisplayHotelDescription hotel={hotel} />
         </div>
-        <div className="col-4 align-self-center mb-4 text-end">
-          <button className="btn-lg btn-primary mb-3" onClick={handleDetails}>
-            Show Details
-          </button>
+        <div className="col-3 align-self-center mb-4 text-end">
           <div className={classes.rating}>
             <Rating rating={hotel.rating} />
           </div>

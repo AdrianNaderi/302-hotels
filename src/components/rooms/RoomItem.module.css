@@ -50,4 +50,5 @@
 }
 .card:hover {
   background-color: #a75669;
+  cursor: pointer;
 }

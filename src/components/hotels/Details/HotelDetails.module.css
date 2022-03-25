@@ -8,7 +8,6 @@
 .shared-section {
   margin-left: 50px;
   margin-bottom: 40px;
-  display: flex;
 }
 
 .hotel-section {
@@ -22,7 +21,6 @@
 .room-section {
   position: relative;
   display: inline-block;
-  /* background-color: #87e1dd; */
   background-color: #c88b96;
   width: 650px;
   height: 650px;

@@ -6,3 +6,8 @@
 .relativecontainer {
   position: relative;
 }
+
+.listitem:hover {
+  background-color: rgb(243, 242, 243);
+  cursor: pointer;
+}
