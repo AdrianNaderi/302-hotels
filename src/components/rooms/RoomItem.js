@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
 import SelectionMarker from "../UI/SelectionMarker";
 import classes from "./RoomItem.module.css";
 
 const RoomItem = (props) => {
+  const loggedin = useSelector((state) => state.auth.loggedIn);
   const handleClick = () => {
-    props.handleActiveSelection(props.room);
+    if (loggedin) {
+      props.handleActiveSelection(props.room);
+    }
   };
-
+  console.log(loggedin);
   return (
     <div>
       <div onClick={handleClick} className={`${classes.card} ${props.activeSelection.id === props.room.id ? classes.active : ""}`}>

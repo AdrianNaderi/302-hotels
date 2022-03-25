@@ -8,7 +8,7 @@ import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
 import Review from "../../Reviews/ReviewStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
-import { searchActions,searchHotelAsync } from "../../../store/search-slice";
+import { searchActions, searchHotelAsync } from "../../../store/search-slice";
 import SearchWeather from "../../Weather/SearchWeather";
 import Rating from "../../UI/Rating";
 import LoadingSpinner from "../../UI/LoadingSpinner";
@@ -46,7 +46,15 @@ const HotelDetails = (props) => {
 
       {!loading && hotel !== null && hotel !== undefined && (
         <>
-          <h1 className={`mt-5 lead fw-bolder ${classes.roomname}`}>{hotel.name}</h1>
+          <div className="row">
+            <div className="col-5">
+              <div className={classes["hotelname-bg"]}></div>
+              <h1 className={`mt-5 lead fw-bolder ${classes.hotelname}`}>{hotel.name}</h1>
+            </div>
+            <div className={`mt-5 ms-4 col-5 ${classes.roomtext}`}>
+              <h3 className={` lead fw-bolder ${classes.roomname}`}>Our available rooms</h3>
+            </div>
+          </div>
           <div className={`${classes.details}`}>
             <div className={classes["shared-section"]}>
               <div className={classes["hotel-section"]}>

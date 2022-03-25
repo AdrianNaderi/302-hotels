@@ -2,12 +2,14 @@ import classes from "./CheckOut.module.css";
 import DateTimePicker from "../../UI/DateTimePicker";
 import { useContext } from "react";
 import TimespanContext from "../../../store/timespan-context";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { searchActions } from "../../../store/search-slice";
 import { bookingActions } from "../../../store/booking-slice";
 
 const CheckOut = (props) => {
+  const loggedin = useSelector((state) => state.auth.loggedIn);
+  const userFullname = useSelector((state) => state.auth.name);
   const ctx = useContext(TimespanContext);
   const hotel = props.hotel;
   const room = props.room;
@@ -28,7 +30,7 @@ const CheckOut = (props) => {
   };
 
   const handleBooking = () => {
-    let user = "test";
+    let user = userFullname;
     const booking = {
       user,
       hotel,
@@ -57,7 +59,7 @@ const CheckOut = (props) => {
           </div>
           <DateTimePicker />
           <div className="col-2">
-            {room && (
+            {room && loggedin && (
               <button className="btn-lg btn-success w-100 p-3" onClick={handleBooking}>
                 Book
               </button>
@@ -69,7 +71,8 @@ const CheckOut = (props) => {
             )}
           </div>
           <div className="col-4">
-            <h1 className="text-light text-end">{room && `Total Price:  ${ctx.timespan * room.cost} SEK`}</h1>
+            {loggedin && <h1 className="text-light text-end">{room && `Total Price:  ${ctx.timespan * room.cost} SEK`} </h1>}
+            {!loggedin && <h1 className="text-light text-end">{`Login, to continue...`} </h1>}
           </div>
         </div>
       </div>

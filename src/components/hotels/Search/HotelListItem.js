@@ -3,6 +3,8 @@ import DisplayHotelDescription from "../Details/DisplayHotelDescription";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { searchActions } from "../../../store/search-slice";
+import Rating from "../../UI/Rating";
+import classes from "./HotelListItem.module.css";
 
 const HotelListItem = (props) => {
   const hotel = props.hotel;
@@ -23,9 +25,12 @@ const HotelListItem = (props) => {
           <DisplayHotelDescription hotel={hotel} />
         </div>
         <div className="col-4 align-self-center mb-4 text-end">
-          <button className="btn-lg btn-primary" onClick={handleDetails}>
+          <button className="btn-lg btn-primary mb-3" onClick={handleDetails}>
             Show Details
           </button>
+          <div className={classes.rating}>
+            <Rating rating={hotel.rating} />
+          </div>
         </div>
       </div>
       <hr></hr>

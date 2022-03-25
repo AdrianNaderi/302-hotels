@@ -1,13 +1,17 @@
 .background {
   position: relative;
   top: 100px;
-  background-color: #f6e7d8;
+  background-color: #87e1dd;
   border-radius: 15px;
-
 }
 
 .button {
-  background-color: #874356;
+  background-color: #f15d9a;
   border: solid 1px #000;
-  color: #f6e7d8;
+  color: #000;
+}
+
+.button:hover {
+  background-color: #ff99c4;
+  font-weight:500;
 }

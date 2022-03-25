@@ -22,17 +22,33 @@
 .room-section {
   position: relative;
   display: inline-block;
-  background-color:#87e1dd;
+  /* background-color: #87e1dd; */
+  background-color: #87e1dd;
   width: 650px;
   height: 650px;
 }
 
-.roomname {
+.hotelname {
+
   font-size: 42px;
   margin-left: 70px;
   text-decoration: underline;
 }
 
+.hotelname-bg {
+  z-index: -1;
+  position: relative;
+  border-radius: 50px;
+  top: 115px;
+  right: 250px;
+  height: 75px;
+  background-color: #c88b96;
+}
+.roomname {
+  position: relative;
+  top: 120px;
+  left: 60px;
+}
 /* Positioning */
 .relative-container {
   position: relative;

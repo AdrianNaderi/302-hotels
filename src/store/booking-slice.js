@@ -18,5 +18,8 @@ const bookingSlice = createSlice({
   },
 });
 
+// postBookingAsync
+// getUserBookingsAsync
+
 export const bookingActions = bookingSlice.actions;
 export default bookingSlice;

@@ -4,8 +4,8 @@ import { httpActions } from "./http-slice";
 
 const initialAuth = {
   loggedIn: true,
-  username: "",
-  name: "",
+  username: "test",
+  name: "Test Testersson",
   policy: "admindq",
   error: null,
 };
@@ -33,8 +33,6 @@ const authSlice = createSlice({
     },
   },
 });
-
-
 
 // dispatch(loginUserAsync({ username: username.value, password: password.value }));
 export const loginUserAsync = (input) => {
