@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions, loginUserAsync } from "../../store/auth-slice";
 import classes from "./Form.module.css";
 import CloseButton from "../UI/CloseButton";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const LoginForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -13,9 +14,10 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState({ value: "", hasError: true });
   const passwordErrorMessage = "Needs to be atleast 6 chars long";
   const [validForm, setValidForm] = useState(false);
+
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const authError = useSelector((state) => state.auth.error);
-
+  const loading = useSelector((state) => state.http.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -95,13 +97,20 @@ const LoginForm = (props) => {
             )}
           </div>
 
-          <div className="text-center">
-            <button type="submit" className={`btn btn-primary ${classes.button}`}>
-              Log In
-            </button>
+          <div className="text-center mb-2">
+            {!loading && (
+              <button type="submit" className={`btn btn-primary ${classes.button}`}>
+                Log In
+              </button>
+            )}
+            {loading && (
+              <button type="submit" className={`btn btn-primary ${classes.button}`} disabled={true}>
+                <LoadingSpinner size="small" color="white" />
+              </button>
+            )}
           </div>
 
-          <div className="text-center mt-2">
+          <div className="text-center">
             {authError !== null && (
               <span className="text-danger">
                 <i className="bi bi-exclamation-circle"></i>&nbsp;
