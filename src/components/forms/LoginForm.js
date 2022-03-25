@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import Input from "../UI/Input";
-import Button from "../UI/Button";
 import useHttpGet from "../../hooks/useHttpGet";
 import Modal from "../UI/Modal";
-import { useDispatch } from "react-redux";
-import { authActions } from "../../store/auth-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions, loginUserAsync } from "../../store/auth-slice";
 import classes from "./Form.module.css";
 import CloseButton from "../UI/CloseButton";
 
@@ -14,8 +13,8 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState({ value: "", hasError: true });
   const passwordErrorMessage = "Needs to be atleast 6 chars long";
   const [validForm, setValidForm] = useState(false);
-  const [loginSuccess, setLoginSuccess] = useState(false);
-  const [loginErrorMessage, setLoginErrorMessage] = useState("");
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
+  const authError = useSelector((state) => state.auth.error);
 
   const dispatch = useDispatch();
 
@@ -28,11 +27,10 @@ const LoginForm = (props) => {
   }, [username, password]);
 
   useEffect(() => {
-    if (!loginSuccess) {
-      return;
+    if (loggedIn) {
+      props.onClose();
     }
-    console.log("Logging in to hotels-302!");
-  }, [loginSuccess]);
+  }, [loggedIn]);
 
   const { isLoading, error, fetchDataHandler } = useHttpGet({
     url: "https://usebookingmanagement-default-rtdb.firebaseio.com/users.json",
@@ -40,47 +38,11 @@ const LoginForm = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoginErrorMessage("");
     console.log(validForm);
     if (!validForm) {
       return;
     }
-    let data = await fetchDataHandler();
-    data = transformData(data);
-    props.onLogin(data);
-
-    console.log(data);
-    if (data.length === 0) {
-      setLoginErrorMessage("No users with that usename exists!");
-    } else if (data.password !== password.value) {
-      setLoginErrorMessage("Wrong Password!");
-      console.log(`${data.password} !== ${password.value}`);
-    } else {
-      setLoginErrorMessage("");
-      setLoginSuccess(true);
-      dispatch(authActions.logIn());
-      props.onClose();
-    }
-  };
-
-  const transformData = (data) => {
-    const loadedData = [];
-    for (const key in data) {
-      if (key == username.value) {
-        loadedData.push({
-          id: key,
-          password: data[key].password,
-          fullname: data[key].fullname,
-          policy: data[key].policy,
-        });
-      }
-    }
-    return {
-      id: loadedData[0].id,
-      password: loadedData[0].password,
-      name: loadedData[0].fullname,
-      policy: loadedData[0].policy,
-    };
+    dispatch(loginUserAsync({ username: username.value, password: password.value }));
   };
 
   return (
@@ -123,7 +85,7 @@ const LoginForm = (props) => {
               Log In
             </button>
           </div>
-          <div>{validForm && <span>{loginErrorMessage}</span>}</div>
+          <div>{!authError !== null && <span>{authError}</span>}</div>
         </form>
       </div>
     </Modal>
