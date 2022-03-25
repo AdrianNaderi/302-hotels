@@ -13,9 +13,9 @@
 
 .hotel-section {
   display: inline-block;
-  background-color: #c88b96;
   width: 650px;
   height: 650px;
+  margin-left: 50px;
   margin-right: 100px;
 }
 
@@ -23,13 +23,12 @@
   position: relative;
   display: inline-block;
   /* background-color: #87e1dd; */
-  background-color: #87e1dd;
+  background-color: #c88b96;
   width: 650px;
   height: 650px;
 }
 
 .hotelname {
-
   font-size: 42px;
   margin-left: 70px;
   text-decoration: underline;
@@ -49,6 +48,7 @@
   top: 120px;
   left: 60px;
 }
+
 /* Positioning */
 .relative-container {
   position: relative;
@@ -57,25 +57,21 @@
 .ratingtagpos {
   position: absolute;
   left: 560px;
-  top: 199px;
+  top: -37px;
 }
+
 .ratingpos {
   position: absolute;
   left: 370px;
-  top: 200px;
+  top: -40px;
 }
-.profilepos {
-  position: absolute;
-  top: 200px;
-}
+
 .weatherpos {
-  position: absolute;
-  left: -12px;
-  top: -48px;
+  margin-left: -12px;
+  margin-top: -48px;
 }
 .currencypos {
-  position: absolute;
-  top: 450px;
+  margin-left: -12px;
 }
 
 .spinnerpos {

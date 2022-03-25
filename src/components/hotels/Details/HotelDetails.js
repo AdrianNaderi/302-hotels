@@ -59,21 +59,21 @@ const HotelDetails = (props) => {
             <div className={classes["shared-section"]}>
               <div className={classes["hotel-section"]}>
                 <div className={classes["relative-container"]}>
-                  <div className={classes.profilepos}>
-                    <HotelProfileImg url={hotel.url} />
-                  </div>
                   <div className={classes.ratingpos}>
                     <Rating rating={hotel.rating} />
                   </div>
                   <div className={classes.ratingtagpos}>
                     <RatingTag rating={hotel.rating} />
                   </div>
-                  <div className={classes.weatherpos}>
-                    <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
-                  </div>
-                  <div className={classes.currencypos}>
-                    <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
-                  </div>
+                </div>
+                <div className={`mb-2`}>
+                  <HotelProfileImg url={hotel.url} />
+                </div>
+                <div className={`${classes.weatherpos} mb-2`}>
+                  <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
+                </div>
+                <div className={`${classes.currencypos}`}>
+                  <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
                 </div>
               </div>
               <div className={classes["room-section"]}>
