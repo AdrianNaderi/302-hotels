@@ -1,5 +1,9 @@
 const UserPage = (props) => {
-  return <h1>My Page</h1>;
+  return (
+    <div className="container-fluid">
+      <h1>My Page</h1>
+    </div>
+  );
 };
 
 export default UserPage;

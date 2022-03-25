@@ -119,10 +119,7 @@ const LoginForm = (props) => {
           </div>
 
           <div className="text-center">
-            <button
-              type="submit"
-              className={`btn btn-primary ${classes.button}`}
-            >
+            <button type="submit" className={`btn btn-primary ${classes.button}`}>
               Log In
             </button>
           </div>

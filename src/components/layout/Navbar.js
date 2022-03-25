@@ -38,9 +38,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg navbar-light ${classes["nav-color"]}`}
-    >
+    <nav className={`navbar navbar-expand-lg navbar-light ${classes["nav-color"]}`}>
       {logInShown && (
         <LoginForm
           onClose={hideLoginHandler}
@@ -56,7 +54,7 @@ const Navbar = (props) => {
         />
       )}
       {registerShown && <RegisterForm onClose={hideRegisterHandler} />}
-      <div className="container-fluid">
+      <div className="container-fluid mx-lg-5">
         <a
           className={`navbar-brand text-black ${classes.link}`}
           onClick={() => {
@@ -78,10 +76,7 @@ const Navbar = (props) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarNavAltMarkup"
-        >
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
           <ul className="nav">
             <NavLinks
               loggedIn={loggedIn}

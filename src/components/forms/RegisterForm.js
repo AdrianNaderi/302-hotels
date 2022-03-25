@@ -115,10 +115,7 @@ const RegisterForm = (props) => {
             </Input>
           </div>
           <div className="text-center">
-            <button
-              type="submit"
-              className={`btn btn-primary ${classes.button}`}
-            >
+            <button type="submit" className={`btn btn-primary ${classes.button}`}>
               Register
             </button>
           </div>
