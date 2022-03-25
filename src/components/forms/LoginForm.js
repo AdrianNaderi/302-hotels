@@ -5,7 +5,8 @@ import useHttpGet from "../../hooks/useHttpGet";
 import Modal from "../UI/Modal";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/auth-slice";
-import classes from "./LoginForm.module.css";
+import classes from "./Form.module.css";
+import CloseButton from "../UI/CloseButton";
 
 const LoginForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -84,7 +85,10 @@ const LoginForm = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      <div className="m-5 p-4">
+      <div className="text-end">
+        <CloseButton className={classes["close-btn"]} onClick={props.onClose} />
+      </div>
+      <div className="mx-5 mb-3 px-4">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <Input
@@ -113,8 +117,15 @@ const LoginForm = (props) => {
               Password:
             </Input>
           </div>
-          <button type="submit">Submit</button>
-          <button onClick={props.onClose}>Close</button>
+
+          <div className="text-center">
+            <button
+              type="submit"
+              className={`btn btn-primary ${classes.button}`}
+            >
+              Log In
+            </button>
+          </div>
           <div>{validForm && <span>{loginErrorMessage}</span>}</div>
         </form>
       </div>

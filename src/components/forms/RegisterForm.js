@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import Input from "../UI/Input";
 import useHttpGet from "../../hooks/useHttpGet";
 import Modal from "../UI/Modal";
-import classes from "./RegisterForm.module.css";
+import classes from "./Form.module.css";
+import CloseButton from "../UI/CloseButton";
 
 const RegisterForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -70,16 +71,9 @@ const RegisterForm = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <div className="text-end">
-        <button
-          type="button"
-          className="close"
-          aria-label="Close"
-          onClick={props.onClose}
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <CloseButton className={classes["close-btn"]} onClick={props.onClose} />
       </div>
-      <div className="mx-4 p-4">
+      <div className="mx-5 mb-3 px-4">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <Input
@@ -107,7 +101,7 @@ const RegisterForm = (props) => {
               Full name:
             </Input>
           </div>
-          <div className="mb-3">
+          <div className="mb-4">
             <Input
               label="Password"
               type="password"

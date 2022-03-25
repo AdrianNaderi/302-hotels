@@ -1,0 +1,11 @@
+.button {
+  border-radius: 12px;
+  width: 80%;
+  height: 35px;
+}
+.close-btn {
+  margin: 0;
+  background-color: transparent;
+  border: hidden;
+  font-weight: bold;
+}
