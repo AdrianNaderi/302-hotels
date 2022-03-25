@@ -9,3 +9,7 @@
   border: hidden;
   font-weight: bold;
 }
+.check-circle {
+  float: right;
+  color: green;
+}

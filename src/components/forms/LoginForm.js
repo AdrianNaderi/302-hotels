@@ -32,10 +32,6 @@ const LoginForm = (props) => {
     }
   }, [loggedIn]);
 
-  const { isLoading, error, fetchDataHandler } = useHttpGet({
-    url: "https://usebookingmanagement-default-rtdb.firebaseio.com/users.json",
-  });
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(validForm);
@@ -43,6 +39,11 @@ const LoginForm = (props) => {
       return;
     }
     dispatch(loginUserAsync({ username: username.value, password: password.value }));
+    if (!authError !== null) {
+      event.target.reset();
+      username.hasError = true;
+      password.hasError = true;
+    }
   };
 
   return (
@@ -61,9 +62,16 @@ const LoginForm = (props) => {
               }}
               minimumChar={5}
               errorMessage={usernameErrorMessage}
+              inputStyle={username.hasError ? { borderColor: "red" } : { borderColor: "green" }}
+              labelStyle={username.hasError ? { color: "red" } : { color: "green" }}
             >
               Username:
             </Input>
+            {!username.hasError && (
+              <span className={classes["check-circle"]}>
+                <i className="bi bi-check-circle"></i>
+              </span>
+            )}
           </div>
 
           <div className="mb-3">
@@ -75,9 +83,16 @@ const LoginForm = (props) => {
               }}
               minimumChar={6}
               errorMessage={passwordErrorMessage}
+              inputStyle={password.hasError ? { borderColor: "red" } : { borderColor: "green" }}
+              labelStyle={password.hasError ? { color: "red" } : { color: "green" }}
             >
               Password:
             </Input>
+            {!password.hasError && (
+              <span className={classes["check-circle"]}>
+                <i className="bi bi-check-circle"></i>
+              </span>
+            )}
           </div>
 
           <div className="text-center">
@@ -85,7 +100,15 @@ const LoginForm = (props) => {
               Log In
             </button>
           </div>
-          <div>{!authError !== null && <span>{authError}</span>}</div>
+
+          <div className="text-center mt-2">
+            {authError !== null && (
+              <span className="text-danger">
+                <i className="bi bi-exclamation-circle"></i>&nbsp;
+                {authError}
+              </span>
+            )}
+          </div>
         </form>
       </div>
     </Modal>
