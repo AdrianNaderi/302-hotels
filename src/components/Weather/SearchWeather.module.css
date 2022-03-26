@@ -1,11 +1,11 @@
 .cardImg {
     object-fit: contain;
-    height: auto;
-    width: auto;
+    /* height: auto; */
+    /* width: auto; */
 }
 
 .fit {
-    height: 400px;
+    /* height: 400px; */
     width: 600px;
 }
 

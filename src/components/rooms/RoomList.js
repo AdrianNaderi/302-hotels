@@ -38,7 +38,7 @@ const RoomList = (props) => {
   };
   const roomList = rooms.map((room) => <RoomItem key={room.id} room={room} activeSelection={activeSelection} handleActiveSelection={handleActiveSelection} />);
 
-  return <div>{roomList}</div>;
+  return <>{roomList}</>;
 };
 
 export default RoomList;

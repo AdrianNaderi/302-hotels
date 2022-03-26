@@ -1,17 +1,19 @@
 .card {
   position: relative;
-  margin-bottom: 35px;
+  display: inline-block;
   border: solid 1px;
-  width: 570px;
+  border-radius: 10px 0px 10px 10px;
+  width: 470px;
   height: 193px;
+  margin-bottom: 21px;
   background-color: #973b50;
-  left: 80px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .img {
   position: absolute;
   top: 0px;
-  left: 358px;
+  left: 258px;
   width: 210px;
 }
 

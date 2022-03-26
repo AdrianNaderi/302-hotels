@@ -1,29 +1,16 @@
-.details {
-  margin: 20px;
-  border-radius: 10px 10px 0px 0px;
-  padding-bottom: 10px;
-}
-
-/* sections */
-.shared-section {
-  margin-left: 50px;
-  margin-bottom: 40px;
-}
-
 .hotel-section {
   display: inline-block;
   width: 650px;
   height: 650px;
-  margin-left: 50px;
-  margin-right: 100px;
+  margin-left: 150px;
+  margin-bottom: 70px;
 }
-
 .room-section {
-  position: relative;
-  display: inline-block;
-  background-color: #c88b96;
-  width: 650px;
-  height: 650px;
+  position: absolute;
+  top: 30px;
+  left: 700px;
+  width: 150px;
+  height: 500px;
 }
 
 .hotelname {
@@ -61,12 +48,13 @@
 .ratingpos {
   position: absolute;
   left: 370px;
-  top: -40px;
+  top: -36px;
 }
 
 .weatherpos {
   margin-left: -12px;
   margin-top: -48px;
+  margin-bottom: 15px;
 }
 .currencypos {
   margin-left: -12px;
@@ -75,4 +63,14 @@
 .spinnerpos {
   position: relative;
   top: 100px;
+}
+
+.img {
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  right: 60px;
+  height: 240px;
+  width: 660px;
+  object-fit: cover;
+  margin-bottom: 15px;
 }

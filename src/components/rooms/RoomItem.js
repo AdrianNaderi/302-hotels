@@ -11,7 +11,7 @@ const RoomItem = (props) => {
   };
   console.log(loggedin);
   return (
-    <div>
+    <>
       <div onClick={handleClick} className={`${classes.card} ${props.activeSelection.id === props.room.id ? classes.active : ""}`}>
         <h3 className={`lead fw-bolder ${classes.titletext}`}>{props.room.name}</h3>
         <p className={`lead ${classes.comforttext}`}>{props.room.class}</p>
@@ -22,7 +22,7 @@ const RoomItem = (props) => {
         <p className={`${classes.pricetext}`}>{props.room.cost} SEK/Night</p>
         {props.activeSelection.id === props.room.id && <SelectionMarker />}
       </div>
-    </div>
+    </>
   );
 };
 

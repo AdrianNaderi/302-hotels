@@ -46,46 +46,38 @@ const HotelDetails = (props) => {
 
       {!loading && hotel !== null && hotel !== undefined && (
         <>
-          <div className="row">
+          <div className="row mb-3">
             <div className="col-5">
               <div className={classes["hotelname-bg"]}></div>
               <h1 className={`mt-5 lead fw-bolder ${classes.hotelname}`}>{hotel.name}</h1>
             </div>
-            <div className={`mt-5 ms-4 col-5 ${classes.roomtext}`}>
-              <h3 className={` lead fw-bolder ${classes.roomname}`}>Our available rooms</h3>
-            </div>
           </div>
-          <div className={`${classes.details}`}>
-            <div className={classes["shared-section"]}>
-              <div className={classes["hotel-section"]}>
-                <div className={classes["relative-container"]}>
-                  <div className={classes.ratingpos}>
-                    <Rating rating={hotel.rating} />
-                  </div>
-                  <div className={classes.ratingtagpos}>
-                    <RatingTag rating={hotel.rating} />
-                  </div>
-                </div>
-                <div className={`mb-2`}>
-                  <HotelProfileImg url={hotel.url} />
-                </div>
-                <div className={`${classes.weatherpos} mb-2`}>
-                  <SearchWeather country={hotel.location} city={hotel.city}></SearchWeather>
-                </div>
-                <div className={`${classes.currencypos}`}>
-                  <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location}></Currency>
-                </div>
+
+          <div className={classes["hotel-section"]}>
+            <div className={classes["relative-container"]}>
+              <div className={classes.ratingpos}>
+                <Rating rating={hotel.rating} />
               </div>
-              <div className={classes["room-section"]}>
+              <div className={classes.ratingtagpos}>
+                <RatingTag rating={hotel.rating} />
+              </div>
+              <div className={`${classes["room-section"]}`}>
                 <RoomList selectRoom={handleRoomSelection} />
               </div>
             </div>
-
-            <TimespanContextProvider>
-              <CheckOut room={activeRoom} hotel={hotel} />
-            </TimespanContextProvider>
-            <Review hotel={hotel}></Review>
+            <img src={hotel.url} className={`${classes.img}`} alt="" />
+            <div className={`${classes.weatherpos}`}>
+              <SearchWeather country={hotel.location} city={hotel.city} />
+            </div>
+            <div className={`${classes.currencypos}`}>
+              <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location} />
+            </div>
           </div>
+
+          <TimespanContextProvider>
+            <CheckOut room={activeRoom} hotel={hotel} />
+          </TimespanContextProvider>
+          <Review hotel={hotel}></Review>
         </>
       )}
     </>
