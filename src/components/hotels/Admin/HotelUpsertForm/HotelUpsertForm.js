@@ -112,9 +112,6 @@ const HotelUpsertForm = (props) => {
   };
   return (
     <>
-      <button className="btn btn-primary" onClick={() => console.log(hotel)}>
-        Check out Hotel
-      </button>
       <div className="ms-5">
         <h1 className="ms-5 display-3">{hotel.id === null ? "Add" : "Update"} Hotel</h1>
       </div>

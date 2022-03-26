@@ -7,6 +7,7 @@
 }
 
 .th-name {
+  border-top-right-radius: 10px;
   border-radius: 10px 0px 0px 0px;
   width: 220px;
   padding: 10px;
@@ -18,9 +19,11 @@
   width: 220px;
 }
 .th-currency {
+  text-align: center;
   width: 120px;
 }
 .th-rating {
+  text-align: center;
   width: 80px;
 }
 .th-empty {
@@ -29,22 +32,29 @@
 }
 
 .tr-name {
+  color: #000;
   padding: 10px;
   font-weight: 600;
 }
 .tr-description {
+  color: #000;
   padding: 10px;
 }
 .tr-location {
+  color: #fff;
   padding: 10px;
   font-weight: 600;
   text-transform: uppercase;
 }
 .tr-currency {
+  text-align: center;
+  color: #fff;
   padding: 10px;
   font-weight: 600;
 }
 .tr-rating {
+  color: #000;
+  text-align: center;
   padding: 10px;
   font-weight: 600;
 }
@@ -62,7 +72,7 @@
 }
 
 .table-body {
-  border: solid black 1px;
+  border: solid #973b50 1px;
   background: rgb(151, 59, 80);
   background: linear-gradient(90deg, rgba(151, 59, 80, 1) 0%, rgba(200, 139, 150, 1) 59%, rgba(241, 93, 154, 1) 100%);
 }

@@ -14,7 +14,7 @@ const HotelList = (props) => {
           <LoadingSpinner size="large" color="#973b50" />
         </div>
       )}
-
+      {hotels.length === 0 && <p className={classes.noresults}>No hotels found :´(</p>}
       <div className={classes.listpos}>{hotelList}</div>
     </>
   );

@@ -1,7 +1,8 @@
 .background {
   position: relative;
   top: 100px;
-  background-color: #87e1dd;
+  background: rgb(4,160,149);
+  background: linear-gradient(90deg, rgba(4,160,149,1) 35%, rgba(135,225,221,1) 100%);
   border-radius: 15px;
 }
 

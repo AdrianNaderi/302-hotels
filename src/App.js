@@ -13,6 +13,7 @@ import AdminPage from "./pages/AdminPage";
 import HotelManagement from "./components/Hotels/Admin/HotelManagement";
 import UpsertHotel from "./pages/UpsertHotel";
 import UserPage from "./pages/UserPage";
+import BookingList from "./components/Bookings/List/BookingList";
 
 function App() {
   const loggedin = useSelector((state) => state.auth.loggedIn);
@@ -38,12 +39,11 @@ function App() {
             <Route path="details/:hotel" element={<DetailsPage />} />
             <Route path="bookingconfirmation" element={<ConfirmationPage />} />
             <Route path="mypage" element={<UserPage />} />
+            <Route path="bookings" element={<BookingList />} />
           </Route>
         )}
 
-        {loggedin && policy === "admin" && (
-          <Route path="/" element={<Navigate replace to="admin/" />} />
-        )}
+        {loggedin && policy === "admin" && <Route path="/" element={<Navigate replace to="admin/" />} />}
 
         {loggedin && policy === "admin" && (
           <Route path="/admin/*" element={<AdminPage />}>

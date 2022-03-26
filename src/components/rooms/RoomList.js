@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
+import { useSelector } from "react-redux";
 import useHttpGet from "../../hooks/useHttpGet";
 import RoomItem from "./RoomItem";
 
 const RoomList = (props) => {
+  const loggedin = useSelector((state) => state.auth.loggedIn);
   const [rooms, setRooms] = useState([]);
   const { fetchDataHandler } = useHttpGet({
     url: "https://usebookingmanagement-default-rtdb.firebaseio.com/rooms.json",
@@ -38,7 +40,13 @@ const RoomList = (props) => {
   };
   const roomList = rooms.map((room) => <RoomItem key={room.id} room={room} activeSelection={activeSelection} handleActiveSelection={handleActiveSelection} />);
 
-  return <>{roomList}</>;
+  return (
+    <>
+      {loggedin && <p className="lead fw-bold">Select a room</p>}
+      {!loggedin && <p className="lead fw-bold">Login to select a room</p>}
+      {roomList}
+    </>
+  );
 };
 
 export default RoomList;
