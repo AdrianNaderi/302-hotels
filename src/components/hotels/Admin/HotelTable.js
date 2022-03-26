@@ -1,5 +1,5 @@
 import HotelTableItem from "./HotelTableItem";
-
+import classes from "./HotelTable.module.css";
 const HotelTable = (props) => {
   const tableContent = props.hotels.map((hotel) => (
     <HotelTableItem
@@ -15,19 +15,25 @@ const HotelTable = (props) => {
   console.log(props.hotels);
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Location</th>
-            <th>Currency</th>
-            <th>Rating</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <div className={`${classes.table}`}>
+        <table className="text-start">
+          <thead className={classes["table-head"]}>
+            <tr className={`${classes["tr-row"]}`}>
+              <th className={classes["th-name"]}>NAME</th>
+              <th className={classes["th-description"]}>DESCRIPTION</th>
+              <th className={classes["th-location"]}>LOCATION</th>
+              <th className={classes["th-currency"]}>CURRENCY</th>
+              <th className={classes["th-rating"]}>RATING</th>
+              <th className={classes["th-empty"]}>
+                <button className={`${classes["add-btn"]} btn`} onClick={props.goToAdd}>
+                  <p className={classes["add-text"]}>+</p>
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody className={`${classes["table-body"]}`}>{tableContent}</tbody>
+        </table>
+      </div>
     </>
   );
 };

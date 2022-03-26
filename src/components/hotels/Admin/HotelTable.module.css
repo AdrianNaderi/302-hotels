@@ -1,0 +1,94 @@
+.table {
+  margin-left: auto;
+  display: inline-block;
+  margin-top: 50px;
+  margin-left: 50px;
+  /* border-radius: 10px; */
+}
+
+.th-name {
+  border-radius: 10px 0px 0px 0px;
+  width: 220px;
+  padding: 10px;
+}
+.th-description {
+  width: 420px;
+}
+.th-location {
+  width: 220px;
+}
+.th-currency {
+  width: 120px;
+}
+.th-rating {
+  width: 80px;
+}
+.th-empty {
+  border-radius: 0px 10px 0px 0px;
+  padding-left: 20px;
+}
+
+.tr-name {
+  padding: 10px;
+  font-weight: 600;
+}
+.tr-description {
+  padding: 10px;
+}
+.tr-location {
+  padding: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.tr-currency {
+  padding: 10px;
+  font-weight: 600;
+}
+.tr-rating {
+  padding: 10px;
+  font-weight: 600;
+}
+.tr-empty {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.table-head {
+  background: #87e1dd;
+}
+
+.tr-row {
+  border-bottom: 1px solid whitesmoke;
+}
+
+.table-body {
+  border: solid black 1px;
+  background: rgb(151, 59, 80);
+  background: linear-gradient(90deg, rgba(151, 59, 80, 1) 0%, rgba(200, 139, 150, 1) 59%, rgba(241, 93, 154, 1) 100%);
+}
+
+.update-button {
+  background-color: #009e93;
+  margin: 0px;
+  color: #fff;
+  padding: 10px;
+  font-weight: 500;
+}
+
+.delete-button {
+  background-color: #973b50;
+  width: 90px;
+  margin: 0px;
+  padding: 10px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.add-btn {
+  background-color: #009e93;
+  font-weight: 600;
+  font-size: 24px;
+  height: 50px;
+  width: 150px;
+  text-align: center;
+}

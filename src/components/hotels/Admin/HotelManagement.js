@@ -42,14 +42,16 @@ const HotelManagement = () => {
       )}
       {fetched && (
         <>
+
+          <br></br>
           <HotelTable
             hotels={hotels}
+            goToAdd={goToAdd}
             onDelete={(hotelId) => {
               dispatch(searchActions.deleteHotel({ removeid: hotelId }));
             }}
             onUpdate={(data) => goToUpdate(data)}
           />
-          <button onClick={goToAdd}>Add Hotel</button>
         </>
       )}
     </>

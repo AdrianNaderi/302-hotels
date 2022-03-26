@@ -1,26 +1,28 @@
+import classes from "./HotelTable.module.css";
+
 const HotelTableItem = (props) => {
   const hotel = props.hotel;
   return (
-    <tr>
-      <td>{props.hotel.name}</td>
-      <td>{`${props.hotel.description.substring(0, 55)}...`}</td>
-      <td>
+    <tr className={`${classes["tr-row"]}`}>
+      <td className={classes["tr-name"]}>{props.hotel.name}</td>
+      <td className={classes["tr-description"]}>{`${props.hotel.description.substring(0, 55)}...`}</td>
+      <td className={classes["tr-location"]}>
         {props.hotel.location}, {props.hotel.city}
       </td>
-      <td>{props.hotel.nationalcurrency}</td>
-      <td>{props.hotel.rating}</td>
-      <td>
+      <td className={classes["tr-currency"]}>{props.hotel.nationalcurrency}</td>
+      <td className={classes["tr-rating"]}>{props.hotel.rating}</td>
+      <td className={classes["tr-empty"]}>
         <div className="btn-group">
-          <button className="btn btn-primary" onClick={() => props.onUpdate(hotel)}>
-            Update
+          <button className={`${classes["update-button"]} btn`} onClick={() => props.onUpdate(hotel)}>
+            UPDATE
           </button>
           <button
-            className="btn btn-danger"
+            className={`${classes["delete-button"]} btn`}
             onClick={() => {
               props.onDelete(props.hotel.id);
             }}
           >
-            Delete
+            -
           </button>
         </div>
       </td>

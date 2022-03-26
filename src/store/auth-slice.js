@@ -6,7 +6,7 @@ const initialAuth = {
   loggedIn: true,
   username: "test",
   name: "Test Testersson",
-  policy: "admindq",
+  policy: "admin",
   error: null,
 };
 
