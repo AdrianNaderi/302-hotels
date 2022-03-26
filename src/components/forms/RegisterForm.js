@@ -6,6 +6,7 @@ import classes from "./Form.module.css";
 import CloseButton from "../UI/CloseButton";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions, loginUserAsync } from "../../store/auth-slice";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const RegisterForm = (props) => {
   const [username, setUsername] = useState({ value: "", hasError: true });
@@ -17,6 +18,7 @@ const RegisterForm = (props) => {
   const [validForm, setValidForm] = useState(false);
   const [formError, setFormError] = useState("");
 
+  const loading = useSelector((state) => state.http.loading);
   const dispatch = useDispatch();
 
   const { isLoading, error, fetchDataHandler } = useHttpGet({
@@ -147,9 +149,16 @@ const RegisterForm = (props) => {
             )}
           </div>
           <div className="text-center">
-            <button type="submit" className={`btn btn-primary ${classes.button}`}>
-              Register
-            </button>
+            {!loading && (
+              <button type="submit" className={`btn btn-primary ${classes.button}`}>
+                Register
+              </button>
+            )}
+            {loading && (
+              <button type="submit" className={`btn btn-primary ${classes.button}`} disabled={true}>
+                <LoadingSpinner size="small" color="white" />
+              </button>
+            )}
           </div>
           <div className="text-center mt-2">
             {formError.length > 0 && (
