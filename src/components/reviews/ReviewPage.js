@@ -18,6 +18,7 @@ const ReviewPage = (props) => {
 
       arrOfPages.push(arrOfComments);
       arrOfComments = [];
+      arrOfComments.push(props.reviews[index]);
     }
   }
   arrOfPages.push(arrOfComments);
