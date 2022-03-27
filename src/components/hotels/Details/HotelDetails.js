@@ -49,7 +49,9 @@ const HotelDetails = (props) => {
           <div className="row mb-3">
             <div className="col-5">
               <div className={classes["hotelname-bg"]}></div>
-              <h1 className={`mt-5 lead fw-bolder ${classes.hotelname}`}>{hotel.name}</h1>
+              <h1 className={`mt-5 lead fw-bolder ${classes.hotelname}`}>
+                {hotel.name}
+              </h1>
             </div>
           </div>
 
@@ -70,14 +72,16 @@ const HotelDetails = (props) => {
               <SearchWeather country={hotel.location} city={hotel.city} />
             </div>
             <div className={`${classes.currencypos}`}>
-              <Currency hotellCurr={hotel.nationalcurrency} country={hotel.location} />
+              <Currency
+                hotellCurr={hotel.nationalcurrency}
+                country={hotel.location}
+              />
             </div>
           </div>
-
+          <Review hotel={hotel}></Review>
           <TimespanContextProvider>
             <CheckOut room={activeRoom} hotel={hotel} />
           </TimespanContextProvider>
-          <Review hotel={hotel}></Review>
         </>
       )}
     </>

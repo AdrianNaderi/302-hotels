@@ -1,0 +1,21 @@
+.page {
+  margin-left: 1cm;
+  background: rgb(192, 184, 184);
+  width: 60px;
+  height: 40px;
+
+  text-decoration: underline;
+  font-size: larger;
+  border: #009e93;
+  border-style: solid;
+}
+
+.btn {
+  background-color: #009e93;
+  height: 40px;
+  width: 80px;
+  text-align: center;
+
+  cursor: pointer;
+  border-radius: 4px;
+}

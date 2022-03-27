@@ -6,7 +6,7 @@ const initialAuth = {
   loggedIn: true,
   username: "test",
   name: "Test Testersson",
-  policy: "admin",
+  policy: "customer",
   error: null,
 };
 
@@ -41,11 +41,23 @@ export const loginUserAsync = (input) => {
     const data = await getUsers();
     const user = identify(data, input);
     if (user === null) {
-      dispatch(authActions.setAuthenticationError({ errormessage: "User does not exist." }));
+      dispatch(
+        authActions.setAuthenticationError({
+          errormessage: "User does not exist.",
+        })
+      );
     } else if (user.password !== input.password) {
-      dispatch(authActions.setAuthenticationError({ errormessage: "Wrong password." }));
+      dispatch(
+        authActions.setAuthenticationError({ errormessage: "Wrong password." })
+      );
     } else {
-      dispatch(authActions.logIn({ username: user.id, name: user.name, policy: user.policy }));
+      dispatch(
+        authActions.logIn({
+          username: user.id,
+          name: user.name,
+          policy: user.policy,
+        })
+      );
       console.log("logged in successfully");
     }
     dispatch(httpActions.clearLoading());

@@ -1,3 +1,9 @@
 .btn {
   background-color: #009e93;
+  height: 60px;
+  width: 100px;
+  text-align: center;
+
+  cursor: pointer;
+  border-radius: 4px;
 }

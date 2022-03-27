@@ -9,6 +9,9 @@
   -ms-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardImg {
@@ -16,9 +19,13 @@
 
 .test {
   height: 170px;
-  padding: 25px;
+  width: 570px;
   font-size: large;
   color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .test h1 {
@@ -64,5 +71,6 @@
 
 .currencytitle {
   text-align: center;
+  text-align: justify;
   font-size: small;
 }
