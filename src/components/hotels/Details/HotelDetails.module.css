@@ -7,9 +7,8 @@
 }
 .room-section {
   position: absolute;
-  top: 30px;
   left: 700px;
-  width: 150px;
+  width: 500px;
   height: 500px;
 }
 

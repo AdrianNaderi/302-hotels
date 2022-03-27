@@ -9,7 +9,17 @@
   background-color: #973b50;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
+.inactivecard {
+  position: relative;
+  display: inline-block;
+  border: solid 1px;
+  border-radius: 10px 0px 10px 10px;
+  width: 470px;
+  height: 193px;
+  margin-bottom: 21px;
+  background-color: #973b50;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
 .img {
   position: absolute;
   top: 0px;

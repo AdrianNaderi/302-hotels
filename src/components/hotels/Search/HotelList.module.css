@@ -7,3 +7,11 @@
   position: relative;
   top: 100px;
 }
+
+.noresults {
+  position: relative;
+  text-align: center;
+  margin-top: 180px;
+  font-weight: 600;
+  font-size: 42px;
+}
