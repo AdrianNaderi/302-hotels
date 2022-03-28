@@ -150,12 +150,12 @@ const RegisterForm = (props) => {
           </div>
           <div className="text-center">
             {!loading && (
-              <button type="submit" className={`btn btn-primary ${classes.button}`}>
+              <button type="submit" className={classes.button}>
                 Register
               </button>
             )}
             {loading && (
-              <button type="submit" className={`btn btn-primary ${classes.button}`} disabled={true}>
+              <button type="submit" className={classes.button} disabled={true}>
                 <LoadingSpinner size="small" color="white" />
               </button>
             )}

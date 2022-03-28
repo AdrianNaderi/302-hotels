@@ -99,12 +99,12 @@ const LoginForm = (props) => {
 
           <div className="text-center mb-2">
             {!loading && (
-              <button type="submit" className={`btn btn-primary ${classes.button}`}>
+              <button type="submit" className={classes.button}>
                 Log In
               </button>
             )}
             {loading && (
-              <button type="submit" className={`btn btn-primary ${classes.button}`} disabled={true}>
+              <button type="submit" className={classes.button} disabled={true}>
                 <LoadingSpinner size="small" color="white" />
               </button>
             )}

@@ -25,6 +25,7 @@ const Input = (props) => {
           onChange={handleChange}
           value={props.value}
           style={props.inputStyle}
+          disabled={props.disabled}
         />
         <label htmlFor={props.label} className="" style={props.labelStyle}>
           {props.label}

@@ -1,9 +1,16 @@
 .button {
+  background-color: #009e93;
+  border: solid 1px #000;
+  color: #fff;
   border-radius: 12px;
   width: 80%;
   height: 35px;
-  padding-bottom: 10px;
 }
+.button:hover {
+  background-color: #14bbb0;
+  font-weight: 500;
+}
+
 .close-btn {
   margin: 0;
   background-color: transparent;
