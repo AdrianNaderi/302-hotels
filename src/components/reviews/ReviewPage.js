@@ -30,20 +30,29 @@ const ReviewPage = (props) => {
     }
   };
 
+  let content = (
+    <div className="text-center my-3">
+      <p>No comments written for this hotel yet..</p>
+    </div>
+  );
+  if (arrOfPages.length > 0) {
+    content = arrOfPages[i].map((reviewItem, index) => <ReviewPageItem key={index} nextPage={nextPage} prevPage={prevPage} reviews={reviewItem} />);
+  }
+
   return (
     <React.Fragment>
-      {arrOfPages[i].map((reviewItem, index) => (
-        <ReviewPageItem key={index} nextPage={nextPage} prevPage={prevPage} reviews={reviewItem} />
-      ))}
+      {content}
 
       <div className={classes["divider-box"]}>
         <hr className={classes.divider} />
       </div>
       <div className={`${classes["control-section"]} row`}>
         <div className="col-5 text-end">
-          <button className={`${classes.btn} ${classes.direction}`} onClick={prevPage}>
-            <i className="bi bi-chevron-left"></i>
-          </button>
+          {arrOfPages.length > 0 && (
+            <button className={`${classes.btn} ${classes.direction}`} onClick={prevPage}>
+              <i className="bi bi-chevron-left"></i>
+            </button>
+          )}
           <button
             onClick={() => {
               props.onHide();
@@ -54,7 +63,7 @@ const ReviewPage = (props) => {
           </button>
         </div>
         <div className="col-2 text-center align-self-center">
-          <div className={`${classes.page}`}>{i + 1 + "/" + arrOfPages.length}</div>
+          <div className={`${classes.page}`}>{arrOfPages.length > 0 ? i + 1 + "/" + arrOfPages.length : ""}</div>
         </div>
         <div className="col-5">
           {loggedin && (
@@ -73,9 +82,11 @@ const ReviewPage = (props) => {
             </button>
           )}
 
-          <button className={`${classes.btn} ${classes.direction}`} onClick={nextPage}>
-            <i className="bi bi-chevron-right"></i>
-          </button>
+          {arrOfPages.length > 0 && (
+            <button className={`${classes.btn} ${classes.direction}`} onClick={nextPage}>
+              <i className="bi bi-chevron-right"></i>
+            </button>
+          )}
         </div>
       </div>
     </React.Fragment>
