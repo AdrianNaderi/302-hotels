@@ -1,0 +1,19 @@
+.content {
+  display: flex;
+  justify-content: space-around;
+  height: 115px;
+  padding-left: 40px;
+  padding-right: 40px;
+  flex-direction: column;
+}
+
+.text-content {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 10px;
+}
+
+.author {
+  text-align: end;
+  margin-right: 20px;
+  font-size: 10px;
+}

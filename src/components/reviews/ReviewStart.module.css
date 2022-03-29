@@ -1,9 +1,26 @@
-.btn {
-  background-color: #009e93;
-  height: 60px;
-  width: 100px;
-  text-align: center;
+.show-reviews-text {
+  color: black;
+  text-decoration: none;
+}
 
-  cursor: pointer;
-  border-radius: 4px;
+
+.display-size {
+  margin-left: 100px;
+  height: 60px;
+  width: 660px;
+  margin-bottom: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.review-size {
+  margin-left: 100px;
+  height: 200px;
+  width: 660px;
+  margin-bottom: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.show-reviews-text:hover {
+  color: #973b50;
 }

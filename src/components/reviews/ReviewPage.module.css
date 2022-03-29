@@ -1,21 +1,10 @@
-.page {
-  margin-left: 1cm;
-  background: rgb(192, 184, 184);
-  width: 60px;
-  height: 40px;
-
-  text-decoration: underline;
-  font-size: larger;
-  border: #009e93;
-  border-style: solid;
-}
-
 .btn {
-  background-color: #009e93;
-  height: 40px;
-  width: 80px;
-  text-align: center;
-
-  cursor: pointer;
-  border-radius: 4px;
+  background-color: white;
+  border: 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
+
+/* .control-section {
+  position: relative;
+  bottom: 0px;
+} */

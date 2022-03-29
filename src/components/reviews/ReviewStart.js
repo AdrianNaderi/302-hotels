@@ -6,19 +6,17 @@ import { useSelector } from "react-redux";
 import classes from "./ReviewStart.module.css";
 const ReviewStart = (props) => {
   const [isShowing, setIsShowing] = useState(false);
+  const [isWriting, setIsWriting] = useState(false);
   const [reviews, setReviews] = useState([]);
   const user = useSelector((state) => state.auth.name);
   const loggedIn = useSelector((state) => state.auth.loggedIn);
 
   async function addReviewHandler(review) {
-    const response = await fetch(
-      "https://hotell-344214-default-rtdb.europe-west1.firebasedatabase.app/reviews.json",
-      {
-        method: "POST",
-        body: JSON.stringify(review),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch("https://hotell-344214-default-rtdb.europe-west1.firebasedatabase.app/reviews.json", {
+      method: "POST",
+      body: JSON.stringify(review),
+      headers: { "Content-Type": "application/json" },
+    });
 
     const data = await response.json();
     getReviewHandler();
@@ -46,35 +44,24 @@ const ReviewStart = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <div className="row mb-3">
-        <div class="col-md-3 mx-auto">
-          {" "}
-          {!isShowing && (
-            <button onClick={showReviews} className={classes.btn}>
-              Show Reviews
-            </button>
-          )}
-          {isShowing && (
-            <React.Fragment>
-              <button onClick={showReviews} className={classes.btn}>
-                Hide Reviews
-              </button>
-              {loggedIn && (
-                <ReviewInput
-                  addReview={addReviewHandler}
-                  getReviews={getReviewHandler}
-                  name={user}
-                  hotel={props.hotel}
-                ></ReviewInput>
-              )}
-
-              <ReviewList reviewList={reviews} hotel={props.hotel}></ReviewList>
-            </React.Fragment>
-          )}
+    <>
+      {!isShowing && (
+        <div onClick={showReviews} className={classes["display-size"]}>
+          <a  className={`${classes["show-reviews-text"]} lead fw-bold`}>
+            Still not sure? Check out the reviews!
+          </a>
         </div>
-      </div>
-    </React.Fragment>
+      )}
+      {isShowing && !isWriting && (
+        <div className={classes["review-size"]}>
+          <button onClick={showReviews} className={classes.btn}>
+            Hide Reviews
+          </button>
+          <ReviewList reviewList={reviews} hotel={props.hotel}></ReviewList>
+        </div>
+      )}
+      {isShowing && isWriting && <>{loggedIn && <ReviewInput addReview={addReviewHandler} getReviews={getReviewHandler} name={user} hotel={props.hotel} />}</>}
+    </>
   );
 };
 export default ReviewStart;
