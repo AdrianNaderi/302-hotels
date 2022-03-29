@@ -23,7 +23,7 @@
   position: relative;
   border-radius: 50px;
   top: 115px;
-  right: 250px;
+  left: -300px;
   height: 75px;
   background-color: #c88b96;
 }

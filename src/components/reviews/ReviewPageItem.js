@@ -7,7 +7,6 @@ const ReviewPageItem = (props) => {
   return (
     <React.Fragment>
       {<ReviewItem key={i++} review={props.reviews} />}
-      <div></div>
     </React.Fragment>
   );
 };

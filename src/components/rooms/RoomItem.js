@@ -9,7 +9,6 @@ const RoomItem = (props) => {
       props.handleActiveSelection(props.room);
     }
   };
-  console.log(loggedin);
   return (
     <>
       {loggedin && (

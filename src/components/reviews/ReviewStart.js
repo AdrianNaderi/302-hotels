@@ -47,20 +47,26 @@ const ReviewStart = (props) => {
     <>
       {!isShowing && (
         <div onClick={showReviews} className={classes["display-size"]}>
-          <a  className={`${classes["show-reviews-text"]} lead fw-bold`}>
-            Still not sure? Check out the reviews!
-          </a>
+          <a className={`${classes["show-reviews-text"]} lead fw-bold`}>Still not sure? Check out the reviews!</a>
         </div>
       )}
       {isShowing && !isWriting && (
         <div className={classes["review-size"]}>
-          <button onClick={showReviews} className={classes.btn}>
-            Hide Reviews
-          </button>
-          <ReviewList reviewList={reviews} hotel={props.hotel}></ReviewList>
+          <ReviewList
+            onHide={showReviews}
+            onWrite={() => {
+              setIsWriting(true);
+            }}
+            reviewList={reviews}
+            hotel={props.hotel}
+          ></ReviewList>
         </div>
       )}
-      {isShowing && isWriting && <>{loggedIn && <ReviewInput addReview={addReviewHandler} getReviews={getReviewHandler} name={user} hotel={props.hotel} />}</>}
+      {isShowing && isWriting && loggedIn && (
+        <div className={`${classes["writer-size"]}`}>
+          <ReviewInput addReview={addReviewHandler} cancelWrite={() => setIsWriting(false)} getReviews={getReviewHandler} name={user} hotel={props.hotel} />
+        </div>
+      )}
     </>
   );
 };

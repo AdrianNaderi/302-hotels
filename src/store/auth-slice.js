@@ -3,10 +3,10 @@ import { getUsers, identify } from "../lib/userapi";
 import { httpActions } from "./http-slice";
 
 const initialAuth = {
-  loggedIn: true,
-  username: "test",
-  name: "Test Testersson",
-  policy: "admindq",
+  loggedIn: false,
+  username: "",
+  name: "",
+  policy: "",
   error: null,
 };
 
@@ -47,9 +47,7 @@ export const loginUserAsync = (input) => {
         })
       );
     } else if (user.password !== input.password) {
-      dispatch(
-        authActions.setAuthenticationError({ errormessage: "Wrong password." })
-      );
+      dispatch(authActions.setAuthenticationError({ errormessage: "Wrong password." }));
     } else {
       dispatch(
         authActions.logIn({

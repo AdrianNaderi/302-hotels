@@ -3,8 +3,6 @@ import classes from "./CurrencyList.module.css";
 
 const CurrencyList = (props) => {
   const [isDuplicate, setIsDuplicate] = useState(false);
-  console.log(props.hotellCurr);
-
   const IsDuplicateHandler = useCallback(async () => {
     if (
       props.hotellCurr.target_code === "EUR" ||

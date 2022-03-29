@@ -1,10 +1,39 @@
 .btn {
-  background-color: white;
+  padding: 0px 10px;
+  color: white;
   border: 0px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  border-radius: 5px;
+  font-size: 24px;
+  margin: 1px;
 }
 
-/* .control-section {
+.direction {
+  background-color: #973b50;
+}
+
+.create {
+  background-color: #009e93;
+}
+
+.hide {
+  background-color: red;
+}
+
+.inactive {
+  background-color: grey;
+}
+
+.divider {
   position: relative;
-  bottom: 0px;
-} */
+  left: 15%;
+  margin: 0px;
+  width: 70%;
+  border-top: 1.5px #000000;
+  opacity: 1;
+}
+
+.divider-box {
+  position: relative;
+  top: -5px;
+  padding-bottom: 10px;
+}

@@ -7,16 +7,20 @@ const ReviewList = (props) => {
 
   if (props.reviewList != null) {
     Object.values(props.reviewList).forEach((value) => reviews.push(value));
-    console.log(reviews);
-    console.log(props.hotel.hotell);
     reviews = reviews.filter((element) => element.hotell === props.hotel.name);
   }
 
-  console.log(reviews);
-
   return (
     <React.Fragment>
-      <ReviewPage reviews={reviews} />
+      <ReviewPage
+        onHide={() => {
+          props.onHide();
+        }}
+        onWrite={() => {
+          props.onWrite();
+        }}
+        reviews={reviews}
+      />
     </React.Fragment>
   );
 };

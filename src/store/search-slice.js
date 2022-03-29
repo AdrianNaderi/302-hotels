@@ -34,7 +34,6 @@ const searchSlice = createSlice({
       state.all = action.payload.all;
       state.fetched = true;
       state.lastId = action.payload.id;
-      console.log(action.payload.id);
     },
     storeOne(state, action) {
       state.single = filterHotel(state.all, state.id);
@@ -57,16 +56,6 @@ const searchSlice = createSlice({
   },
 });
 
-// export const searchHotels = () => {
-//   return async (dispatch) => {
-//     const data = await getHotels();
-//     const mapedIds = data.map((data) => parseInt(data.id));
-//     const lastId = mapedIds[mapedIds.length - 1];
-
-//     dispatch(searchActions.storeAll({ all: data, id: lastId }));
-//     dispatch(searchActions.storeFiltered({ data }));
-//   };
-// };
 
 export const searchHotel = () => {
   return async (dispatch) => {

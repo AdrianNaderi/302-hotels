@@ -18,19 +18,16 @@ const CurrencyStart = (props) => {
     currencyHandler();
   }, [currencyHandler]);
 
-  console.log(location);
-
   return (
     <React.Fragment>
-      {!isLoading && location.length !== 0 && (
-        <Currency
-          hotellCurr={props.hotellCurr}
-          localCurr={location.currency.currency_code}
-        ></Currency>
-      )}
+      {!isLoading && location.length !== 0 && <Currency hotellCurr={props.hotellCurr} localCurr={location.currency.currency_code}></Currency>}
       {!isLoading && location.length === 0 && !error && <p>No data</p>}
       {!isLoading && error && <p>{error}</p>}
-      {isLoading && <LoadingSpinner />}
+      {isLoading && (
+        <div className="text-center">
+          <LoadingSpinner size="large" />
+        </div>
+      )}
     </React.Fragment>
   );
 };

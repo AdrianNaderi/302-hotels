@@ -1,28 +1,20 @@
 import React, { useEffect, useState } from "react";
 import ReviewPageItem from "./ReviewPageItem";
 import classes from "./ReviewPage.module.css";
+import { useSelector } from "react-redux";
 const ReviewPage = (props) => {
   let [i, setI] = useState(0);
   let arrOfPages = [];
-
   let arrOfComments = [];
   let counter = 0;
 
-  console.log(props.reviews[0]);
-  for (let index = 0; index < props.reviews.length; index++) {
-    if (counter === 0) {
-      arrOfComments.push(props.reviews[index]);
-      counter++;
-    } else if (counter >= 5) {
-      counter = 0;
-    }
+  const loggedin = useSelector((state) => state.auth.loggedIn);
 
-    arrOfPages.push(arrOfComments);
+  for (let index = 0; index < props.reviews.length; index++) {
     arrOfComments = [];
     arrOfComments.push(props.reviews[index]);
+    arrOfPages.push(arrOfComments);
   }
-  arrOfPages.push(arrOfComments);
-  arrOfComments = [];
 
   const nextPage = () => {
     if (i >= 0 && i < arrOfPages.length - 1) setI((prevState) => prevState + 1);
@@ -37,30 +29,52 @@ const ReviewPage = (props) => {
       setI((prevState) => prevState + -1);
     }
   };
-  console.log(arrOfPages);
+
   return (
     <React.Fragment>
-      {arrOfPages[i].map((reviewItem) => (
-        <ReviewPageItem nextPage={nextPage} prevPage={prevPage} reviews={reviewItem} />
+      {arrOfPages[i].map((reviewItem, index) => (
+        <ReviewPageItem key={index} nextPage={nextPage} prevPage={prevPage} reviews={reviewItem} />
       ))}
 
-      <div className="text-center"></div>
-
+      <div className={classes["divider-box"]}>
+        <hr className={classes.divider} />
+      </div>
       <div className={`${classes["control-section"]} row`}>
-        <div className="col-4 text-end">
-          <button className={classes.btn} onClick={prevPage}>
-            <i class="bi bi-chevron-left"></i>
+        <div className="col-5 text-end">
+          <button className={`${classes.btn} ${classes.direction}`} onClick={prevPage}>
+            <i className="bi bi-chevron-left"></i>
+          </button>
+          <button
+            onClick={() => {
+              props.onHide();
+            }}
+            className={`${classes.btn} ${classes.hide}`}
+          >
+            <i className="bi bi-x-square"></i>
           </button>
         </div>
-        <div className="col-4 text-center">
+        <div className="col-2 text-center align-self-center">
           <div className={`${classes.page}`}>{i + 1 + "/" + arrOfPages.length}</div>
         </div>
-        <div className="col-4">
-          <button className={classes.btn} onClick={nextPage}>
-            <i class="bi bi-chevron-right"></i>
-          </button>
-          <button>
-            <i className="bi bi-pencil-square"></i>
+        <div className="col-5">
+          {loggedin && (
+            <button
+              onClick={() => {
+                props.onWrite();
+              }}
+              className={`${classes.btn} ${classes.create}`}
+            >
+              <i className="bi bi-pencil-square"></i>
+            </button>
+          )}
+          {!loggedin && (
+            <button className={`${classes.btn} ${classes.inactive}`} disabled>
+              <i className="bi bi-pencil-square"></i>
+            </button>
+          )}
+
+          <button className={`${classes.btn} ${classes.direction}`} onClick={nextPage}>
+            <i className="bi bi-chevron-right"></i>
           </button>
         </div>
       </div>
