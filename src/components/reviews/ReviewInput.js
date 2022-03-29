@@ -14,7 +14,9 @@ const ReviewInput = (props) => {
     };
 
     textRef.current.value = "";
-    props.addReview(review);
+    if (review.text != "") {
+      props.addReview(review);
+    }
   };
 
   return (

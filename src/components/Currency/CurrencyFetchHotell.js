@@ -5,7 +5,7 @@ const Currency = (props) => {
   const [currency, setCurrency] = useState([]);
 
   const { isLoading, error, fetchDataHandler } = useHttpGet({
-    url: `https://v6.exchangerate-api.com/v6/284d94a411d3ab129c840a38/pair/${props.localCurr}/${props.hotellCurr}`,
+    url: `https://v6.exchangerate-api.com/v6/a984a64b5874fde57d5f46f7/pair/${props.localCurr}/${props.hotellCurr}`,
   });
 
   const currencyHandler = useCallback(async () => {
