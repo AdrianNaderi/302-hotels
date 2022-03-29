@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import CurrencyHotell from "./CurrencyFetchHotell";
 import useHttpGet from "../../hooks/useHttpGet";
+import LoadingSpinner from "../UI/LoadingSpinner";
 const Currency = (props) => {
   const [currency, setCurrency] = useState([]);
 
   const { isLoading, error, fetchDataHandler } = useHttpGet({
-    url: `https://v6.exchangerate-api.com/v6/284d94a411d3ab129c840a38/latest/${props.localCurr}`,
+    url: `https://v6.exchangerate-api.com/v6/a984a64b5874fde57d5f46f7/latest/${props.localCurr}`,
   });
 
   const currencyHandler = useCallback(async () => {
@@ -28,7 +29,11 @@ const Currency = (props) => {
       )}
       {!isLoading && currency.length === 0 && !error && <p>No data</p>}
       {!isLoading && error && <p>{error}</p>}
-      {isLoading && <p>Loading...</p>}
+      {isLoading && (
+        <p>
+          <LoadingSpinner />
+        </p>
+      )}
     </React.Fragment>
   );
 };
