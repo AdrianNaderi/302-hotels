@@ -1,68 +1,72 @@
 .cardImg {
-    object-fit: contain;
-    /* height: auto; */
-    /* width: auto; */
+  object-fit: contain;
+  /* height: auto; */
+  /* width: auto; */
 }
 
 .fit {
-    /* height: 400px; */
-    width: 600px;
+  /* height: 400px; */
+  width: 600px;
 }
 
 .test {
-     height: 170px;
-     width: auto;
-     font-size: 5px;
+  height: 170px;
+  width: auto;
+  font-size: 5px;
 }
 
 .test h2 {
-    font-size: 35px;
-    margin-bottom: 0%;
-    margin-left: 40px;
+  font-size: 35px;
+  margin-bottom: 0%;
+  margin-left: 40px;
 }
 
 .test h4 {
-    font-size: 20px;
-    margin-bottom: 0%;
-    margin-top: 5px;
-    margin-left: 40px;
+  font-size: 20px;
+  margin-bottom: 0%;
+  margin-top: 5px;
+  margin-left: 40px;
 }
 
 .test p {
-      font-size: 20px;
-      margin-bottom: 0%;
+  font-size: 20px;
+  margin-bottom: 0%;
 }
 
 .test h1 {
-    font-size: 10px;
-    margin-bottom: 0%;
+  font-size: 10px;
+  margin-bottom: 0%;
 }
 
 .test hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .span1 {
-    font-size: 10px;
-    margin-left: 235px;
+  font-size: 10px;
+  margin-left: 35px;
 }
 
 .date {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .minmaxtemp {
-    margin-top: 15px;
-    margin-left: 20px;
+  margin-top: 15px;
+  margin-left: 20px;
 }
 
 .temperature {
-    margin-top: 5px;
-    margin-right: 40px;
+  margin-top: 5px;
+  margin-right: 40px;
 }
 
 .weather {
-    margin-right: 50px;
-    margin-top: 5px;
+  margin-right: 50px;
+  margin-top: 5px;
+}
+
+.emoji {
+  text-align: end;
 }
