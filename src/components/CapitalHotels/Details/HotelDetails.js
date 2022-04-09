@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import RoomList from "../../Rooms/RoomList";
+import RoomList from "../../CaptialRooms/RoomList"
 import HotelProfileImg from "../../UI/HotelProfileImg";
 import classes from "./HotelDetails.module.css";
 import CheckOut from "./CheckOut";
 import Currency from "../../Currency/CurrencyStart";
-import Review from "../../Reviews/ReviewStart";
+import Review from "../../CapitalReviews/ReviewStart";
 import { TimespanContextProvider } from "../../../store/timespan-context";
 import { searchActions, searchHotelAsync } from "../../../store/search-slice";
 import SearchWeather from "../../Weather/SearchWeather";

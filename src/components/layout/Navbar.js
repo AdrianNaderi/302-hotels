@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
-import LoginForm from "../Forms/LoginForm";
-import RegisterForm from "../Forms/RegisterForm";
+import LoginForm from "../CapitalForms/LoginForm";
+import RegisterForm from "../CapitalForms/RegisterForm";
 import classes from "./Navbar.module.css";
 import NavLinks from "./NavLinks";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,5 @@
-import HotelSearch from "../components/Hotels/Search/HotelSearch";
-import HotelList from "../components/Hotels/Search/HotelList";
+import HotelSearch from "../components/CapitalHotels/Search/HotelSearch";
+import HotelList from "../components/CapitalHotels/Search/HotelList";
 
 const SearchPage = () => {
   return (

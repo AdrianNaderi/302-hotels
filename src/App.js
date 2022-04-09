@@ -10,7 +10,7 @@ import NotFound from "./pages/404";
 import CustomerPage from "./pages/CustomerPage";
 import BasePage from "./pages/BasePage";
 import AdminPage from "./pages/AdminPage";
-import HotelManagement from "./components/Hotels/Admin/HotelManagement";
+import HotelManagement from "./components/CapitalHotels/Admin/HotelManagement";
 import UpsertHotel from "./pages/UpsertHotel";
 import UserPage from "./pages/UserPage";
 import BookingList from "./components/Bookings/List/BookingList";

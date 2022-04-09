@@ -1,4 +1,4 @@
-import HotelSearch from "../components/Hotels/Search/HotelSearch";
+import HotelSearch from "../components/CapitalHotels/Search/HotelSearch";
 
 const SearchResultsPage = () => {
   return (

@@ -1,4 +1,4 @@
-import HotelUpsertForm from "../components/Hotels/Admin/HotelUpsertForm/HotelUpsertForm";
+import HotelUpsertForm from "../components/CapitalHotels/Admin/HotelUpsertForm/HotelUpsertForm";
 
 const UpsertHotel = (props) => {
     return (
